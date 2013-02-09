@@ -1,4 +1,6 @@
-personal-site
+Hey, it's Garrett's personal site!
 =============
 
-Hey it's Garrett (Personal Site)
+This is where the magic happens, ladies. Now come look at my awesome Star Wars figurines.
+
+Built with Jekyll, SASS, whimsy
