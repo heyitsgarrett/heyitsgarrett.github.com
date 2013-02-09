@@ -1,0 +1,155 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'ProximaNova',Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.3em;
+  padding-top: 2%; }
+
+a {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border-bottom: 1px dotted #333;
+  color: #333;
+  text-decoration: none; }
+  a:hover {
+    color: #ea008a;
+    border-bottom: 1px dotted #ea008a; }
+
+#container {
+  background: url(../images/garrett_miller.jpg) top left no-repeat;
+  background-size: 23%;
+  font-size: 1em;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 0 0 0 25%;
+  width: 80%; }
+
+h1 {
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1em;
+  margin-bottom: 2%;
+  text-transform: uppercase; }
+
+p.description {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  width: 60%; }
+
+.sub {
+  margin: 5% 0;
+  float: left;
+  width: 30%; }
+  .sub h2 {
+    font-weight: bold;
+    margin-bottom: 0.5%; }
+  .sub ul li {
+    line-height: 2em; }
+
+.bottom {
+  clear: both; }
+
+@media screen and (max-width: 1300px) {
+  p.description {
+    width: 90%; }
+
+  .sub {
+    width: 45%; } }
+@media screen and (max-width: 1000px) {
+  #container {
+    background-position: top center;
+    background-size: 28%;
+    padding: 30% 0 0;
+    text-align: center;
+    width: 100%; }
+
+  h1, p.description {
+    width: 100%;
+    padding: 0 5%; }
+
+  .sub, .bottom {
+    float: none;
+    width: 100%; }
+    .sub a, .bottom a {
+      background: #f7f7f7;
+      border-bottom: 1px solid #ccc;
+      display: block;
+      font-size: 2em;
+      padding: 3% 0; }
+      .sub a:hover, .bottom a:hover {
+        background: #eee; }
+
+  .sub h2 {
+    border-bottom: 1px solid #ccc;
+    margin: 1% 0 0;
+    padding: 1% 0; }
+
+  .bottom {
+    border-top: 1px solid #ccc; }
+    .bottom a {
+      padding: 3% 0; } }
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+    line-height: 2em; }
+
+  p.description {
+    font-size: 1em;
+    margin-bottom: 10%; } }

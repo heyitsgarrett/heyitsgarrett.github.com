@@ -1,0 +1,6 @@
+# permalink: /posts/:categories/:title
+markdown: rdiscount
+auto: true
+# pygments: true
+path: http://heyitsgarrett.com
+title: Hey it's Garrett!
