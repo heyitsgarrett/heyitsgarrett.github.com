@@ -55,7 +55,7 @@ table {
 
 .grid {
   margin: 0 auto 20px;
-  max-width: 980px; }
+  max-width: 760px; }
   .grid:after {
     content: "";
     display: table;
@@ -191,11 +191,29 @@ body#layout-splash .bottom {
     font-size: 1em;
     margin-bottom: 10%; } }
 
-body#layout-default h1 {
-  font-size: 1.4em;
-  font-weight: 700;
-  margin: 2em 0 1.5em;
-  text-transform: uppercase; }
+body#layout-default {
+  padding-bottom: 5%; }
+  body#layout-default h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 2em 0 1em;
+    text-transform: uppercase; }
+    body#layout-default h1 a {
+      color: #ccc; }
+  body#layout-default h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 0 1.5em; }
+  body#layout-default p {
+    font-size: 1em;
+    line-height: 1.6em;
+    margin-bottom: 1.2em; }
+  body#layout-default img {
+    width: 100%;
+    margin-bottom: 1em; }
+  body#layout-default div.date {
+    color: #bbb;
+    margin-top: 2.4em; }
 
 body.error-404 {
   background: transparent url("/images/robot.gif") bottom right no-repeat;

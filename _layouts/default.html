@@ -7,14 +7,22 @@
 		{% if page.hideNav %}
 								
 		{% else %}
-	    	<div class="center">
+	    	<div class="title">
 	    		<h1>
 					<a href="/">Hey, it's Garrett!</a>
 	    		</h1>
+	    		<h2>{{ page.title }}</h2>
 	    	</div>
 		{% endif %}
 
         {{ content }}
+
+        {% if page.date %}
+        	<div class="date">
+        		{{ page.date | date: "%B %d, %Y" }}
+        	</div>
+
+        {% endif %}
 
     </div>
 
