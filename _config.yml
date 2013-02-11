@@ -1,4 +1,4 @@
-# permalink: /posts/:categories/:title
+permalink: /posts/:title
 markdown: rdiscount
 auto: true
 # pygments: true
