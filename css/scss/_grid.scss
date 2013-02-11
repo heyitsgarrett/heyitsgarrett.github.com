@@ -9,7 +9,8 @@ $pad: 20px;
 
 .grid {
 	margin: 0 auto $pad;
-	max-width: 760px;
+	max-width: 800px;
+	padding: $pad;
 
 	&:after {
 		content: "";

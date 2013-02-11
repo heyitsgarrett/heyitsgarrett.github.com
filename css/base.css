@@ -55,7 +55,8 @@ table {
 
 .grid {
   margin: 0 auto 20px;
-  max-width: 760px; }
+  max-width: 800px;
+  padding: 20px; }
   .grid:after {
     content: "";
     display: table;
