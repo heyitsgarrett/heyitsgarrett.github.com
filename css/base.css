@@ -200,6 +200,8 @@ body#layout-default {
     text-transform: uppercase; }
     body#layout-default h1 a {
       color: #ccc; }
+      body#layout-default h1 a:hover {
+        color: #333; }
   body#layout-default h2 {
     font-size: 2em;
     font-weight: bold;

@@ -158,6 +158,9 @@ body#layout-default {
         text-transform: uppercase;
         a {
             color: #ccc;
+            &:hover {
+                color: #333;
+            }
         }
     }
 
