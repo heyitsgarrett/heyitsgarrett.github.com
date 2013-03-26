@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World News Pulse</title>
+    <link rel='stylesheet' type='text/css' href='' />
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.ie.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+    <header>
+        <h1 class="pulse">WORLD NEWS PULSE<span id="region"></span></h1>
+    </header>
+
+    <div id="main">
+        <div id="content">
+            <div id="articles-list">
+                <ul id="articles">
+                </ul>
+                <a href="#" id="load-articles" class="loading" data-offset="0"><span>More</span> </a>
+            </div>
+        </div>
+        
+        <div id="map-wrapper" class="no-box-size">
+            <div id="map" class="map"><!-- Load MapBox Map--></div>
+        </div>
+    </div>
+
+<!-- JS Scripts -->
+
+<script src="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/jquery.hotkeys.js"></script>
+<script src="js/jquery.timeago.js"></script>
+<script src="js/site.js"></script>
+
+</body>
+</html>
