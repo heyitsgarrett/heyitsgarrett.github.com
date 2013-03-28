@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.ie.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.css"/>
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id="scale">a</div>
+<div id='map'>
+</div>
+
+<style>
+.wrapper {
+  position:relative;
+  }
+#scale {
+  background: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: black;
+  padding: 10px;
+  z-index:100;
+  text-align: center;
+
+}
+</style>
+<script src="http://api.tiles.mapbox.com/mapbox.js/v1.0.0-alpha0/mapbox.js"></script>
+<script>
+map = mapbox.map('map', 'heyitsgarrett.map-gicwmdkb');
+</script>
+</body>
+</html>
