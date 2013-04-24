@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.js'></script>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.css' rel='stylesheet' />
+    <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.ie.css' rel='stylesheet' >
+    <![endif]-->
+    <style>
+
+        * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin:0;
+            padding:0;
+        }
+        #nav {
+            position:absolute; top:0px; width:100%; height: 50px;
+        }
+        #nav a {
+            background: #333;
+            border-right: 1px solid white;
+            color: white;
+            float: left;
+            font-weight: bold;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: center;
+            width: 50%;
+        }
+        #nav a:hover, #nav a:active {
+            background: #000;
+        }
+        .map {
+            bottom:0;
+            position:absolute;
+            top:50px;
+            width:100%;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <a href="#" id="streets" onclick="toggleMap('streets')">Streets</a>
+        <a href="#" id="satellite" onclick="toggleMap('satellite')">Satellite</a>
+    </div>
+    <div id='streets-map' class='map'></div>
+    <div id='satellite-map' class='map'></div>
+
+    <script type='text/javascript'>
+
+        var center,
+            zoom;
+
+        var mapStreet = L.mapbox.map('streets-map', 'examples.map-4l7djmvo')
+            .setView([40.7142, -74.0064], 12);
+
+        var mapSat = L.mapbox.map('satellite-map', 'heyitsgarrett.map-g2v9acgb')
+            .setView([40.7142, -74.0064], 3);
+
+        function toggleMap(mapId) {
+
+            if (mapId === 'streets') {
+                zoom = mapSat.getZoom();
+                center = mapSat.getCenter();
+
+                mapStreet.setView(center,zoom, true);
+
+                document.getElementById('streets-map').style.zIndex = 1;
+                document.getElementById('satellite-map').style.zIndex = 0;
+            } else {
+                zoom = mapStreet.getZoom();
+                center = mapStreet.getCenter();
+
+                mapSat.setView(center,zoom, true);
+
+                document.getElementById('streets-map').style.zIndex = 0;
+                document.getElementById('satellite-map').style.zIndex = 1;
+            }
+        }
+
+        toggleMap('streets');
+
+    </script>
+</body>
+</html>
