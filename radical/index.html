@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>WELCOME TO MAPBOX</title>
+	<script>
+	var sound;
+	function play() {
+		if (window.HTMLAudioElement) {
+			sound = new Audio('');
+
+			if(sound.canPlayType('audio/ogg')) {
+				sound = new Audio('intro.ogg');
+			}
+			else if(sound.canPlayType('audio/mp3')) {
+				sound = new Audio('intro.mp3');
+			}
+
+			sound.play();
+		}
+	}
+	play();
+
+	setInterval(function(){
+		if(sound.currentTime >= 23.5) {
+			console.log('test');
+			sound.currentTime = 1;
+		}
+	},1000);
+	</script>
+	<style>
+		html, body {
+			height: 100%;
+			width: 100%;
+		}
+		body {
+			background: black url(http://i.imgur.com/nRXmZqU.gif) center center no-repeat;
+			background-size: cover;
+		}
+
+	</style>
+</head>
+
+<body>
+
+<!--
+
+         ______  ____    ____     _____    __   __
+ /'\_/`\/\  _  \/\  _`\ /\  _`\  /\  __`\ /\ \ /\ \
+/\      \ \ \L\ \ \ \L\ \ \ \L\ \\ \ \/\ \\ `\`\/'/'
+\ \ \__\ \ \  __ \ \ ,__/\ \  _ <'\ \ \ \ \`\/ > <
+ \ \ \_/\ \ \ \/\ \ \ \/  \ \ \L\ \\ \ \_\ \  \/'/\`\
+  \ \_\\ \_\ \_\ \_\ \_\   \ \____/ \ \_____\ /\_\\ \_\
+   \/_/ \/_/\/_/\/_/\/_/    \/___/   \/_____/ \/_/ \/_/
+
+
+ ____    ______  ____    ______   ____     ______  __
+/\  _`\ /\  _  \/\  _`\ /\__  _\ /\  _`\  /\  _  \/\ \
+\ \ \L\ \ \ \L\ \ \ \/\ \/_/\ \/ \ \ \/\_\\ \ \L\ \ \ \
+ \ \ ,  /\ \  __ \ \ \ \ \ \ \ \  \ \ \/_/_\ \  __ \ \ \  __
+  \ \ \\ \\ \ \/\ \ \ \_\ \ \_\ \__\ \ \L\ \\ \ \/\ \ \ \L\ \
+   \ \_\ \_\ \_\ \_\ \____/ /\_____\\ \____/ \ \_\ \_\ \____/
+    \/_/\/ /\/_/\/_/\/___/  \/_____/ \/___/   \/_/\/_/\/___/
+
+-->
+
+</body>
+</html>
