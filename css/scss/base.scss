@@ -60,8 +60,9 @@ body#layout-splash {
     }
 
     p.description {
-        font-size: 1.2em;
+        font-size: 1.1em;
         line-height: 1.5em;
+        margin-bottom: 20px;
         width: 60%;
     }
 
@@ -193,7 +194,7 @@ body.error-404 {
     background: transparent url('/images/robot.gif') bottom right no-repeat;
     background-size: 30% auto;
     padding: 40px;
-    
+
     .content {
         background: white;
     }

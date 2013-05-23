@@ -136,8 +136,9 @@ body#layout-splash h1 {
   margin-bottom: 2%;
   text-transform: uppercase; }
 body#layout-splash p.description {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1.5em;
+  margin-bottom: 20px;
   width: 60%; }
 body#layout-splash .sub {
   margin: 5% 0;
