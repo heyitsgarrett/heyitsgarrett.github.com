@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Overwrite Mapbox.js Marker styling
-    
+
     mapbox.marker.style = function(f, latlon) {
         return L.marker(latlon, {
             icon: L.divIcon({className: 'simple-marker marker-' + f.properties.id + ' size-' + f.properties.count}),
@@ -15,8 +15,8 @@ $(document).ready(function() {
         LIMIT = 50;
 
     // ---------------------------------------------------------------------------
-    // Initialize map    
-    
+    // Initialize map
+
     var map = mapbox.map('map', 'heyitsgarrett.map-5obxlq9h');
     var geocoder = mapbox.geocoder('heyitsgarrett.map-5obxlq9h');
     var gj = {
@@ -34,10 +34,10 @@ $(document).ready(function() {
     fetchArticles();
 
     // ---------------------------------------------------------------------------
-    // Functions 
+    // Functions
 
     function fetchArticles(offset) {
-        if (offset === undefined) 
+        if (offset === undefined)
             offset = 0;
 
         // Check localStorage for query (limiting the number of calls)
@@ -46,7 +46,7 @@ $(document).ready(function() {
         var cachedArticles = localStorage.getItem('articles');
         if(cachedArticles && offset === 0) {
             cachedArticles = JSON.parse(localStorage.getItem('articles'));
-            
+
             var updated_date = new Date(cachedArticles.updated_date),
                 current_date = new Date(),
                 ONE_HOUR = 60 * 60 * 1000;
@@ -108,7 +108,7 @@ $(document).ready(function() {
             location = location.replace(')', '');
 
             geocoder.query(location, function(err, res) {
-                
+
                 if (err || res === undefined) {
                     // Check in case this is the last element in the array, if so, add markers
                     if(item === totalLength ) {
@@ -118,10 +118,10 @@ $(document).ready(function() {
                 }
 
                 // Add to sidebar
-                var $li = $('<li data-country="' + location + '"><div class="article show-on-map">' + 
-        
+                var $li = $('<li data-country="' + location + '"><div class="article show-on-map">' +
+
                                 '<strong class="title">' + article.title + '</strong>' +
-                                '<p class="abstract">' + article.abstract + '</p>' + 
+                                '<p class="abstract">' + article.abstract + '</p>' +
                                 '<a href="' + article.url + '" class="date" target="_blank">' + $.timeago(article.published_date) + ' in ' + location + '</a>' +
 
                             '</div></li>');
@@ -131,7 +131,7 @@ $(document).ready(function() {
                 var count = 1;
 
                 if(locations[location.toString()] !== undefined) {
-                    count = locations[location.toString()] + 1;                            
+                    count = locations[location.toString()] + 1;
                 }
                 locations[location.toString()] = count;
 
@@ -187,11 +187,11 @@ $(document).ready(function() {
             if( direction === 'up') {
                 // Select previous
                 showArticle($active.prev());
-                
+
             } else {
                 // Select next
                 showArticle($active.next());
-            }    
+            }
         } else {
             // Select first in list
             showArticle($articles.find('li:first-child'));
@@ -199,7 +199,7 @@ $(document).ready(function() {
 
         function showArticle($el) {
             $el.children('.show-on-map').trigger('click');
-            
+
             // Pan to in sidebar
             if($el.position() !== undefined) {
                 $('#articles-list').animate({
@@ -208,7 +208,7 @@ $(document).ready(function() {
             }
 
         }
-        
+
 
     }
 
