@@ -214,7 +214,7 @@ body#layout-default {
     margin-bottom: 1.2em; }
   body#layout-default img {
     width: 100%;
-    margin-bottom: 1em; }
+    /*margin-bottom: 1em;*/ }
   body#layout-default div.date {
     color: #bbb;
     margin-top: 2.4em; }
