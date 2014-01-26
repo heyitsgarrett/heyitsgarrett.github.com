@@ -73,7 +73,7 @@ $(document).ready(function() {
     // Return defaults
     // TODO: Make this intro page instead
     if (VIDEOID === 'null') {
-        VIDEOID = 's7L2PVdrb_8';
+        VIDEOID = '5NV6Rdv1a3I';
     } else {
         $('#loudvideo').val(unescape('http://www.youtube.com/watch?v=' + VIDEOID));
     }
