@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic,400,800' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" type="text/css" href="css/fresh.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/loud.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/icons.css" media="screen">
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-plugins.min.js"></script>
+<script type="text/javascript" src="js/zeroclipboard/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="js/stratus.js"></script>
+<script type="text/javascript" src="js/loud.js"></script>
+
+<title>LOUD MAPS SAVE LIVES</title>
+
+<meta property="og:title" content="LOUDMAP" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="LOUDMAP – Combine YouTube music with Mapbox maps. Awesome." />
+
+<meta name="bitly-verification" content="1c18ca1d8623"/>
+
+</head>
+<body>
+
+<div id="player"></div>
+
+<div id="wrapper">
+
+    <h1 id="message" class="hide"></h1>
+
+    <div id="share-url" class="modal">
+        <span class="ex icon-ex">&nbsp;</span>
+        <span id="share-url-to-copy"></span>
+        <a href="#" id="copy-share-url" class="copy" data-clipboard-text="COPY!" data-clipboard-target="share-url-to-copy">COPY!</a>
+    </div>
+
+    <div id="map">
+    </div>
+
+    <div id="meta" class="clearfix">
+        <div class="col6">
+            <h1><a href="#" id="logo" class="el logo show-screen">LOUDMAP</a></h1>
+            <a href="#" id="toggle-video" class="el square icon-sound" data-playing="true">&nbsp;</a>
+            <a href="#" id="share" class="el square icon-link">&nbsp;</a>
+        </div>
+        <div class="col6 right">
+            <a id="new-loudmap" href="#" class="el loud show-screen">
+                Create your own
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="info" class="black offscreen">
+    <div id="information" class="col6 el">
+
+        <h1>MAPS + SOUND = MAP-MATICAL!.</h1>
+
+        <p>Like a cartographic <a href="http://loudgif.com">LOUDGIF</a>.</p>
+
+        <p>This is a project by <a href="http://twitter.com/heyitsgarrett">Garrett</a>, who had far better things to do.</p>
+
+    </div>
+    <div id="create" class="col6 pad2 el bright">
+        <form action="" method="get" id="newLoudmap" name="newLoudmap" class="">
+            <div class="field clearfix">
+                <label for="loudmapid"><a href="http://mapbox.com">Mapbox</a> ID</label>
+                <input type="text" id="loudmapid" name="loudmapid" />
+            </div>
+            <div class="field clearfix">
+                <label for="loudvideo">YouTube URL</label>
+                <input type="text" id="loudvideo" name="loudvideo" />
+            </div>
+            <div class="field clearfix">
+                <label for="loudtext">Text <span>(Totally optional)</span></label>
+                <input type="text" id="loudtext" name="loudtext" maxlength="200" class="uppercase" />
+            </div>
+            <div class="submit">
+                <input type="submit" id="submit" value="Create" class="button" />
+            </div>
+        </form>
+
+        <div id="created" class="hide">
+            <h2 class="center">AW YEAH</h2>
+            <div class="url pad2">
+                <a id="new-loudmap-url" href="#"></a>
+                <a href="#" id="copy-loudmap" class="copy" data-clipboard-text="COPY!" data-clipboard-target="new-loudmap-url">COPY!</a>
+            </div>
+            <button id="another" class="button">Another!</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
