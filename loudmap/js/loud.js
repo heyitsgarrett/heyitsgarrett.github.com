@@ -89,7 +89,7 @@ $(document).ready(function() {
     }
 
     var map = L.mapbox.map('map', MAPID)
-        .setView([40, -74.50], 9);
+        .setView([31.20, -25.22], 3);
 
     map.scrollWheelZoom.disable();
 
