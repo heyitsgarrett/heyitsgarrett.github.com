@@ -1,12 +1,16 @@
 // CONSTANTS
 
 var MAPID = 'examples.xqwfusor',
-    HEIGHT = 500,
-    WIDTH = 1000,
+    HEIGHT = 300,
+    WIDTH = 300,
+    CENTER,
+    ZOOM,
     map;
 
 
 $(document).ready(function () {
+
+  var link = document.getElementById('output');
 
   // Prefill vals
   $('#mapid').val(MAPID);
@@ -31,6 +35,15 @@ $(document).ready(function () {
     });
     
     var hash = L.hash(map);
+
+    map.whenReady(function(){
+      console.log(map);
+      if(CENTER === null) { 
+        CENTER = map.getCenter(); 
+      }
+      if(ZOOM === null) { ZOOM = map.getZoom(); }
+    });
+    
 
     map.scrollWheelZoom.disable();
 
@@ -64,19 +77,14 @@ $(document).ready(function () {
   });
 
 
-  document.getElementById('output').addEventListener('click', function() {
-      leafletImage(map, doImage);
+  link.addEventListener('click', function() {
+    $('#output .text').addClass('hidden');
+    $('#output .loading').removeClass('hidden');
+    leafletImage(map, doImage);
   });
 
-  // window.setTimeout(function() {
-  //     map.panBy([100, 100]);
-  //     // map.setView([0, 0], 2);
-  //     window.setTimeout(function() {
-  //         leafletImage(map, doImage);
-  //     }, 1000);
-  // }, 1000);
-
   function doImage(err, canvas) {
+
       var img = document.createElement('img');
       var dimensions = map.getSize();
       img.width = dimensions.x;
@@ -85,13 +93,12 @@ $(document).ready(function () {
       document.getElementById('images').innerHTML = '';
       document.getElementById('images').appendChild(img);
 
-
-      console.log('test');
-      // window.setTimeout(function() {
-      //   var link = document.getElementById('output');
-      //   link.href = img.src;
-      //   link.download = MAPID + '.png';
-      // }, 1000);
+      $('#output .text').removeClass('hidden');
+      $('#output .loading').addClass('hidden');
+      
+      canvas.toBlob(function(blob) {
+        saveAs(blob, MAPID + '.png');
+      });
       
   }
 
