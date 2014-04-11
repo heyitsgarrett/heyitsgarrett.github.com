@@ -37,7 +37,6 @@ $(document).ready(function () {
     var hash = L.hash(map);
 
     map.whenReady(function(){
-      console.log(CENTER);
       map.setView(CENTER, ZOOM);
     });
 
@@ -88,13 +87,13 @@ $(document).ready(function () {
 
   function doImage(err, canvas) {
 
-      var img = document.createElement('img');
-      var dimensions = map.getSize();
-      img.width = dimensions.x;
-      img.height = dimensions.y;
-      img.src = canvas.toDataURL();
-      document.getElementById('images').innerHTML = '';
-      document.getElementById('images').appendChild(img);
+      // var img = document.createElement('img');
+      // var dimensions = map.getSize();
+      // img.width = dimensions.x;
+      // img.height = dimensions.y;
+      // img.src = canvas.toDataURL();
+      // document.getElementById('images').innerHTML = '';
+      // document.getElementById('images').appendChild(img);
 
       $('#output .text').removeClass('hidden');
       $('#output .loading').addClass('hidden');
