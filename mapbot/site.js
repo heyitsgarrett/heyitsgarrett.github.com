@@ -41,8 +41,11 @@ $(document).ready(function () {
     });
 
     map.scrollWheelZoom.disable();
+    map.addControl(L.mapbox.geocoderControl('examples.map-vyofok3q'));
 
   }
+
+
 
   map.on('moveend', function(e) {
     var new_center = map.getCenter();
