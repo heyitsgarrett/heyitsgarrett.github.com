@@ -1,10 +1,10 @@
 // CONSTANTS
 
 var MAPID = 'examples.xqwfusor',
-    HEIGHT = 300,
-    WIDTH = 300,
-    CENTER,
-    ZOOM,
+    HEIGHT = 400,
+    WIDTH = 1200,
+    CENTER = [0,0],
+    ZOOM = 3,
     map;
 
 
@@ -37,17 +37,20 @@ $(document).ready(function () {
     var hash = L.hash(map);
 
     map.whenReady(function(){
-      console.log(map);
-      if(CENTER === null) { 
-        CENTER = map.getCenter(); 
-      }
-      if(ZOOM === null) { ZOOM = map.getZoom(); }
+      console.log(CENTER);
+      map.setView(CENTER, ZOOM);
     });
-    
 
     map.scrollWheelZoom.disable();
 
   }
+
+  map.on('moveend', function(e) {
+    var new_center = map.getCenter();
+
+    CENTER = [new_center.lat, new_center.lng];
+    ZOOM = map.getZoom();
+  });
 
   $('#mapid').blur(function(){
     val = $(this).val();
