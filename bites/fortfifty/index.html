@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Fort Fifty Run</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.css' rel='stylesheet' />
+<link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+  .toggle-map {
+  	top: 10px;
+  	right: 10px;
+  	position: absolute;
+  	z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+
+<div id='map'>
+	<a href='#' id='toggle' class='toggle-map quiet button'>Toggle 1862 Map</a>
+</div>
+<script>
+$(document).ready(function(){
+	L.mapbox.accessToken = 'pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA';
+	var map = L.mapbox.map('map', 'examples.h186knp8')
+	    .setView([38.8827,-77.0363], 12);
+
+	var hash = L.hash(map);
+
+	var civilWarDC = L.tileLayer.wms("http://hgl.harvard.edu:8080/geoserver/wms", {
+	    layers: 'cite:SDE2.G3851_S5_1862_A7',
+	    format: 'image/png',
+	    CRS: 'EPSG:900913',
+	    transparent: true,
+	    attribution: "Map of Washington, DC 1862 courtesy of Harvard University"
+	});
+
+	civilWarDC.addTo(map);
+
+	var featureLayer = L.mapbox.featureLayer()
+	    .loadURL('/route.geojson')
+	    .addTo(map);
+
+	var opacity = 1;
+	$('#toggle').on('click',function(){
+		if(opacity == 1)
+			opacity = 0;
+		else opacity = 1;
+
+		civilWarDC.setOpacity(opacity);
+	})
+
+});
+</script>
+
+
+</body>
+</html>
