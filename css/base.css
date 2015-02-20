@@ -200,12 +200,12 @@ body#layout-default {
     font-weight: 700;
     margin: 2em 0 1em;
     text-transform: uppercase; }
-    body#layout-default h1 a {
+    body#layout-default h2 a {
       color: #ccc; }
-      body#layout-default h1 a:hover {
+      body#layout-default h2 a:hover {
         color: #333; }
   body#layout-default h2 {
-    font-size: 2em;
+    font-size: 1.2em;
     font-weight: bold;
     margin: 0 0 1.5em; }
   body#layout-default p {
