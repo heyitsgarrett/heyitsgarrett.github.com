@@ -15,10 +15,12 @@ var NUM_TO_SHOW = 18;
 var PHOTOS = [];
 
 // Init
-input.value = 'mountains';
-input.focus();
-search(null,true);
-document.addEventListener('keyup', handleShortcut, false);
+$(function() {
+  input.value = 'mountains';
+  input.focus();
+  search(null,true);
+  document.addEventListener('keyup', handleShortcut, false);
+});
 
 // Search for photos in provided location
 function search(e,triggerSearch) {
