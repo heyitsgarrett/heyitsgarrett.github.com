@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Instagram Search</title>
-    <link rel="stylesheet" href="site.css" media="screen"></link>
+    <link rel="stylesheet" href="site.css" media="screen" />
   </head>
   <body>
 
@@ -11,13 +11,17 @@
       <!-- Search header -->
       <div class="clearfix pad1">
 
-        <h1>Show me photos of<h1>
+        <h1>Show me photos of</h1>
         <input id="searchTerm" type="text" name="search" class="col12" value="mountains" onkeypress="return search(event)" autocomplete="off" autofocus />
 
       </div>
 
       <!-- Photo grid -->
-      <div id="photos" class="clearfix pad2y"></div>
+      <div id="photos" class="clearfix pad2y">
+        <div class="center pad4">
+          <img src="loading.svg" width="64" height="64">
+        </div>
+      </div>
 
     </div>
 
@@ -25,6 +29,7 @@
     <div id="lightbox" class="center">
       <img
         id="photo"
+        alt="Instagram photo"
         src="https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s640x640/sh0.08/e35/11917889_419317248260315_1414961074_n.jpg"
         onclick="closeLightbox()"
       />

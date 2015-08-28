@@ -24,9 +24,11 @@ document.addEventListener('keyup', handleShortcut, false);
 function search(e,triggerSearch) {
   // Listen for `enter` keypress
   if(triggerSearch || e.keyCode == 13) {
-    var tag = input.value.replace(' ', '');
+    // Replace spaces so we can search for a single hashtag
+    var spaces = new RegExp(' ', 'g');
+    var tag = input.value.replace(spaces, '');
+    // Build request
     var request = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?access_token=' + INSTAGRAM_ACCESS_TOKEN + '&callback=?';
-
     // Using jQuery here for CORS-fu and wanting to avoid wheel reinvention
     $.getJSON(request, function(data) {
       showPhotos(data);
