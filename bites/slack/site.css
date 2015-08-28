@@ -20,6 +20,10 @@ h1 {
   text-transform: uppercase;
 }
 
+a {
+  color: hotpink;
+}
+
 img {
   max-width: 100%;
 }
@@ -63,15 +67,18 @@ body #lightbox {
 }
 
 body.lightbox #lightbox {
-  display: block;
+  display: table;
+}
+
+#lightbox > div {
+  display:table-cell;
+  vertical-align:middle;
+  position: relative;
 }
 
 #lightbox img {
   border: 10px solid white;
   cursor: pointer;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 /* Quick, basic grid */
@@ -118,6 +125,11 @@ body.lightbox #lightbox {
   border: 1px solid red;
 }
 
+.fill-black {
+  background: #000;
+  color: #fff;
+}
+
 .grid-photo:hover img {
   outline: 10px solid hotpink;
 }
@@ -130,23 +142,27 @@ body.lightbox #lightbox {
 .nav {
   position: absolute;
   top: 50%;
+  text-decoration: none;
   transform: translateY(-50%);
 }
+
 .nav-left, .nav-right {
   border: 5px solid #000;
   height: 2vw;
   line-height: 2vw;
-  text-decoration: none;
   width: 2vw;
 }
+
 .nav-left.disabled, .nav-right.disabled {
   background: #fff;
   color: #000;
   cursor: default;
 }
+
 .nav-left {
   left: 20px;
 }
+
 .nav-right {
   right: 20px;
 }
