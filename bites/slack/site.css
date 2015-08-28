@@ -1,0 +1,161 @@
+/* HTML entities */
+body,html {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 6vw;
+  text-transform: uppercase;
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  border: 5px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 8vw;
+  font-weight: bold;
+  outline: none;
+  padding: 0 1vw;
+  text-transform: uppercase;
+}
+
+input:focus {
+  color: #F76790;
+  outline: none;
+  position: relative;
+}
+
+/* Lightbox jazz */
+
+body #lightbox {
+  background: rgba(255, 255, 255, 0.95);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+body.lightbox #lightbox {
+  display: block;
+}
+
+#lightbox img {
+  border: 10px solid white;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Quick, basic grid */
+.col1,.col2,.col3,.col4,.col5,.col6,.col7,.col8,.col9,.col12 {
+  box-sizing: border-box;
+  float: left;
+}
+.col1   { width: 8.33%;   }
+.col2   { width: 16.66%;  }
+.col3   { width: 25%;     }
+.col4   { width: 33.32%;  }
+.col5   { width: 41.65%;  }
+.col6   { width: 50%;     }
+.col7   { width: 58.33%;  }
+.col8   { width: 66.64%;  }
+.col9   { width: 75%;     }
+.col10  { width: 83.3%;  }
+.col11  { width: 91.63%; }
+.col12  { width: 100%; float: none; }
+
+/* Helper classes */
+.center {
+  text-align: center;
+}
+
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.container {
+  clear: both;
+  margin: 0 auto;
+  max-width: 1000px;
+  position: relative;
+  width: 100%;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.fill-light {
+  background: #000;
+}
+
+.fill-black {
+  background: #000;
+  color: #fff;
+}
+
+.large {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-left, .nav-right {
+  border: 5px solid #000;
+  height: 2vw;
+  line-height: 2vw;
+  text-decoration: none;
+  width: 2vw;
+}
+.nav-left.disabled, .nav-right.disabled {
+  background: #fff;
+  color: #000;
+  cursor: default;
+}
+.nav-left {
+  left: 20px;
+}
+
+.nav-right {
+  right: 20px;
+}
+
+.pad1 { padding: 10px; }
+.pad2 { padding: 20px; }
+.pad4 { padding: 40px; }
+.pad8 { padding: 80px; }
+
+.quiet {
+  /*color: rgba(0,0,0,0.2);*/
+  color: white;
+}
