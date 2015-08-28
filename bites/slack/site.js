@@ -12,12 +12,13 @@ var instagramRequest = document.createElement('script');
 // CONSTANTS
 var CURRENT_PHOTO = 0;
 var NUM_TO_SHOW = 18;
-var photos;
+var PHOTOS = [];
 
 // Init
 input.value = 'mountains';
 input.focus();
 search(null,true);
+document.addEventListener('keyup', handleShortcut, false);
 
 // Search for photos in provided location
 function search(e,triggerSearch) {
@@ -37,16 +38,16 @@ function search(e,triggerSearch) {
 
 // Search Instagram for the given search term
 function showPhotos(response) {
-  photos = response.data;
+  PHOTOS = response.data;
   photosContainer.innerHTML = '';
 
   for (var i = 0; i < NUM_TO_SHOW; i++) {
-    var tmp = photos[i];
+    var tmp = PHOTOS[i];
 
     var item = document.createElement('a');
     item.setAttribute('data-num', i);
     item.setAttribute('href','#');
-    item.className = 'item col4 pad1';
+    item.className = 'grid-photo col4 pad1';
     item.addEventListener('click', function(e){
       // handle photo click
       showPhoto(this.getAttribute('data-num'));
@@ -56,20 +57,38 @@ function showPhotos(response) {
 
     // Now create and append to iDiv
     var photo = document.createElement('img');
-    photo.src = photos[i].images.standard_resolution.url;
+    photo.src = PHOTOS[i].images.standard_resolution.url;
 
     item.appendChild(photo);
 
   }
 }
 
+// Bare-bones keyboard shortcuts
+function handleShortcut(e) {
+  if(document.body.className != 'lightbox') return;
+
+  if(e.keyCode == 37 || e.keyCode == 74) {
+    // left arrow, j
+    traversePhoto(null,-1);
+  } else if(e.keyCode == 75 || e.keyCode == 39) {
+    // right arrow, k
+    traversePhoto(null,1);
+  } else if(e.keyCode == 27) {
+    // escape
+    closeLightbox();
+  }
+}
+
+// Close lightbox
 function closeLightbox() {
   document.body.className = '';
 }
 
+// Show single photograph in lightbox
 function showPhoto(photoNum) {
   document.body.className = 'lightbox';
-  activePhoto.src = photos[photoNum].images.standard_resolution.url;
+  activePhoto.src = PHOTOS[photoNum].images.standard_resolution.url;
   CURRENT_PHOTO = parseInt(photoNum);
 
   if(CURRENT_PHOTO == 0) {
@@ -82,12 +101,11 @@ function showPhoto(photoNum) {
   }
 }
 
-// Called by nav onclick events
+// Called by nav onclick events, traverse current photo
 function traversePhoto(event, direction) {
-  event.preventDefault();
+  if(event) { event.preventDefault(); }
   var newPhotoNum = parseInt(CURRENT_PHOTO + direction);
-console.log(CURRENT_PHOTO);
-console.log(newPhotoNum);
+
   if(newPhotoNum < 0 || newPhotoNum == NUM_TO_SHOW) {
     return false;
   } else {

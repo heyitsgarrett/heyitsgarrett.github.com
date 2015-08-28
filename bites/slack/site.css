@@ -36,9 +36,18 @@ input {
 }
 
 input:focus {
-  color: #F76790;
+  color: hotpink;
   outline: none;
   position: relative;
+}
+
+::selection {
+  background: hotpink;
+  color: #fff;
+}
+::-moz-selection {
+  background: hotpink;
+  color: #fff;
 }
 
 /* Lightbox jazz */
@@ -117,6 +126,10 @@ body.lightbox #lightbox {
 .fill-black {
   background: #000;
   color: #fff;
+}
+
+.grid-photo:hover img {
+  outline: 10px solid hotpink;
 }
 
 .large {
