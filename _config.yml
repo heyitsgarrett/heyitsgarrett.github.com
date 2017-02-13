@@ -1,5 +1,5 @@
 permalink: /posts/:title
-markdown: rdiscount
+markdown: kramdown
 auto: true
 # pygments: true
 path: http://heyitsgarrett.com
