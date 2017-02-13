@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Go away, Genius</title>
+</head>
+
+<style type="text/css" media="screen">
+	.show {
+		display: block !important;
+	}
+	.hide {
+		display: none !important;
+	}
+</style>
+
+<body>
+
+<div id="iframed" style="background-color: yellow; display: none;">
+	
+	<h1>Piss off, Genius</h1>
+	
+</div>
+
+
+<div id="totally_cool" style="display: none;">
+	
+	<h1>¯\_(ツ)_/¯</h1>
+	
+</div>
+
+
+<script>
+	
+	if(window.self !== window.top) {
+		document.getElementById('iframed').className = "show";
+	} else {
+		document.getElementById('totally_cool').className = "show";
+	}
+	
+</script>
+
+</body>
+</html>
