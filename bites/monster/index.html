@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MONSTER</title>
+</head>
+<style>
+
+html,body {
+	height: 100%;
+	width: 100%;
+    position: relative;
+}
+
+body {
+	cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+#monster, #monster.frame0 {
+	background: transparent url(img/monster0.png) center center no-repeat;
+	background-size: 70%;
+	height: 100%;
+	width: 100%;
+}
+#monster {
+    max-width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -25%;
+}
+
+#monster.frame1 { background-image: url(img/monster1.png); }
+#monster.frame2 { background-image: url(img/monster2.png); }
+#monster.frame3 { background-image: url(img/monster3.png); }
+#monster.frame4 { background-image: url(img/monster4.png); }
+
+</style>
+<body>
+
+<div id="monster"><!-- meow --></div>
+
+<script type="text/javascript">
+
+// Get total height
+var body = document.body,
+    html = document.documentElement;
+
+var blinkMonster = function (cursor) {
+	// console.log('X mouse: ' + e.offsetX + ' page: ' + pageWidth);
+	// console.log('Y mouse: ' + e.offsetY + ' page: ' + pageHeight);
+	// console.log('***')
+
+	var pageHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+	var pageWidth = Math.max( body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth );
+    // document.removeEventListener('mousemove', blinkMonster, false);
+    var leftPercent = (cursor.offsetX / pageWidth) * 100;
+    var upPercent = (cursor.offsetY / pageHeight) * 100;
+
+
+
+    if(upPercent <= 20) {
+    	document.getElementById("monster").className = "frame4";
+    } else if(upPercent <= 40) {
+    	document.getElementById("monster").className = "frame3";
+
+    } else if(upPercent <= 60) {
+    	document.getElementById("monster").className = "frame2";
+
+    } else if(upPercent <= 80) {
+    	document.getElementById("monster").className = "frame1";
+
+    } else {
+    	document.getElementById("monster").className = "frame0";
+    }
+
+};
+
+document.addEventListener('mousemove', blinkMonster, false);
+
+</script>
+
+</body>
+</html>l
