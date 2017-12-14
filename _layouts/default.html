@@ -1,27 +1,100 @@
 {% include top.html %}
 
-<body id="layout-default" class="{% if page.class %}{{ page.class }}{% endif %}">
+<body 
+	id="layout-default" 
+	class="
+		{% if page.class %}{{ page.class }}{% endif %}
+		w-100
+		bg-white
+		near-black
+		pt3 pt4-ns pt5-l	
+	"
+>
 
-    <div id="container" class="grid">
+	<section class="ph3 ph4-ns ph5-l pb3 pb4-ns">	
+		<a href="/" class="h3 f4 f3-ns bold no-underline inline-flex items-center">
+			<span class="mr2"><</span>
+			<h1 class="f3 f2-ns inline-flex">Garrett Miller</h1>
+		</a>
+		<h2 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h2>
+	</section>
+
+	<section class="pl3 pr3 pb5 pl4-ns pr4-ns pl5-l pr5-l f4 lh-copy">
+		<article class="bt bw2 pt4">
+			{{ content }}
+		</article>
+	</section>
+	
+	
+<!-- 
+	<nav class="flex justify-between bb b--white-10">
+		<a class="link white-70 hover-white no-underline flex items-center pa3" href="">
+			<svg
+			class="dib h1 w1"
+			data-icon="grid"
+			viewBox="0 0 32 32"
+			style="fill:currentcolor">
+			<title>Super Normal Icon Mark</title>
+			<path d="M2 2 L10 2 L10 10 L2 10z M12 2 L20 2 L20 10 L12 10z M22 2 L30 2 L30 10 L22 10z M2 12 L10 12 L10 20 L2 20z M12 12 L20 12 L20 20 L12 20z M22 12 L30 12 L30 20 L22 20z M2 22 L10 22 L10 30 L2 30z M12 22 L20 22 L20 30 L12 30z M22 22 L30 22 L30 30 L22 30z">
+			</path>
+			</svg>
+		</a>
+		<div class="flex-grow pa3 flex items-center">
+			<a class="f6 link dib white dim mr3 mr4-ns" href="#0">About</a>
+			<a class="f6 link dib white dim mr3 mr4-ns" href="#0">Sign In</a>
+			<a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20" href="#0">Sign Up</a>
+		</div>
+	</nav>
+
+	<nav class="pa3 pa4-ns">
+		<a class="link dim black b f1 f-headline-ns db mb3 mb4-ns" href="#" title="Home">
+			Garrett Miller
+		</a>
+		<div class="pb3">
+			<a class="link dim gray f6 f5-ns dib mr3" href="#">
+				Illustrations
+			</a>
+			<a class="link dim gray f6 f5-ns dib mr3" href="#">
+				Photography
+			</a>
+			<a class="link dim gray f6 f5-ns dib mr3" href="#">
+				Work
+			</a>
+			<a class="link dim gray f6 f5-ns dib mr3" href="#">
+				Projects
+			</a>
+			<a class="link dim gray f6 f5-ns dib mr3" href="#">
+				Contact
+			</a>
+			<a class="link dim gray f6 f5-ns dib mr3" href="http://www.twitter.com/heyitsgarrett">
+				Twitter
+			</a>
+			<a class="link dim gray f6 f5-ns dib" href="http://instagram.com/heyitsgarrett">
+				Instagram
+			</a>
+		</div>
+	</nav> -->
+
+	<!-- <div id="container" class="grid">
 
 		{% if page.hideNav %}
 								
 		{% else %}
-	    	<div class="title">
-	    		<h2><a href="/">&#65513;</a> {{ page.title }}</h2>
-	    	</div>
+			<div class="title">
+				<h2><a href="/">&#65513;</a> {{ page.title }}</h2>
+			</div>
 		{% endif %}
 
-        {{ content }}
+		{{ content }}
 
-        {% if page.date %}
-        	<div class="date">
-        		{{ page.date | date: "%B %d, %Y" }}
-        	</div>
+		{% if page.date %}
+			<div class="date">
+				{{ page.date | date: "%B %d, %Y" }}
+			</div>
 
-        {% endif %}
+		{% endif %}
 
-    </div>
+	</div> -->
 
 </body>
 </html>

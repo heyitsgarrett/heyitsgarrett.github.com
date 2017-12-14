@@ -1,6 +1,10 @@
 permalink: /posts/:title
 markdown: kramdown
-auto: true
 # pygments: true
 path: http://heyitsgarrett.com
 title: Hey it's Garrett!
+defaults:
+  - scope:
+      path: "images/"
+    values:
+      image: true
