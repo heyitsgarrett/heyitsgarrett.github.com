@@ -5,7 +5,20 @@ title: Sketchbook
 
 <div class="cf">
     <div class="fl w-100 w-25-l">
-        Left
+
+        {% for image in site.static_files %}
+            {% if image.path contains '/images/sketchbook/' %}
+                {% assign category = image.path | replace: '/images/sketchbook/', '' | split: '/' | first %}
+               <div>{{ category }}</div>
+            {% endif %}
+        {% endfor %}
+
+        {% for image in site.static_files %}
+            {% if image.path contains '/images/sketchbook/Adventures' %}
+               <div>{{image.path | replace: '/images/sketchbook/Adventures/', '' | split: '.' | first | replace:  '-', ' '}}</div>
+            {% endif %}
+        {% endfor %}
+
     </div>
     <div class="fl w-100 w-75-l">
         {% for image in site.static_files %}

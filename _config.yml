@@ -8,3 +8,8 @@ defaults:
       path: "images/"
     values:
       image: true
+  - scope:
+      path: "/images/sketchbook"
+      type: "sketches"
+    values:
+      layout: "post"

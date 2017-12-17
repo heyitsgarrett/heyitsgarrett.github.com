@@ -23,11 +23,12 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 /* Layout  */
 
 body {
+  background-size: 40px;
   font-family: 'New Rail Alphabet', sans-serif;
   font-weight: 300;  
 }
 
-h1,h2,h3, .bold {
+h1,h2,h3, .b {
   font-family: 'New Rail Alphabet Bold', sans-serif;  
 }
 
@@ -54,3 +55,15 @@ ul.--arrow li:before {
   vertical-align: middle;
 }
   
+/* It's a party */
+.partymonster {
+  display: inline-block;
+  background: url('/images/partymonster.png') 0 0 no-repeat;
+  background-position: 0;  
+  background-size: 200%;
+}
+
+.partymonster:hover {
+  background-position: 100%;  
+  cursor: not-allowed;
+}  
