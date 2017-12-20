@@ -1,0 +1,96 @@
+{% include top.html %}
+
+<body 
+	id="layout-default" 
+	class="
+		{% if page.class %}{{ page.class }}{% endif %}
+		w-100
+		bg-white
+		near-black
+		pt3 pt4-ns pt5-l	
+	"
+>
+
+	<section class="ph3 ph4-ns ph5-l pb3 pb4-ns">	
+		<a href="/" class="h3 f4 f3-ns bold no-underline inline-flex items-center">
+			<span class="mr2 bold"><</span>
+			<h1 class="f3 f2-ns inline-flex">Garrett Miller</h1>
+		</a>
+		<h2 class="f1 f-subheadline-m f-headline-l mt0 mb0">Sketchbook</h2>
+	</section>
+
+	<section class="ph3 ph4-ns ph5-l f4 lh-copy"> 
+		<article class="bt bw2">&nbsp;</article>
+		<h2>{{page.title}}</h2>
+		<article>
+
+			<div class="fl w-100 w-25-l pr4 dn">
+
+				{% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
+				{% assign previousTag = "" %}
+				{% assign counter = 0 %}
+				
+				<ul class="list ma0 pa0 nested-list-reset f4">
+				{% for currentTag in tags %}
+				
+				{% if previousTag == "" %}
+					{% assign previousTag = currentTag %}
+				{% endif %}
+				
+				{% if currentTag == previousTag %}
+					{% assign counter = counter | plus: 1 %}
+				{% else %}
+					<li>
+						<strong>{{ previousTag }}</strong>
+						<ul class="f5 mb4 pb4 bb bw1 b--black">
+						{% for piece in site.sketchbook %}
+							{% if piece.category == previousTag %}
+								<li>
+									<a href="/{{piece.permalink}}.html">{{piece.title}}</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+						</ul>
+					</li>
+					{% assign counter = 1 %}
+				{% endif %}
+				
+				{% if forloop.last %}
+					<li>{{ currentTag }}</li>
+					<li>
+							{{ currentTag }}
+							<ul>
+							{% for piece in site.sketchbook %}
+								{% if piece.category == currentTag %}
+									<li>{{piece.title}}</li>
+								{% endif %}
+							{% endfor %}
+							</ul>
+						</li>
+				{% endif %}
+				
+				{% assign previousTag = currentTag %}
+				
+				{% endfor %}
+				</ul>
+			</div>
+			<div class="macy-container">
+				{% for post in site.sketchbook  %}
+					{% if post.category == page.category and post.image %}
+						<a href="/{{post.permalink}}.html" class="db child-element w-25" title="{{post.title}}">
+							<img 
+								src="{{post.image}}"
+								class="w-100"
+							/>
+						</a>
+					{% endif %}
+				{% endfor %}
+			</div> 
+
+		</article>
+	</section>
+
+	{% include bottom.html %}
+
+	</body>
+</html>

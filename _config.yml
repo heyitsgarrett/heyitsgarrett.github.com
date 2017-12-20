@@ -3,13 +3,7 @@ markdown: kramdown
 # pygments: true
 path: http://heyitsgarrett.com
 title: Hey it's Garrett!
-defaults:
-  - scope:
-      path: "images/"
-    values:
-      image: true
-  - scope:
-      path: "/images/sketchbook"
-      type: "sketches"
-    values:
-      layout: "post"
+collections:
+  sketchbook:
+    output: true
+    permalink: /sketchbook/index.html

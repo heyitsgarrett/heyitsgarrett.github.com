@@ -28,7 +28,7 @@ body {
   font-weight: 300;  
 }
 
-h1,h2,h3, .b {
+h1,h2,h3, .bold, strong, b {
   font-family: 'New Rail Alphabet Bold', sans-serif;  
 }
 
@@ -55,6 +55,18 @@ ul.--arrow li:before {
   vertical-align: middle;
 }
   
+
+/* Margin-top, -1, medium screens */
+@media screen and (min-width: 60em) {
+  .mt--1-m { margin-top: -1rem; }
+  .mt--2-m { margin-top: -2rem; }
+  .mt--3-m { margin-top: -3rem; }
+  .mt--4-m { margin-top: -4rem; }
+  .mt--5-m { margin-top: -5rem; }
+  .mt--6-m { margin-top: -6rem; }
+  .mt--7-m { margin-top: -7rem; }
+}
+
 /* It's a party */
 .partymonster {
   display: inline-block;
@@ -66,4 +78,31 @@ ul.--arrow li:before {
 .partymonster:hover {
   background-position: 100%;  
   cursor: not-allowed;
-}  
+}
+
+.cl-effect-11 a {
+  color: #000;
+  position:relative;
+} 
+
+.cl-effect-11 a::before {
+  background: black;
+  color: #fff;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  overflow: hidden;
+  content: attr(data-hover);
+  -webkit-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  transition: top 0.2s;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 2em;
+}
+
+.cl-effect-11 a:hover::before,
+.cl-effect-11 a:focus::before {
+  top: 1px;
+}

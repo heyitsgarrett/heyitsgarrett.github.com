@@ -1,0 +1,61 @@
+--- 
+layout: default 
+permalink: sketchbook/ 
+title: Sketchbook 
+description: I draw, doodle, scribble and scratch daily. Below is a selection of some of the places that I've let my brain wander to, poorly organized and eager for your eyes.
+date: 1-1-2017  
+color: yellow
+---
+{% assign pageColor =  'yellow' %}
+
+<div class="pt3 pt6-ns">
+    {% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
+    {% assign previousTag = "" %}
+    {% for currentTag in tags %}
+    
+        {% if previousTag == "" %}
+            {% assign previousTag = currentTag %}
+        {% endif %}
+
+        {% if currentTag != previousTag %}
+            <section class="cf mb2 mb6-ns bt bw2 b--{{pageColor}}">
+                <h3 class="f2 w-100 w-25-l fn fl-l ma0 mt2">{{ previousTag }}</h3>
+                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                    {% for piece in site.sketchbook  %}
+                        {% if piece.category == previousTag and piece.image %}
+                            <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
+                                <img 
+                                    src="{{piece.image}}"
+                                    class="w-100 br3 dim"
+                                />
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% assign first_in_loop = true %}            
+        {% endif %}
+    
+        {% if forloop.last %}
+            <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
+                <h3 class="f2 w-100 w-25-l fn fl-l ma0 mt2">{{ previousTag }}</h3>
+                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                    {% for piece in site.sketchbook  %}
+                        {% if piece.category == previousTag and piece.image %}
+                            <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
+                                <img 
+                                    src="{{piece.image}}"
+                                    class="w-100 br3 dim"
+                                />
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    
+        {% assign previousTag = currentTag %}
+    
+    {% endfor %}
+</div>
+

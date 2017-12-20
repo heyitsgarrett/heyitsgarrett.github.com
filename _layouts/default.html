@@ -7,94 +7,60 @@
 		w-100
 		bg-white
 		near-black
-		pt3 pt4-ns pt5-l	
 	"
 >
+	{% if page.color %}
+		{% assign pageColor = page.color %}
+	{% else %}
+		{% assign pageColor = "pink" %}
+	{% endif %}
 
-	<section class="ph3 ph4-ns ph5-l pb3 pb4-ns">	
-		<a href="/" class="h3 f4 f3-ns bold no-underline inline-flex items-center">
-			<span class="mr2"><</span>
-			<h1 class="f3 f2-ns inline-flex">Garrett Miller</h1>
-		</a>
-		<h2 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h2>
-	</section>
-
-	<section class="pl3 pr3 pb5 pl4-ns pr4-ns pl5-l pr5-l f4 lh-copy">
-		<article class="bt bw2 pt4">
-			{{ content }}
-		</article>
-	</section>
-	
-	
-<!-- 
-	<nav class="flex justify-between bb b--white-10">
-		<a class="link white-70 hover-white no-underline flex items-center pa3" href="">
-			<svg
-			class="dib h1 w1"
-			data-icon="grid"
-			viewBox="0 0 32 32"
-			style="fill:currentcolor">
-			<title>Super Normal Icon Mark</title>
-			<path d="M2 2 L10 2 L10 10 L2 10z M12 2 L20 2 L20 10 L12 10z M22 2 L30 2 L30 10 L22 10z M2 12 L10 12 L10 20 L2 20z M12 12 L20 12 L20 20 L12 20z M22 12 L30 12 L30 20 L22 20z M2 22 L10 22 L10 30 L2 30z M12 22 L20 22 L20 30 L12 30z M22 22 L30 22 L30 30 L22 30z">
-			</path>
-			</svg>
-		</a>
-		<div class="flex-grow pa3 flex items-center">
-			<a class="f6 link dib white dim mr3 mr4-ns" href="#0">About</a>
-			<a class="f6 link dib white dim mr3 mr4-ns" href="#0">Sign In</a>
-			<a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20" href="#0">Sign Up</a>
+	<nav class="bg-{{pageColor}} near-blackbold">
+		<div class="cf tc ttc bl bb flex flex-auto">
+			<a href="/" class="h2 w2 bg-black bold no-underline f5 {{pageColor}} hover-white flex justify-center items-center" style="flex: 0 0 2rem">
+				<span><</span>
+			</a>
+			<div class="flex flex-grow-1 cl-effect-11">
+				<a href="/projects" 	class="no-underline ttu tracked h2 pv2 ph4 br b--black bold black" data-hover="projects">projects</a>
+				<a href="/photography" 	class="no-underline ttu tracked h2 pv2 ph4 br b--black bold black" data-hover="photography">photography</a>
+				<a href="/sketchbook" 	class="no-underline ttu tracked h2 pv2 ph4 br b--black bold black" data-hover="sketchbook">sketchbook</a>
+				<a href="/work" 		class="no-underline ttu tracked h2 pv2 ph4 br b--black bold black" data-hover="work">work</a>
+				<a href="/about" 		class="no-underline ttu tracked h2 pv2 ph4 br b--black bold black" data-hover="about">about</a>
+			</div>
 		</div>
 	</nav>
 
-	<nav class="pa3 pa4-ns">
-		<a class="link dim black b f1 f-headline-ns db mb3 mb4-ns" href="#" title="Home">
-			Garrett Miller
-		</a>
-		<div class="pb3">
-			<a class="link dim gray f6 f5-ns dib mr3" href="#">
-				Illustrations
-			</a>
-			<a class="link dim gray f6 f5-ns dib mr3" href="#">
-				Photography
-			</a>
-			<a class="link dim gray f6 f5-ns dib mr3" href="#">
-				Work
-			</a>
-			<a class="link dim gray f6 f5-ns dib mr3" href="#">
-				Projects
-			</a>
-			<a class="link dim gray f6 f5-ns dib mr3" href="#">
-				Contact
-			</a>
-			<a class="link dim gray f6 f5-ns dib mr3" href="http://www.twitter.com/heyitsgarrett">
-				Twitter
-			</a>
-			<a class="link dim gray f6 f5-ns dib" href="http://instagram.com/heyitsgarrett">
-				Instagram
-			</a>
-		</div>
-	</nav> -->
+	<section class="pt3 pt4-ns pt5-l ph3 ph4-ns ph5-l pb3 pb4-ns bg-{{pageColor}}">	
+		<h2 class="f3 f2-ns mv1" id="js-tagline"><!-- tagline --></h2>		
+		<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h1>
+	</section>
 
-	<!-- <div id="container" class="grid">
+	<section class="ph3 ph4-ns ph5-l f4 lh-copy"> 
+		<article class="f3 pt5 measure">
+			{{ page.description }}
+		</article>
+		<article>
+			{{ content }}
+		</article>
+	</section>
 
-		{% if page.hideNav %}
-								
-		{% else %}
-			<div class="title">
-				<h2><a href="/">&#65513;</a> {{ page.title }}</h2>
-			</div>
-		{% endif %}
+	{% include bottom.html %}
 
-		{{ content }}
-
-		{% if page.date %}
-			<div class="date">
-				{{ page.date | date: "%B %d, %Y" }}
-			</div>
-
-		{% endif %}
-
-	</div> -->
+	<script>
+		var headline_taglines = [
+			"hey, what a cool",
+			"now that's what I call",
+			"holy cow, what a",
+			"dang, nice",
+			"well that's certainly a",
+			"eh, I've seen a better",
+			"here's some",
+			"mmmmmm,",
+			"wow, get a load of this"
+		];
+		var rand = Math.floor(Math.random()*headline_taglines.length);
+		document.getElementById('js-tagline').innerHTML = headline_taglines[rand];
+	</script>
 
 </body>
 </html>
