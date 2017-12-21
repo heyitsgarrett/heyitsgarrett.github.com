@@ -48,12 +48,16 @@ POST="---
         SKETCH_FILENAME="_sketchbook/pages/${DIR}-${SKETCH_METADATA[0]}.md"
         > SKETCH_FILENAME
 echo "---
-layout: portfolio-piece
-permalink: sketchbook/pages/${SKETCH_METADATA[0]}
-title: ${SKETCH_METADATA[0]//-/ }
+layout: portfolio
+permalink: sketchbook/${SKETCH_METADATA[0]}
+title: Sketchbook
 category: ${DIR}
+page: sketchbook
+color: yellow
 date: 1-1-${SKETCH_METADATA[1]}
 image: /images/sketchbook/${DIR}/${SKETCH}
+imageTitle: ${SKETCH_METADATA[0]//-/ }
+imageMeta: Made with iPad Pro + Procreate
 ---" >> ${SKETCH_FILENAME}
 
 #         # echo "${SK_DIR}/${SKETCH}"
