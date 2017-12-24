@@ -1,10 +1,10 @@
-{% include top.html %}
-
 {% if page.color %}
 	{% assign pageColor = page.color %}
 {% else %}
-	{% assign pageColor = "pink" %}
+	{% assign pageColor = "hotpink" %}
 {% endif %}
+
+{% include top.html pageColor=page.colorHex %}
 
 {% capture the_collection %}{{page.collection}}{% endcapture %}
 {% if page.collection %}
@@ -23,7 +23,7 @@
     {% endif %}
     {% assign prev = links %}
 {% endfor %}
-
+{{page.colorHex}}
 <body 
 	id="layout-default" 
 	class="

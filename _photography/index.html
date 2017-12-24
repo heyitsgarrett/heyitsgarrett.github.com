@@ -2,9 +2,13 @@
 layout: portfolio 
 permalink: photography/
 title: Photography 
-description: I'm no professional, but I take photographs everywhere I go.
+description: |
+    I'm no professional, but I take photographs everywhere I go. If you want to see more, I keep
+    up pretty regularly over in <a href="https://www.instagram.com/heyitsgarrett/">Instagram land</a>.
 date: 1-1-2017  
 color: light-green
+colorHex: |
+    #9eebcf
 galleryCode: |
     <script type="text/javascript">
     var galleries = document.querySelectorAll('.js-grid-gallery');
@@ -70,7 +74,7 @@ galleryCode: |
                     {% for piece in sorted_posts  %}
                         {% if piece.category == previousTag and piece.image %}
                             <div class="w-50">
-                                <a href="/{{piece.permalink}}.html" class="db child-element aspect-ratio aspect-ratio--4x3" title="{{piece.title}}">
+                                <a href="/{{piece.permalink}}.html" class="db child-element aspect-ratio aspect-ratio--4x3" title="{{piece.imageTitle}}">
                                     <div class="aspect-ratio--object cover br3 grow" style="background:url({{piece.thumbnail}}) center bottom;"></div>
                                 </a>
                             </div>

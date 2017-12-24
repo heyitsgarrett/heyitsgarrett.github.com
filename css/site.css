@@ -49,6 +49,9 @@ a {
   text-decoration: underline;
   text-decoration-color: hotpink;
 }
+a:hover {
+  text-decoration-color: #000;  
+}
 
 ul.--arrow {
   list-style-type: none;
