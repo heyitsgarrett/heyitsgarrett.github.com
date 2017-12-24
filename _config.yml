@@ -7,3 +7,6 @@ collections:
   sketchbook:
     output: true
     permalink: /sketchbook/index.html
+  photography:
+    output: true
+    permalink: /photography/index.html

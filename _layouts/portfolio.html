@@ -6,6 +6,24 @@
 	{% assign pageColor = "pink" %}
 {% endif %}
 
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+{% if page.collection %}
+	{% assign document = site[the_collection] | sort: 'order' %}
+{% endif %}
+
+{% for links in document %}
+    {% if links.imageTitle == page.imageTitle %}
+      {% unless forloop.first %}
+          {% assign previousUrl = prev.url %}
+      {% endunless %}
+      {% unless forloop.last %}
+          {% assign next = document[forloop.index] %}
+          {% assign nextUrl = next.url %}
+      {% endunless %}
+    {% endif %}
+    {% assign prev = links %}
+{% endfor %}
+
 <body 
 	id="layout-default" 
 	class="
@@ -24,8 +42,13 @@
 		"
 	>
 		<nav class="cf ttc bl bb flex flex-auto">
-			<a href="{% if page.image %}/{{page.page}}{% else %}/{% endif %}" class="tc h2 w2 bg-black bold no-underline f5 {{pageColor}} hover-white flex justify-center items-center relative z-1">
-				<span><</span>
+			<a 
+				href="{% if page.image %}/{{page.page}}{% else %}/{% endif %}" 
+				class="tc h2 w2 bg-black bold no-underline f5 {{pageColor}} flex justify-center items-center relative z-1 hover-pop-icon"
+			>
+				<svg class="w1" viewbox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
+					<path d="M36.853095 0c5.637612 0 9.100167 1.962845 10.38777 5.888594-.661201 5.62337-1.635589 8.435013-2.923192 8.435013l-1.252796-1.273209V8.859416c-8.421618 0-16.286317 13.3332-23.594333 40l-.417598 3.766579v2.546419c0 3.289141 4.141146 5.251986 12.423564 5.888594h11.588367c3.897608 0 7.777758-6.8788 11.640567-20.636605V40h-.417599c-1.357203 0-5.637548 1.962845-12.841163 5.888594-2.088005 1.414685-3.619185 2.122016-4.593587 2.122016h-.417599c-4.41961-.778076-6.629381-2.740921-6.629381-5.888594v-1.27321c0-4.809926 5.950723-9.584414 17.852349-14.323607l9.082774-.848806h2.505593c6.890414 1.308583 10.33557 4.827557 10.33557 10.557029L70 38.302387c-2.749206 10.857703-5.637569 20.265212-8.665175 28.222812-4.52401 7.851498-8.665157 11.777188-12.423565 11.777188C48.91126 79.434135 44.891912 80 36.853095 80 19.592258 80 8.682598 75.932844 4.123788 67.798408 2.627385 66.136154 1.252803 62.61718 0 57.241379c0-13.970008 3.044961-25.605612 9.134974-34.907161C14.807386 11.90092 22.25449 4.739188 31.47651.848806L36.853095 0z" fill="currentColor" fill-rule="evenodd"/>
+				</svg>
 			</a>				
 			<div class="tc dn db-ns hover-effect-slide overflow-hidden h2">
 				{% include nav-item.html page="projects" %}
@@ -34,7 +57,7 @@
 				{% include nav-item.html page="about" %}
 			</div>
 			<a href="{% if page.image %}/{{page.page}}{% else %}/{% endif %}" class="w-100 w2-ns h2 h-100-ns br-ns absolute-ns db dib-ns b--black hover-black z-0">
-				<div class="logo-text w5 pl2 pv2 absolute ttu tracked hover-white hover-bg-black">
+				<div class="logo-text w5 pl2 pv2 absolute ttu tracked hover-{{pageColor}} hover-bg-black">
 					{% if page.image %}
 						BACK
 					{% else %}
@@ -45,19 +68,8 @@
 		</nav>
 
 		{% if page.image %}
-			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns bg-{{pageColor}} flex justify-between">
-				<h2 class="f3 f1-ns ma0">Sketchbook</h2>
-				<div class="flex items-center">
-					{% if page.previous.url %}
-						<a class="f3 pa2 bold dib no-underline hover-{{pageColor}} hover-bg-black" href="{{page.previous.url}}"><</a>
-					{% endif %}
-					{% if page.next.url %}
-						<a class="f3 pa2 bold dib no-underline hover-{{pageColor}} hover-bg-black" href="{{page.next.url}}">></a>
-					{% else %}
-						<a class="f3 pa2 bold dib no-underline hover-{{pageColor}} hover-bg-black" href="/{{page.page}}">></a>
-					{% endif %}
-				</div>
-
+			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns bg-{{pageColor}}">
+				<h2 class="f3 f1-ns ma0">{{ page.title }}</h2>
 			</section>
 			  </div>
 		{% else %}		
@@ -69,14 +81,34 @@
 	</header>
 
 	{% if page.image %}
-		<section class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l">
+		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l">
 			<div class="w-100 w-30-l br pr4" style="border-color: #ccc">
-				<h3 class="f2 ma0">{{page.imageTitle}}</h3>
+				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
 				<p class="f5 silver mt3 mt4-l lh-copy">
-					{{page.date | date: "%Y"}} • {{page.imageMeta}}
+					{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
 					<br />
 					&copy; Garrett Miller
 				</p>
+				<div class="items-center mt4 mt5-l dn flex-ns">
+					<!-- PREV -->
+					<a 
+						class="ba b--silver f3 pa2 bold dib no-underline hover-{{pageColor}}" 
+						{% if previousUrl %}
+							href="{{previousUrl}}#anchor-top"
+						{% else %}	
+							href="/{{page.page}}#anchor-top"
+						{% endif %}
+					><</a>
+					<!-- NEXT -->
+					<a 
+						class="bt br bb b--silver f3 pa2 bold dib no-underline hover-{{pageColor}}" 
+						{% if nextUrl %}
+							href="{{nextUrl}}#anchor-top"
+						{% else %}
+							href="/{{page.page}}#anchor-top"
+						{% endif %}					
+					>></a>
+				</div>
 			</div>
 			<div class="w-100 w-70-l pt4-s pt4-m ph4-l pr3 pr4-m pr4-l">
 				<div 
@@ -90,7 +122,7 @@
 			</div>
 		</section>
 	{% else %}
-		<section class="pr3 pr4-ns pr5-l pl3 pl5-ns f4 lh-copy"> 
+		<section id="anchor-top" class="pr3 pr4-ns pr5-l pl3 pl5-ns f4 lh-copy"> 
 			<article class="f4 f3-ns pv4 pt5-ns pb0-ns measure">
 				{{ page.description }}
 			</article>
@@ -106,21 +138,42 @@
 
 	<script>
 		var headline_taglines = [
-			"hey, what a cool",
-			"now that's what I call",
-			"holy cow, what a",
-			"dang, nice",
-			"well that's certainly a",
-			"eh, I've seen a better",
+			"hey, that's a cool",
+			"100% Grade-A",
+			"holy picasso, Batman, look at that",
 			"here's some",
 			"mmmmmm,",
-			"wow, get a load of this"
+			"wow, get a load of this",
+			"you weren't kidding, that's some",
+			"now that's what I call",
+			"dang, nice"
 		];
 		var rand = Math.floor(Math.random()*headline_taglines.length);
 		var tagline_div = document.getElementById('js-tagline')
 		if (tagline_div) {
 			tagline_div.innerHTML = headline_taglines[rand];
 		}
+		{% if page.image %}
+		document.onkeydown = function(e) { // listen to keyboard events
+			switch (e.keyCode) {
+				case 27: // ESC
+					window.location.href = '/{{page.page}}#anchor-top';
+					break;
+				case 37: // LEFT
+					{% if previousUrl %}
+							window.location.href = '{{previousUrl}}#anchor-top';
+					{% endif %}				
+					break;
+				case 39: // RIGHT
+					{% if nextUrl %}
+						window.location.href = '{{nextUrl}}#anchor-top';
+					{% else %}
+						window.location.href = '/{{page.page}}';
+					{% endif %}
+				break;
+			}
+		}
+		{% endif %}
 	</script>
 </body>
 </html>

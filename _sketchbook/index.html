@@ -5,10 +5,44 @@ title: Sketchbook
 description: I draw, doodle, scribble, and scratch daily. Below is a selection of some of the places that I've let my brain wander to, scattered with some artwork of intellectual property that I certainly don't own.
 date: 1-1-2017  
 color: yellow
+galleryCode: |
+    <script type="text/javascript">
+    var galleries = document.querySelectorAll('.js-grid-gallery');
+    var macyInstances = [];
+    var macyOptions = {
+        trueOrder: true,
+        waitForImages: false,
+        debug: false,
+        margin: 16,
+        mobileFirst: true,
+        columns: 1,
+        breakAt: {
+        480: 2,
+        960: {
+            margin: 32,
+            columns: 2
+        },
+        1120: {
+            margin: 32,
+            columns: 3
+        },
+        1920: {
+            columns: 4
+        }
+        }
+    };
+
+    for (var i = 0; i < galleries.length; i++) {
+        var newId = 'galleryinstance-' + i;
+        galleries[i].id = newId;
+        macyOptions.container = '#' + newId;
+        macyInstances.push(Macy(macyOptions));
+    }
+    </script>
 ---
 {% assign pageColor =  'yellow' %}
 
-<div class="pt3 pt6-ns">
+<div class="pt3 pt5-ns">
     {% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
     {% assign previousTag = "" %}
     {% for currentTag in tags %}
@@ -19,14 +53,14 @@ color: yellow
 
         {% if currentTag != previousTag %}
             <section class="cf mb2 mb6-ns bt bw1 b--{{pageColor}}">
-                <h3 class="f2 w-100 w-25-l fn fl-l ma0 mt2">{{ previousTag }}</h3>
+                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
                 <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
                             <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
                                 <img 
-                                    src="{{piece.image}}"
-                                    class="w-100 br3 dim"
+                                    src="{{piece.thumbnail}}"
+                                    class="w-100 br3 grow"
                                 />
                             </a>
                         {% endif %}
@@ -38,14 +72,14 @@ color: yellow
     
         {% if forloop.last %}
             <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
-                <h3 class="f2 w-100 w-25-l fn fl-l ma0 mt2">{{ previousTag }}</h3>
+                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
                 <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
                             <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
                                 <img 
-                                    src="{{piece.image}}"
-                                    class="w-100 br3 dim"
+                                    src="{{piece.thumbnail}}"
+                                    class="w-100 br3 grow"
                                 />
                             </a>
                         {% endif %}

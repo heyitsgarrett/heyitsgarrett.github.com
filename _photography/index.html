@@ -1,0 +1,86 @@
+--- 
+layout: portfolio 
+permalink: photography/
+title: Photography 
+description: I'm no professional, but I take photographs everywhere I go.
+date: 1-1-2017  
+color: light-green
+galleryCode: |
+    <script type="text/javascript">
+    var galleries = document.querySelectorAll('.js-grid-gallery');
+    var macyInstances = [];
+    var macyOptions = {
+        trueOrder: true,
+        waitForImages: false,
+        debug: false,
+        margin: 16,
+        mobileFirst: true,
+        columns: 1,
+        breakAt: {
+            960: {
+                margin: 32,
+                columns: 2
+            }
+        }
+    };
+
+    for (var i = 0; i < galleries.length; i++) {
+        var newId = 'galleryinstance-' + i;
+        galleries[i].id = newId;
+        macyOptions.container = '#' + newId;
+        macyInstances.push(Macy(macyOptions));
+    }
+    </script>
+---
+{% assign pageColor =  'light-blue' %}
+
+<div class="pt3 pt5-ns">
+    {% assign tags =  site.photography | map: 'category' | join: ','  | split: ',' | sort %}
+    {% assign sorted_posts =  site.photography | sort: 'order' %}
+    
+    {% assign previousTag = "" %}
+    {% for currentTag in tags %}
+    
+        {% if previousTag == "" %}
+            {% assign previousTag = currentTag %}
+        {% endif %}
+
+        {% if currentTag != previousTag %}
+            <section class="cf mb2 mb6-ns bt bw1 b--{{pageColor}}">
+                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
+                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                    {% for piece in sorted_posts %}
+                        {% if piece.category == previousTag and piece.image %}
+                            <div class="w-50">
+                                <a href="/{{piece.permalink}}.html" class="db child-element aspect-ratio aspect-ratio--4x3" title="{{piece.title}}">
+                                    <div class="aspect-ratio--object cover br3 grow" style="background:url({{piece.thumbnail}}) center;"></div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% assign first_in_loop = true %}            
+        {% endif %}
+    
+        {% if forloop.last %}
+            <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
+                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
+                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                    {% for piece in sorted_posts  %}
+                        {% if piece.category == previousTag and piece.image %}
+                            <div class="w-50">
+                                <a href="/{{piece.permalink}}.html" class="db child-element aspect-ratio aspect-ratio--4x3" title="{{piece.title}}">
+                                    <div class="aspect-ratio--object cover br3 grow" style="background:url({{piece.thumbnail}}) center bottom;"></div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    
+        {% assign previousTag = currentTag %}
+    
+    {% endfor %}
+</div>

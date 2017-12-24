@@ -38,7 +38,7 @@ body {
   font-weight: 300;  
 }
 
-h1,h2,h3, .bold, strong, b {
+h1,h2, .bold, strong, b {
   font-family: 'New Rail Alphabet Bold', sans-serif;  
 }
 
@@ -128,4 +128,26 @@ ul.--arrow li:before {
 .hover-effect-slide a:hover::before,
 .hover-effect-slide a:focus::before {
   top: 0;
+}
+
+.hover-pulse {
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+}
+
+.hover-pulse:hover {
+  transform: scale(1.05) translateZ(0);
+}
+.hover-pop:hover,
+.hover-pop-icon:hover svg {
+  animation-name: hover-pop;
+  animation-duration: 0.35s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;  
+}
+
+@keyframes hover-pop {
+  50% {
+    transform: scale(1.5) rotate(-4deg);
+  }
 }
