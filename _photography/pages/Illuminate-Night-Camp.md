@@ -6,8 +6,8 @@ category: Illuminate
 page: photography
 color: light-green
 date: 1-1-2014
-order: 03-Illuminate-99
-image: /images/photography/03-Illuminate/Night-Camp.2014.jpg
-thumbnail: /images/photography/03-Illuminate/Night-Camp.2014.thumb.jpg
+order: 03-Illuminate-02
+image: /images/photography/03-Illuminate/02-Night-Camp.2014.jpg
+thumbnail: /images/photography/03-Illuminate/02-Night-Camp.2014.thumb.jpg
 imageTitle: Night Camp
 ---
