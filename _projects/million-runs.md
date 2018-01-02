@@ -21,6 +21,13 @@ shortHeader: true
         </p>
     </section>
     <section class="pb3">
+        <div class="w-100 pb5 mb5 dn db-ns bb b--{{pageColor}}">
+            <iframe width="100%"
+                height="600px"
+                frameBorder="0"
+                src="https://a.tiles.mapbox.com/v4/heyitsgarrett.kf2a2nb1.html?access_token=pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA#5/38.617/-95.713"
+            ></iframe>
+        </div>
         <div class="w-100 pb5">
             <img src="/images/projects/million-runs/map-europe.png" />
         </div>
