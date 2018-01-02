@@ -38,8 +38,8 @@ body {
   font-weight: 300;  
 }
 
-h1,h2, .bold, strong, b {
-  font-family: 'New Rail Alphabet Bold', sans-serif;  
+h1,h2, .bold, strong, b, .lh-copy a {
+  font-family: 'New Rail Alphabet Bold', sans-serif;
 }
 
 a {
