@@ -21,8 +21,14 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 
 @media screen and (min-width: 30em) {
-  .bg-keyline {
+  .bg-keyline{
     background: linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background-position: 2rem 0;
+    background-repeat: repeat-y;
+    background-size: 1px;
+  }
+  .bg-keyline-black {
+    background: linear-gradient(90deg, #000 1px, transparent 1px);
     background-position: 2rem 0;
     background-repeat: repeat-y;
     background-size: 1px;

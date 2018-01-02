@@ -26,7 +26,13 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
 <meta name="keywords" content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography,development,unicorns">
 
 <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/site.css" media="screen">
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -38,7 +44,7 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
     .bg-{{include.pageColor | remove: '#'}} {
       background-color: {{include.pageColor}};
     }
-    .{{include.pageColor | remove: '#'}} {
+    .color-{{include.pageColor | remove: '#'}} {
       color: {{include.pageColor}};
     }
     .b--{{include.pageColor | remove: '#'}} {

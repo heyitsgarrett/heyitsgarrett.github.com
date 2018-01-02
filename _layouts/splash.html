@@ -6,37 +6,31 @@
 		{% if page.class %}{{ page.class }}{% endif %}
 		w-100
         bg-white
-        near-black
+		near-black
+		bg-keyline
 	"
 >
-	<section class="pa3 pa4-ns pa5-l">
-		<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">
+	<section class="pa3 ph4-ns ph5-l bg-keyline bg-keyline-black" style="background-color: hotpink">
+		<h1 class="f1 f-subheadline-m f-headline-l ma0 mt4">
 			Garrett Miller
 		</h1>
-		
-		<div class="bb bw2 pb4">
-			<p class="measure f4 f2-ns lh-copy">
-				Software guy, designer, photographer, and occassional illustrator living a very lucky life in California. I currently work at Slack.
-			</p>
-		</div>
+
+		<p class="measure f4 f2-ns lh-copy">
+			Software guy, designer, photographer, and occassional illustrator living a very lucky life in California. I currently work at Slack.
+		</p>
 	</section>
 
-	<section class="pl3 pr3 pl4-ns pr4-ns pl5-l pr5-l">
-		<ul class="--arrow f2 f-1-l ma0 pa0 b lh-title pb4 pb5-ns bb bw2">
-			<li><a href="/projects" class="hover-light-purple">e-projects</a></li>
-			<li><a href="/photography" class="hover-blue">photography</a></li>
-			<li><a href="/sketchbook" class="hover-gold">sketchbook</a></li>
-			<li><a href="/work" class="hover-green">work</a></li>
-			<li><a href="/about" class="hover-hot-pink">about</a></li>
+	<section class="ph3 ph4-ns ph5-l pt4 pt5-ns">
+		<ul class="--arrow f3 f2-ns ma0 pa0 b lh-title pb4 pb5-ns bb bw2">
+			<li><a href="/projects" class="hover-hot-pink">Projects</a></li>
+			<li><a href="/photography" class="hover-green">Photography</a></li>
+			<li><a href="/sketchbook" class="hover-gold">Sketchbook</a></li>
+			<li><a href="/about" class="hover-blue">About</a></li>
 		</ul>
 	</section>
 
 	<article class="pl3 pr3 pb5 pl4-ns pr4-ns pl5-l pr5-l lh-copy">
 		{{ content }}
-		
-		<div class="mt6">
-			<div class="h3 w3 partymonster"><!-- Party monster! --></div>
-		</div>
 	</article>
 
 	{% include bottom.html %}
