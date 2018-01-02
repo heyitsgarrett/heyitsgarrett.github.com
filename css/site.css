@@ -50,7 +50,7 @@ a {
   text-decoration-color: hotpink;
 }
 a:hover {
-  text-decoration-color: #000;  
+  text-decoration-color: #000;
 }
 
 ul.--arrow {
@@ -63,7 +63,7 @@ ul.--arrow li:before {
   margin-right: 0.75rem;
   vertical-align: middle;
 }
-  
+
 
 /* Margin-top, -1, medium screens */
 @media screen and (min-width: 60em) {
@@ -98,7 +98,8 @@ ul.--arrow li:before {
 }
 
 /* Fancy nav hover */
-.hover-effect-slide a {
+.hover-effect-slide a,
+.hover-effect-slide a:hover {
   position:relative;
 }
 
@@ -106,15 +107,14 @@ ul.--arrow li:before {
   background: #000;
 }
 
-.hover-effect-slide a span {
+.hover-effect-slide a span,
+.hover-effect-slide a:hover span {
   position:relative;
-  z-index: 20;
-  transition: color 0.14s ease-in 0;
+  color: #000;
 }
 
 .hover-effect-slide a::before {
   background: #000;
-  color: transparent;
   position: absolute;
   top: -100%;
   left: 0;
@@ -131,6 +131,7 @@ ul.--arrow li:before {
 .hover-effect-slide a:hover::before,
 .hover-effect-slide a:focus::before {
   top: 0;
+  padding-top: 1px;
 }
 
 .hover-pulse {

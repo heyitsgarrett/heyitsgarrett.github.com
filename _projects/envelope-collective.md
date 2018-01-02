@@ -11,7 +11,7 @@ shortHeader: true
 {% assign pageColor =  'light-green' %}
 
 <div class="pb4 f4 lh-copy">
-    <h2 class="f-subheadline mv4">The Envelope Collective</h2>
+    <h2 class="f2 f-subheadline-ns mv4">The Envelope Collective</h2>
     <section>
         <p>
             In 2005, <a href="http://mrmrs.cc/">Adam Morse</a> and I rented a post office box in Oberlin, Ohio. We asked the internet to send us art in the mail, with the promise to scan and share every piece we received. Over two years, we received 1,500 submissions from 30 countries.

@@ -34,7 +34,21 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
   a {
     text-decoration-color: {{include.pageColor}};
   }
+  {% if include.pageColor contains '#' %}
+    .bg-{{include.pageColor | remove: '#'}} {
+      background-color: {{include.pageColor}};
+    }
+    .{{include.pageColor | remove: '#'}} {
+      color: {{include.pageColor}};
+    }
+    .b--{{include.pageColor | remove: '#'}} {
+      border-color: {{include.pageColor}};
+    }
+    .hover-{{include.pageColor | remove: '#'}}:hover {
+      color: {{include.pageColor}};
+    }
+  {% endif %}
 </style>
-  
+
 
 </head>

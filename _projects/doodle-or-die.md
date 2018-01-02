@@ -5,16 +5,16 @@ title: Projects
 page: projects
 description:
 date: 1-1-2017
-color: light-green
+color: '#BFE3F2'
 shortHeader: true
 ---
-{% assign pageColor =  'light-green' %}
+{% assign pageColor =  'BFE3F2' %}
 
 <div class="pb5 f4 lh-copy">
-    <h2 class="f-subheadline mv4">Doodle or Die</h2>
+    <h2 class="f2 f-subheadline-ns mv4">Doodle or Die</h2>
     <section>
         <p>
-            The concept of Doodle or Die is probably familiar -- it's like the game telephone, but with drawing in between steps. The game was created during a 48-hour Node.js hackaton in 2010 and expanded on in the months after by Dylan Greene, Aaron Silverman, Wyn Bennett, and myself.
+            The concept of Doodle or Die is probably familiar -- it's like the game of telephone, but with drawing in between turns. The game was created during a 48-hour Node.js hackaton in 2010 and expanded on in the months after by Dylan Greene, Aaron Silverman, Wyn Bennett, and myself.
         </p>
         <p>
             I designed the logo and website, built the user experience, created new features, and lost many hours playing the game myself.
@@ -31,7 +31,7 @@ shortHeader: true
             <div class="w-100 w-40-ns flex justify-center align-center mb4 mb0-ns br4 pa4" style="background: black url(/images/projects/doodle-or-die/slide-background.jpg) center center;">
                 <img src="/images/projects/doodle-or-die/logo.png" class="self-center" />
             </div>
-            <div class="w-100 w-60-ns pl4">
+            <div class="w-100 w-60-ns pl4-ns">
                 <img src="/images/projects/doodle-or-die/screen-game.jpg" />
             </div>
         </div>
