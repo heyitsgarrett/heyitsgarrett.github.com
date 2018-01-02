@@ -10,3 +10,6 @@ collections:
   photography:
     output: true
     permalink: /photography/index.html
+  projects:
+    output: true
+    permalink: /projects/index.html
