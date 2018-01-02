@@ -75,10 +75,8 @@
 			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns bg-{{pageColor}}">
 				<h2 class="f3 f1-ns ma0">{{ page.title }}</h2>
 			</section>
-			  </div>
-		{% else %}		
-			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns bg-{{pageColor}}">				
-				<h2 class="f3 f2-ns mv1" id="js-tagline"><!-- tagline --></h2>		
+		{% else %}
+			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns bg-{{pageColor}}">
 				<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h1>
 			</section>
 		{% endif %}
@@ -147,22 +145,6 @@
 	{% include bottom.html %}
 
 	<script>
-		var headline_taglines = [
-			"hey, that's a cool",
-			"100% Grade-A",
-			"holy picasso, Batman, look at that",
-			"here's some",
-			"mmmmmm,",
-			"wow, get a load of this",
-			"you weren't kidding, that's some",
-			"now that's what I call",
-			"dang, nice"
-		];
-		var rand = Math.floor(Math.random()*headline_taglines.length);
-		var tagline_div = document.getElementById('js-tagline')
-		if (tagline_div) {
-			tagline_div.innerHTML = headline_taglines[rand];
-		}
 		{% if page.image %}
 		document.onkeydown = function(e) { // listen to keyboard events
 			switch (e.keyCode) {
