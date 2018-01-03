@@ -66,11 +66,11 @@
 				{% include nav-item.html page="about" %}
 			</div>
 			<a href="{% if page.image or page.shortHeader %}/{{page.page}}{% else %}/{% endif %}" class="w-100 w2-ns h2 h-100-ns br-ns absolute-ns db dib-ns b--black hover-black z-0">
-				<div class="logo-text w-100 w5-ns pl2 pv2 absolute ttu tracked hover-{{pageColor}} hover-bg-black">
+				<div class="logo-text w5-ns pa2 absolute ttu tracked hover-{{pageColor}} hover-bg-black">
 					{% if page.image or page.shortHeader %}
 						BACK
 					{% else %}
-						Garrett Miller
+						G<span class="di-s dn-m di-l">arrett</span> Miller
 					{% endif %}
 				</div>
 			</a>	

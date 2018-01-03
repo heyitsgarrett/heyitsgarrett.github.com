@@ -95,12 +95,18 @@ ul.--arrow li:before {
   cursor: not-allowed;
 }
 
+@media screen and (max-width: 30em) {
+  .logo-text {
+    top: -1px;
+  }
+}
+
 @media screen and (min-width: 30em) {
   .logo-text {
     transform: rotate(-90deg);
     bottom: 7em;
     right: -7em;
-  }  
+  }
 }
 
 /* Fancy nav hover */
