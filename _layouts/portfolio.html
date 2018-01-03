@@ -82,7 +82,7 @@
 		{% endif %}
 	</header>
 
-	{% if page.image %}
+	{% if page.image and page.thumbnail %}
 		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l">
 			<div class="w-100 w-30-l br pr4" style="border-color: #ccc">
 				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
@@ -145,7 +145,7 @@
 	{% include bottom.html %}
 
 	<script>
-		{% if page.image %}
+		{% if page.image and page.thumbnail %}
 		document.onkeydown = function(e) { // listen to keyboard events
 			switch (e.keyCode) {
 				case 27: // ESC

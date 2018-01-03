@@ -6,6 +6,7 @@ page: projects
 description: 
 date: 1-1-2017  
 color: 'light-blue'
+image: /images/projects/windoodles/flash-in-progress.jpg
 shortHeader: true
 ---
 {% assign pageColor =  'light-blue' %}

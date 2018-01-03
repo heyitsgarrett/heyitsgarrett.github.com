@@ -6,6 +6,7 @@ page: projects
 description:
 date: 1-1-2017
 color: '#FD88E9'
+image: /images/projects/million-runs/map-europe.png
 shortHeader: true
 ---
 {% assign pageColor =  'FD88E9' %}

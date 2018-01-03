@@ -6,6 +6,7 @@ page: projects
 description: 
 date: 1-1-2017  
 color: 'hot-pink'
+image: /images/projects/loudgif/screen.jpg
 shortHeader: true
 ---
 {% assign pageColor =  'hot-pink' %}

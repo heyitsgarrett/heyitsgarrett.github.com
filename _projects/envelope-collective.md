@@ -6,6 +6,7 @@ page: projects
 description: 
 date: 1-1-2017  
 color: light-green
+image: /images/projects/envelope-collective/EnvelopeCollective-Cover.jpg
 shortHeader: true
 ---
 {% assign pageColor =  'light-green' %}

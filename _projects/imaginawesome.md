@@ -6,6 +6,7 @@ page: projects
 description:
 date: 1-1-2011
 color: 'hot-pink'
+image: /images/projects/imaginawesome/sinking-ship-b.jpg
 shortHeader: true
 ---
 {% assign pageColor =  'hot-pink' %}

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Garrett Miller / {{ page.title }}</title>
+<title>Garrett Miller &times; {{ page.title }}</title>
 <!--
                                                                                                                  
                 hhhhhhh                  hhhhhhh                                lllllll lllllll                  
@@ -22,10 +22,10 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
                                                                                                      
     
 -->
-<meta name="description" content="Garrett Miller is a designer, developer, photographer, and all-around decent guy living in Washington D.C. He likes clean code, minimalist design, and low f-stops.">
+<meta name="description" content="Software guy, designer, photographer, and occassional illustrator living a very lucky life in California.">
 <meta name="keywords" content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography,development,unicorns">
 
-<link rel="stylesheet" type="text/css" href="{{ site.url }}/css/site.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/css/site.css" media="screen">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -33,8 +33,20 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="theme-color" content="#ffffff">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<meta property="og:title" content="Garrett Miller">
+<meta property="og:description" content="Software guy, designer, photographer, and occassional illustrator living a very lucky life in California.">
+
+{% if page.image %}
+<meta property="og:image" content="{{site.path}}{{page.image}}">
+<meta property="og:url" content="{{site.path}}{{page.url}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Garrett Miller">
+<meta name="twitter:image:alt" content="{{page.title}}">
+{% endif %}
 
 <style>
   a {
