@@ -78,7 +78,9 @@
 
 		{% if page.image or page.shortHeader %}
 			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns">
-				<h2 class="f3 f1-ns ma0">{{ page.title }}</h2>
+				<h2 class="f3 f1-ns ma0">
+					<a href="/{{page.page}}" class="no-underline">{{ page.title }}</a>
+				</h2>
 			</section>
 		{% else %}
 			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns">
