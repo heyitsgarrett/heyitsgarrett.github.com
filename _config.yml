@@ -1,6 +1,15 @@
 permalink: /posts/:title
 markdown: kramdown
-auto: true
 # pygments: true
 path: http://heyitsgarrett.com
 title: Hey it's Garrett!
+collections:
+  sketchbook:
+    output: true
+    permalink: /sketchbook/index.html
+  photography:
+    output: true
+    permalink: /photography/index.html
+  projects:
+    output: true
+    permalink: /projects/index.html

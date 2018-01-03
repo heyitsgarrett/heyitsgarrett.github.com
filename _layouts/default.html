@@ -1,27 +1,67 @@
 {% include top.html %}
 
-<body id="layout-default" class="{% if page.class %}{{ page.class }}{% endif %}">
+{% if page.color %}
+	{% assign pageColor = page.color %}
+{% else %}
+	{% assign pageColor = "pink" %}
+{% endif %}
 
-    <div id="container" class="grid">
+<body 
+	id="layout-default" 
+	class="
+		{% if page.class %}{{ page.class }}{% endif %}
+		w-100
+		bg-white
+		near-black
+		bg-keyline
+	"
+>
+	<header class="bg-{{pageColor}} near-black relative">
+		<nav class="cf ttc bl bb flex flex-auto">
+			<a href="/" class="tc h2 w2 bg-black bold no-underline f5 {{pageColor}} hover-white flex justify-center items-center relative z-1">
+				<span><</span>
+			</a>				
+			<div class="tc dn db-ns hover-effect-slide overflow-hidden h2">
+				{% include nav-item.html page="projects" %}
+				{% include nav-item.html page="photography" %}
+				{% include nav-item.html page="sketchbook" %}
+				{% include nav-item.html page="about" %}
+			</div>
+			<a href="/" class="w-100 w2-ns h2 h-100-ns br-ns absolute-ns db dib-ns b--black hover-black z-0">
+				<div class="logo-text w5 pl2 pv2 absolute ttu tracked">Garrett Miller</div>
+			</a>	
+		</nav>
+		<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns bg-{{pageColor}}">	
+			<h2 class="f3 f2-ns mv1" id="js-tagline"><!-- tagline --></h2>		
+			<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h1>
+		</section>
+	</header>
 
-		{% if page.hideNav %}
-								
-		{% else %}
-	    	<div class="title">
-	    		<h2><a href="/">&#65513;</a> {{ page.title }}</h2>
-	    	</div>
-		{% endif %}
+	<section class="pr3 pr4-ns pr5-l pl3 pl5-ns f4 lh-copy"> 
+		<article class="f4 f3-ns pv4 pt5-ns pb0-ns measure">
+			{{ page.description }}
+		</article>
+		<article>
+			{{ content }}
+		</article>
+	</section>
 
-        {{ content }}
+	{% include bottom.html %}
 
-        {% if page.date %}
-        	<div class="date">
-        		{{ page.date | date: "%B %d, %Y" }}
-        	</div>
-
-        {% endif %}
-
-    </div>
-
+	<script>
+		var headline_taglines = [
+			"hey, what a cool",
+			"now that's what I call",
+			"holy cow, what a",
+			"dang, nice",
+			"well that's certainly a",
+			"eh, I've seen a better",
+			"here's some",
+			"mmmmmm,",
+			"wow, get a load of this"
+		];
+		var rand = Math.floor(Math.random()*headline_taglines.length);
+		document.getElementById('js-tagline').innerHTML = headline_taglines[rand];
+	</script>
 </body>
 </html>

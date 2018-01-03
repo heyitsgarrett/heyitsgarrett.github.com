@@ -1,0 +1,27 @@
+{% include top.html %}
+
+<body id="layout-default" class="{% if page.class %}{{ page.class }}{% endif %}">
+
+    <div id="container" class="grid">
+
+		{% if page.hideNav %}
+								
+		{% else %}
+	    	<div class="title">
+	    		<h2><a href="/">&#65513;</a> {{ page.title }}</h2>
+	    	</div>
+		{% endif %}
+
+        {{ content }}
+
+        {% if page.date %}
+        	<div class="date">
+        		{{ page.date | date: "%B %d, %Y" }}
+        	</div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
