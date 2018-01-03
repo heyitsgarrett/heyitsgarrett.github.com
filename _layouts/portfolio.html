@@ -38,11 +38,16 @@
 		bg-keyline
 	"
 >
-	<header 
+	<header
+		id="header"
 		class="
 			bg-{{pageColor}}
 			near-black
 			relative
+		"
+		style="
+			background-blend-mode: multiply;
+			background-repeat: repeat;
 		"
 	>
 		<nav class="cf ttc bl bb flex flex-auto">
@@ -72,11 +77,11 @@
 		</nav>
 
 		{% if page.image or page.shortHeader %}
-			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns bg-{{pageColor}}">
+			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns">
 				<h2 class="f3 f1-ns ma0">{{ page.title }}</h2>
 			</section>
 		{% else %}
-			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns bg-{{pageColor}}">
+			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns">
 				<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h1>
 			</section>
 		{% endif %}
@@ -145,6 +150,19 @@
 	{% include bottom.html %}
 
 	<script>
+		var headerBackgrounds = [
+			"geometry.png",
+			"geometry2.png",
+			"play.png",
+			"round.png",
+			"seigaiha.png"
+		];
+		var rand = Math.floor(Math.random()*headerBackgrounds.length);
+		var headerEl = document.getElementById('header')
+		if (headerEl) {
+			console.log(headerEl);
+			headerEl.style.backgroundImage = 'url(/images/site/patterns/' + headerBackgrounds[rand] + ')';
+		}
 		{% if page.image and page.thumbnail %}
 		document.onkeydown = function(e) { // listen to keyboard events
 			switch (e.keyCode) {
