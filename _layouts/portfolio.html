@@ -95,13 +95,11 @@
 				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
 				<p class="f5 silver mt3 mt4-l lh-copy">
 					{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
-					<br />
-					&copy; Garrett Miller
 				</p>
-				<div class="items-center mt4 mt5-l dn flex-ns">
+				<div class="items-center mt4 mt5-l flex mb4 mb0-ns justify-center justify-start-ns">
 					<!-- PREV -->
 					<a
-						class="ba b--silver f3 pa2 bold dib no-underline hover-{{pageColor}}" 
+						class="ba b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}"
 						{% if previousUrl %}
 							href="{{previousUrl}}#anchor-top"
 						{% else %}
@@ -110,7 +108,7 @@
 					><</a>
 					<!-- NEXT -->
 					<a
-						class="bt br bb b--silver f3 pa2 bold dib no-underline hover-{{pageColor}}" 
+						class="bt br bb b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}"
 						{% if nextUrl %}
 							href="{{nextUrl}}#anchor-top"
 						{% else %}
