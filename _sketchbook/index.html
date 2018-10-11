@@ -1,9 +1,8 @@
---- 
-layout: portfolio 
-permalink: sketchbook/ 
-title: Sketchbook 
-description: I draw, doodle, scribble, and scratch daily. Below is a selection of some of the places that I've let my brain wander to, scattered with some artwork of intellectual property that I certainly don't own.
-date: 1-1-2017  
+---
+layout: portfolio
+permalink: sketchbook/
+title: Sketchbook
+date: 1-1-2017
 color: yellow
 galleryCode: |
     <script type="text/javascript">
@@ -46,7 +45,7 @@ galleryCode: |
     {% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
     {% assign previousTag = "" %}
     {% for currentTag in tags %}
-    
+
         {% if previousTag == "" %}
             {% assign previousTag = currentTag %}
         {% endif %}
@@ -58,7 +57,7 @@ galleryCode: |
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
                             <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
-                                <img 
+                                <img
                                     src="{{piece.thumbnail}}"
                                     class="w-100 br3 grow"
                                 />
@@ -67,9 +66,9 @@ galleryCode: |
                     {% endfor %}
                 </div>
             </section>
-            {% assign first_in_loop = true %}            
+            {% assign first_in_loop = true %}
         {% endif %}
-    
+
         {% if forloop.last %}
             <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
                 <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
@@ -77,7 +76,7 @@ galleryCode: |
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
                             <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
-                                <img 
+                                <img
                                     src="{{piece.thumbnail}}"
                                     class="w-100 br3 grow"
                                 />
@@ -87,9 +86,9 @@ galleryCode: |
                 </div>
             </section>
         {% endif %}
-    
+
         {% assign previousTag = currentTag %}
-    
+
     {% endfor %}
 </div>
 

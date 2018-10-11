@@ -86,7 +86,7 @@ ul.--arrow li:before {
 .partymonster {
   display: inline-block;
   background: url('/images/partymonster.png') 0 0 no-repeat;
-  background-position: 0;  
+  background-position: 0;
   background-size: 200%;
 }
 

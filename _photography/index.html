@@ -1,11 +1,11 @@
---- 
-layout: portfolio 
+---
+layout: portfolio
 permalink: photography/
-title: Photography 
+title: Photography
 description: |
-    I'm no professional, but I take photographs everywhere I go. If you want to see more, I keep
-    up pretty regularly over in <a href="https://www.instagram.com/heyitsgarrett/">Instagram land</a>.
-date: 1-1-2017  
+    If you want to see more, I keep up pretty regularly over at
+    <a href="https://www.instagram.com/heyitsgarrett/">Instagram</a>.
+date: 1-1-2017
 color: light-green
 colorHex: |
     #9eebcf
@@ -41,10 +41,10 @@ galleryCode: |
 <div class="pt3 pt5-ns">
     {% assign tags =  site.photography | map: 'category' | join: ','  | split: ',' | sort %}
     {% assign sorted_posts =  site.photography | sort: 'order' %}
-    
+
     {% assign previousTag = "" %}
     {% for currentTag in tags %}
-    
+
         {% if previousTag == "" %}
             {% assign previousTag = currentTag %}
         {% endif %}
@@ -64,9 +64,9 @@ galleryCode: |
                     {% endfor %}
                 </div>
             </section>
-            {% assign first_in_loop = true %}            
+            {% assign first_in_loop = true %}
         {% endif %}
-    
+
         {% if forloop.last %}
             <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
                 <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
@@ -83,8 +83,8 @@ galleryCode: |
                 </div>
             </section>
         {% endif %}
-    
+
         {% assign previousTag = currentTag %}
-    
+
     {% endfor %}
 </div>
