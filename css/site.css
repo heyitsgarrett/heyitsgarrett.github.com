@@ -47,6 +47,12 @@ body {
   font-weight: 300;  
 }
 
+@media screen and (min-width: 60em) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
 h1,h2, .bold, strong, b, .lh-copy a {
   font-family: 'New Rail Alphabet Bold', sans-serif;
 }
@@ -54,11 +60,10 @@ h1,h2, .bold, strong, b, .lh-copy a {
 a {
   color: #111;
   text-decoration-skip: spaces leading-spaces descenders trailing-spaces;
-  text-decoration-skip: ink;
-  text-decoration: underline;
-  text-decoration-color: hotpink;
+  text-decoration-color: #333;
 }
 a:hover {
+  color: hotpink;
   text-decoration-color: #000;
 }
 
@@ -87,7 +92,6 @@ ul.--arrow li:before {
 
 /* It's a party */
 .partymonster {
-  display: inline-block;
   background: url('/images/partymonster.png') 0 0 no-repeat;
   background-position: 0;
   background-size: 200%;
@@ -110,6 +114,20 @@ ul.--arrow li:before {
     bottom: 7em;
     right: -7em;
   }
+}
+
+@media screen and (min-width: 60em) {
+  /* Splash image foolery */
+  .el-splash-image {
+    margin-top: -6em;
+    margin-left: 2em;
+  }
+}
+
+/* Back button */
+.el-backbutton {
+  border-color: rgba(0,0,0,.25);
+  width: calc(2em + 1px);
 }
 
 /* Fancy nav hover */

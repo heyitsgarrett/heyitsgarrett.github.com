@@ -50,39 +50,33 @@
 			background-repeat: repeat;
 		"
 	>
-		<nav class="cf ttc bl bb flex flex-auto">
+		<nav class="flex flex-auto">
 			<a 
 				href="/"
-				class="tc h2 w2 bg-black bold no-underline f5 color-{{pageColor}} {{pageColor}} flex justify-center items-center relative z-1 hover-pop-icon"
+				class="tc h2 w2 bg-black bold no-underline f5 color-{{pageColor}} {{pageColor}} flex justify-center items-center absolute z-1 hover-pop-icon"
 			>
 				<svg class="w1" viewbox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
 					<path d="M36.853095 0c5.637612 0 9.100167 1.962845 10.38777 5.888594-.661201 5.62337-1.635589 8.435013-2.923192 8.435013l-1.252796-1.273209V8.859416c-8.421618 0-16.286317 13.3332-23.594333 40l-.417598 3.766579v2.546419c0 3.289141 4.141146 5.251986 12.423564 5.888594h11.588367c3.897608 0 7.777758-6.8788 11.640567-20.636605V40h-.417599c-1.357203 0-5.637548 1.962845-12.841163 5.888594-2.088005 1.414685-3.619185 2.122016-4.593587 2.122016h-.417599c-4.41961-.778076-6.629381-2.740921-6.629381-5.888594v-1.27321c0-4.809926 5.950723-9.584414 17.852349-14.323607l9.082774-.848806h2.505593c6.890414 1.308583 10.33557 4.827557 10.33557 10.557029L70 38.302387c-2.749206 10.857703-5.637569 20.265212-8.665175 28.222812-4.52401 7.851498-8.665157 11.777188-12.423565 11.777188C48.91126 79.434135 44.891912 80 36.853095 80 19.592258 80 8.682598 75.932844 4.123788 67.798408 2.627385 66.136154 1.252803 62.61718 0 57.241379c0-13.970008 3.044961-25.605612 9.134974-34.907161C14.807386 11.90092 22.25449 4.739188 31.47651.848806L36.853095 0z" fill="currentColor" fill-rule="evenodd"/>
 				</svg>
 			</a>
-			<div class="tc dn db-ns hover-effect-slide overflow-hidden h2">
 			</div>
-			<a href="{% if page.image or page.shortHeader %}/{{page.page}}{% else %}/{% endif %}" class="w-100 w2-ns h2 h-100-ns br-ns absolute-ns db dib-ns b--black hover-black z-0">
+			<a 
+				href="{% if page.image or page.shortHeader %}/{{page.page}}{% else %}/{% endif %}" 
+				class="el-backbutton h2 h-100-ns br-ns absolute-ns db dib-ns b--black hover-black z-0"
+			>
 				<div class="logo-text w5-ns pa2 absolute ttu tracked hover-{{pageColor}} hover-bg-black">
-					{% if page.image or page.shortHeader %}
-						BACK
-					{% else %}
-						G<span class="di-s dn-m di-l">arrett</span> Miller
-					{% endif %}
+					BACK
 				</div>
 			</a>	
 		</nav>
 
-		{% if page.image or page.shortHeader %}
-			<section class="pv2 pv3-l pl3 pl5-ns pl5-l pr3 pr4-ns">
-				<h2 class="f3 f1-ns ma0">
-					<a href="/{{page.page}}" class="no-underline">{{ page.title }}</a>
-				</h2>
-			</section>
-		{% else %}
-			<section class="pt3 pt4-ns pt5-l ph3 ph5-ns ph5-l pb3 pb4-ns">
-				<h1 class="f1 f-subheadline-m f-headline-l mt0 mb0">{{ page.title }}</h1>
-			</section>
-		{% endif %}
+		<div
+			class="ph3 pr4-ns pl5-ns pv3 mw9 center"
+		>
+			<h1 class="f2 f-subheadline-m f-subheadline-l ma0 mt4-ns">
+				{{ page.title }}
+			</h1>
+		</div>
 	</header>
 
 	{% if page.image and page.thumbnail %}
@@ -126,7 +120,7 @@
 		</section>
 	{% else %}
 		{% if page.shortHeader %}
-			<section id="anchor-top" class="pl3 pl5-ns pr3 pr4-ns pv1 pv2-ns">
+			<section id="anchor-top" class="pl3 pl5-ns pr3 pr4-ns pv1 pv2-ns mw9 center">
 				{{content}}
 			</section>
 		{% else %}
