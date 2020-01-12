@@ -80,8 +80,8 @@
 	</header>
 
 	{% if page.image and page.thumbnail %}
-		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l">
-			<div class="w-100 w-30-l br pr4" style="border-color: #ccc">
+		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l mw9 center">
+			<div class="w-100 w-30-l pr4" style="border-color: #ccc">
 				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
 				<p class="f5 silver mt3 mt4-l lh-copy">
 					{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
@@ -111,11 +111,11 @@
 				<div 
 					class="h-100 w-100"
 					style="
-						background: url({{page.image}}) top left no-repeat;
-						background-size: contain;
 						max-height: 64rem;
 					"
-				><!-- IMAGE RENDERS HERE --></div>
+				>
+				<img src="{{page.image}}" alt="">
+			</div>
 			</div>
 		</section>
 	{% else %}
