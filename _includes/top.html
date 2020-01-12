@@ -49,9 +49,6 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
 {% endif %}
 
 <style>
-  a {
-    text-decoration-color: {{include.pageColor}};
-  }
   {% if include.pageColor contains '#' %}
     .bg-{{include.pageColor | remove: '#'}} {
       background-color: {{include.pageColor}};

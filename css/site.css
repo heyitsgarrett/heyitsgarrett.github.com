@@ -59,13 +59,13 @@ h1,h2, .bold, strong, b, .lh-copy a {
 
 a {
   color: #111;
-  text-decoration-skip: spaces leading-spaces descenders trailing-spaces;
-  text-decoration-color: #333;
+  text-decoration: underline #000;
 }
 a:hover {
   color: hotpink;
-  text-decoration-color: #000;
+  text-decoration-color: hotpink;
 }
+
 
 ul.--arrow {
   list-style-type: none;
@@ -77,7 +77,6 @@ ul.--arrow li:before {
   margin-right: 0.75rem;
   vertical-align: middle;
 }
-
 
 /* Margin-top, -1, medium screens */
 @media screen and (min-width: 60em) {
@@ -119,7 +118,7 @@ ul.--arrow li:before {
 @media screen and (min-width: 60em) {
   /* Splash image foolery */
   .el-splash-image {
-    margin-top: -6em;
+    margin-top: -7em;
     margin-left: 2em;
   }
 }
@@ -127,7 +126,24 @@ ul.--arrow li:before {
 /* Back button */
 .el-backbutton {
   border-color: rgba(0,0,0,.25);
+  max-height: 10em;
   width: calc(2em + 1px);
+}
+
+@media screen and (min-width: 30em) {
+  header:after {
+    content: '';
+    width: calc(2em + 1px);
+
+    background: linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background-position: 2rem 0;
+    background-repeat: repeat-y;
+    background-size: 1px;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 /* Fancy nav hover */
