@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>the nice emoji</title>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    html {
+      background-image: url(/images/site/patterns/geometry.png);
+    }
+
+    section {
+      display: flex;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .nice-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .nice-link {
+      background: #fff;
+      border: 4px solid transparent;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .nice-link:hover {
+      border: 4px solid #eeeeee;
+    }
+
+    .nice-link:active {
+      transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+    }
+
+    .nice-link img {
+
+      height: 32px;
+      width: 32px;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="nice-container">
+      <h1>it's important for you to have this...</h1>
+      <a class="nice-link" download="nice.png" href="/nice/nice.png" title="nice">
+        <img alt="nice" src="/nice/nice.png">
+      </a>
+    </div>
+  </section>
+</body>
+
+</html>
