@@ -1,10 +1,10 @@
 ---
 layout: portfolio
 permalink: projects/doodle-or-die
-title: Projects
+title: Doodle or Die
 page: projects
 description:
-date: 1-1-2017
+date: 1-1-2012
 color: '#BFE3F2'
 image: /images/projects/doodle-or-die/screen-game.jpg
 shortHeader: true

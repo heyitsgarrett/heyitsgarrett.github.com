@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 permalink: projects/imaginawesome
-title: Projects
+title: Imaginawesome
 page: projects
 description:
 date: 1-1-2011

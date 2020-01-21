@@ -7,15 +7,23 @@ title: Garrett Miller
     <div class="f4 lh-copy mb4 db-s flex-m flex-l flex-wrap">
         <div class="w-100 w-50-l">
             <p>
-                I've been tinkering with computers for the last 20 years, taking on various roles in software engineering, design, and product systems. I now lead the <a href="https://slack.engineering/the-gradual-design-system-how-we-built-slack-kit-8a2830484259">Slack Kit</a> product systems team at <a href="https://slack.com">Slack</a>.
-            </p>
-            
-            <p>
-                Along with my work, I advise and invest in smaller companies that are up to bigger things. If you're working on something interesting, please <a href="mailto:heyitsgarrett@gmail.com">reach out</a>. I'm always curious.
+                I've been tinkering with computers for the last 20 years, taking on various roles in software
+                engineering, design, and product systems. I now lead the <a
+                    href="https://slack.engineering/the-gradual-design-system-how-we-built-slack-kit-8a2830484259">Slack
+                    Kit</a> product systems team at <a href="https://slack.com">Slack</a>.
             </p>
 
             <p>
-                I live in San Francisco with my partner Georgia and our cat, Monster. I <a href="https://www.strava.com/athletes/185249">run</a>, <a href="/sketchbook" class="hover-gold">draw</a>, and <a href="/photography" class="hover-green">take photos</a> on very long walks.
+                Along with my work, I advise and invest in smaller companies that are up to bigger things. If you're
+                working on something interesting, please <a href="mailto:heyitsgarrett@gmail.com">reach out</a>. I'm
+                always curious.
+            </p>
+
+            <p>
+                I live in San Francisco with my partner Georgia and our cat, Monster. I <a
+                    href="https://www.strava.com/athletes/185249">run</a>, <a href="/sketchbook"
+                    class="hover-gold">draw</a>, and <a href="/photography" class="hover-green">take photos</a> on very
+                long walks.
             </p>
 
             <p>
@@ -23,9 +31,27 @@ title: Garrett Miller
                 or <a href="http://www.twitter.com/heyitsgarrett">Twitter</a>.
             </p>
 
+
             <p class="f6 cb black-50 mb5">
                 Last updated: Jan 10, 2020
             </p>
+
+            <hr />
+
+            <h3 class="">Projects</h3>
+
+            <ul class="--list ma0 pa0 pb4 pb5-ns">
+                {% assign sortedProjects = (site.projects | sort: 'date') | reverse %}
+                {% for proj in sortedProjects %}
+                <li>
+                    <span class="el-decorator">{{ proj.date | date: '%Y'  }}</span>
+                    <a href="{{ proj.url }}">
+                        {{ proj.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
         </div>
 
         <div class="w-100 w-50-l">
@@ -35,8 +61,8 @@ title: Garrett Miller
         </div>
     </div>
     <div>
+
         <ul class="--arrow f3 ma0 pa0 b lh-title pb4 pb5-ns">
-            <li><a href="/projects" class="hover-hot-pink">Projects</a></li>
             <li><a href="/photography/" class="hover-hot-pink">Some photos</a></li>
             <li><a href="/sketchbook/" class="hover-hot-pink">Sketchbook</a></li>
         </ul>
@@ -45,5 +71,7 @@ title: Garrett Miller
 </div>
 
 <div class="mt6 mb4">
-    <div class="h3 w3 partymonster center db" title="Whoa there, please don't pet the Monster"><!-- Party monster! --></div>
+    <div class="h3 w3 partymonster center db" title="Whoa there, please don't pet the Monster">
+        <!-- Party monster! -->
+    </div>
 </div>

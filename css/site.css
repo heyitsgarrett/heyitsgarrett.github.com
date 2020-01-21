@@ -57,6 +57,12 @@ h1,h2, .bold, strong, b, .lh-copy a {
   font-family: 'New Rail Alphabet Bold', sans-serif;
 }
 
+hr {
+  background: #ccc;
+  border: none;
+  height: 1px;
+}
+
 a {
   color: #111;
   text-decoration: underline #000;
@@ -66,16 +72,25 @@ a:hover {
   text-decoration-color: hotpink;
 }
 
-
 ul.--arrow {
   list-style-type: none;
 }
-ul.--arrow li:before {
+ul.--arrow li:before,
+.el-arrow:before {
   content: '>';
   font-family: 'New Rail Alphabet Bold', sans-serif;  
   font-size: 1rem;
   margin-right: 0.75rem;
   vertical-align: middle;
+}
+
+ul.--list {
+  list-style-type: none;
+}
+ul.--list .el-decorator {
+  color: #666;
+  display: inline-flex;
+  width: 3.5em;
 }
 
 /* Margin-top, -1, medium screens */

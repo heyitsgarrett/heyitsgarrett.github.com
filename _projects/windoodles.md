@@ -1,10 +1,10 @@
 --- 
 layout: portfolio 
 permalink: projects/windoodles
-title: Projects 
+title: Windoodles 
 page: projects
 description: 
-date: 1-1-2017  
+date: 1-1-2012 
 color: 'light-blue'
 image: /images/projects/windoodles/flash-in-progress.jpg
 shortHeader: true

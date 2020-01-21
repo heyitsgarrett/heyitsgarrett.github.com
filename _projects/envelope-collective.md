@@ -1,10 +1,10 @@
 --- 
 layout: portfolio 
 permalink: projects/envelope-collective
-title: Projects 
+title: The Envelope Collective 
 page: projects
 description: 
-date: 1-1-2017  
+date: 1-1-2005
 color: light-green
 image: /images/projects/envelope-collective/EnvelopeCollective-Cover.jpg
 shortHeader: true

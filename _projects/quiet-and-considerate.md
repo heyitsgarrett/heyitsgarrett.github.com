@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 permalink: projects/quiet-and-considerate
-title: Projects
+title: Quiet & Considerate
 page: projects
 description:
 date: 1-1-2017

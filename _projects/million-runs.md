@@ -1,10 +1,10 @@
 ---
 layout: portfolio
 permalink: projects/million-runs
-title: Projects
+title: 1.5 Million Runs
 page: projects
 description:
-date: 1-1-2017
+date: 1-1-2015
 color: '#FD88E9'
 image: /images/projects/million-runs/map-europe.png
 shortHeader: true

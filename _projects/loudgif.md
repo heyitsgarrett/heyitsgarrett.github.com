@@ -1,10 +1,10 @@
 --- 
 layout: portfolio 
 permalink: projects/loudgif
-title: Projects 
+title: LOUDGIF 
 page: projects
 description: 
-date: 1-1-2017  
+date: 1-1-2012 
 color: 'hot-pink'
 image: /images/projects/loudgif/screen.jpg
 shortHeader: true
