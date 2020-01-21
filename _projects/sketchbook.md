@@ -4,7 +4,7 @@ permalink: projects/sketchbook
 title: Sketchbook
 page: projects
 description:
-date: 1-1-2019
+date: 1-1-2018
 color: '#BFE3F2'
 image: /images/projects/doodle-or-die/screen-game.jpg
 shortHeader: true
@@ -46,6 +46,11 @@ galleryCode: |
 {% assign pageColor =  'BFE3F2' %}
 
 <div class="pb5 f4 lh-copy">
+
+<p class="mw8-l pt5 pb4">
+    Drawing is the one thing I've always known I could do. While I've never been able to find a career in it, I return to it when I can. Most of these were completed around 2017 and 2018, all using Procreate on the iPad Pro.
+</p>
+
  {% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
     {% assign previousTag = "" %}
     {% for currentTag in tags %}

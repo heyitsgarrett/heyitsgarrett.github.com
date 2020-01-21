@@ -12,14 +12,15 @@ shortHeader: true
 {% assign pageColor =  'light-green' %}
 
 <div class="pb4 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">The Envelope Collective</h2>
     <section>
-        <p>
-            In 2005, <a href="http://mrmrs.cc/">Adam Morse</a> and I rented a post office box in Oberlin, Ohio. We asked the internet to send us art in the mail, with the promise to scan and share every piece we received. Over two years, we received 1,500 submissions from 30 countries.
-        </p>
-        <p>
-            After graduation, our real life responsibilities took over and the project was ended. 
-        </p>
+        <div class="pt4 mw8-l">
+            <p>
+                In 2005, <a href="http://mrmrs.cc/">Adam Morse</a> and I rented a post office box in Oberlin, Ohio. We asked the internet to send us art in the mail, with the promise to scan and share every piece we received. Over two years, we received 1,500 submissions from 30 countries.
+            </p>
+            <p>
+                After graduation, our real life responsibilities took over and the project was ended. 
+            </p>
+        </div>
         <p class="f3 mb4 pb4 bb b--{{pageColor}}">
             <strong>> <a href="http://envelopecollective.com">envelopecollective.com</a></strong>
         </p>

@@ -12,14 +12,15 @@ shortHeader: true
 {% assign pageColor = 'F7E6A4' %}
 
 <div class="pb5 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">Quiet & Considerate</h2>
     <section class="pb4 bb b--{{pageColor}}">
-        <p>
-            My friend <a href="https://twitter.com/SVBliss/">Sarah-Violet Bliss</a> and her creative partner <a href="https://twitter.com/gcharlesrogers">Charles Rogers</a> wanted a logo for their hot new production company, <strong>Quiet and Considerate</strong>, to play at the end of their television show <a href="http://www.tbs.com/shows/search-party">Search Party</a>.
-        </p>
-        <p>
-            I came up with a few concept sketches to determine the direction they wanted to take. Once we settled on "1800's theater vibe", we went through a couple more rounds before settling on the final graphic.
-        </p>
+        <div class="pt4 mw8-l">
+            <p>
+                A friend, <a href="https://twitter.com/SVBliss/">Sarah-Violet Bliss</a>, and her creative partner <a href="https://twitter.com/gcharlesrogers">Charles Rogers</a> wanted a logo for their new production company, <strong>Quiet and Considerate</strong>, to play at the end of their television show <a href="http://www.tbs.com/shows/search-party">Search Party</a>.
+            </p>
+            <p>
+                I came up with a few concept sketches to determine the direction they wanted to take. Once we settled on "1800's theater vibe", we went through a couple more rounds before settling on the final graphic.
+            </p>
+        </div>
     </section>
     <section class="pv4">
         <div class="cf mb5-ns">

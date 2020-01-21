@@ -12,11 +12,12 @@ shortHeader: true
 {% assign pageColor =  'hot-pink' %}
 
 <div class="pb5 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">Imaginawesome</h2>
     <section>
-        <p>
-            As a kid, I loved to come up with amazing ideas of things to draw, but never was able to capture what I was imagining. I spent some time in 2011 reimagining children's doodles with a bit of extra sparkle.
-        </p>
+        <div class="pt4 mw8-l">
+            <p>
+                As a kid, I loved to come up with amazing ideas of things to draw, but never was able to capture what I was imagining. I spent some time in 2011 reimagining children's doodles with a bit of extra sparkle.
+            </p>
+        </div>
         <p class="f3 mb5 pb4 bb b--{{pageColor}}">
             <strong>> <a href="http://imaginawesome.com">imaginawesome.com</a></strong>
         </p>

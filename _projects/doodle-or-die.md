@@ -12,20 +12,21 @@ shortHeader: true
 {% assign pageColor =  'BFE3F2' %}
 
 <div class="pb5 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">Doodle or Die</h2>
     <section>
-        <p>
-            The concept of Doodle or Die is probably familiar -- it's like the game of telephone, but with drawing in between turns. The game was created during a 48-hour Node.js hackaton in 2010 and expanded on in the months after by Dylan Greene, Aaron Silverman, Wyn Bennett, and myself.
-        </p>
-        <p>
-            I designed the logo and website, built the user experience, created new features, and lost many hours playing the game myself.
-        </p>
-        <p>
-            While the game is no longer actively maintained, it still attracts thousands of players a week. It's fun as heck.
-        </p>
-        <p class="f3 mb5 pb4 bb b--{{pageColor}}">
-            <strong>> <a href="http://doodleordie.com">doodleordie.com</a></strong>
-        </p>
+        <div class="pt4 mw8-l">
+            <p>
+                The concept of Doodle or Die is probably familiar -- it's like the game of telephone, but with drawing in between turns. The game was created during a 48-hour Node.js hackaton in 2010 and expanded on in the months after by Dylan Greene, Aaron Silverman, Wyn Bennett, and myself.
+            </p>
+            <p>
+                I created the logo and website, designed the user experience, coded new features, and lost many hours playing the game myself.
+            </p>
+            <p>
+                The still attracts thousands of players a week.
+            </p>
+            <p class="f3 mb5 pb4 bb b--{{pageColor}}">
+                <strong>> <a href="http://doodleordie.com">doodleordie.com</a></strong>
+            </p>
+        </div>
     </section>
     <section class="pb3">
         <div class="flex-ns pb5 mb5 bb b--{{pageColor}}">

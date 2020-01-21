@@ -12,7 +12,6 @@ shortHeader: true
 {% assign pageColor =  'light-blue' %}
 
 <div class="pb4 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">Windoodles</h2>
     <section>
         <p>
             For about a year in 2012, I carried dry-erase markers around in my bag, drawing on windows, doors, and signs.

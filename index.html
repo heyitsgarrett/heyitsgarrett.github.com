@@ -38,17 +38,25 @@ title: Garrett Miller
 
             <hr />
 
-            <h3 class="">Projects</h3>
+            <h3 class="">Projects & Writing</h3>
 
             <ul class="--list ma0 pa0 pb4 pb5-ns">
                 {% assign sortedProjects = (site.projects | sort: 'date') | reverse %}
                 {% for proj in sortedProjects %}
-                <li>
-                    <span class="el-decorator">{{ proj.date | date: '%Y'  }}</span>
-                    <a href="{{ proj.url }}">
-                        {{ proj.title }}
-                    </a>
-                </li>
+                    {% if proj.dontlist != true %}
+                        <li>
+                            <span class="el-decorator">{{ proj.date | date: '%Y'  }}</span>
+                            {% if proj.externalLink %}
+                            <a href="{{ proj.externalLink }}" target="_blank" class="--externalLink">
+                                {{ proj.title }}
+                            </a>
+                            {% else %}
+                            <a href="{{ proj.url }}">
+                                {{ proj.title }}
+                            </a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
 
@@ -59,14 +67,6 @@ title: Garrett Miller
                 <img src="/images/site/garrett-miller.jpg" alt="Garrett Miller" class="br4 mw5-m mw6-l w-100-l dib" />
             </div>
         </div>
-    </div>
-    <div>
-
-        <ul class="--arrow f3 ma0 pa0 b lh-title pb4 pb5-ns">
-            <li><a href="/photography/" class="hover-hot-pink">Some photos</a></li>
-            <li><a href="/sketchbook/" class="hover-hot-pink">Sketchbook</a></li>
-        </ul>
-
     </div>
 </div>
 

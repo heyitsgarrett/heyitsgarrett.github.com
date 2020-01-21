@@ -12,11 +12,12 @@ shortHeader: true
 {% assign pageColor =  'FD88E9' %}
 
 <div class="pb5 f4 lh-copy">
-    <h2 class="f2 f-subheadline-ns mv4">1.5 Million Runs</h2>
     <section>
-        <p>
-            While running the Labs team at Mapbox, I worked with <a href="https://twitter.com/enf">Eric Fischer</a> and <a href="http://runkeeper.com/">RunKeeper</a> to collect, parse, and visualize over 1,500,000 fitness activities from around the world.
-        </p>
+        <div class="pt4 mw8-l">
+            <p>
+                At Mapbox, I worked with <a href="https://twitter.com/enf">Eric Fischer</a> and <a href="http://runkeeper.com/">RunKeeper</a> to collect, parse, and visualize over 1,500,000 fitness activities from around the world.
+            </p>
+        </div>
         <p class="f3 mb5 pb4 bb b--{{pageColor}}">
             <strong>> <a href="https://a.tiles.mapbox.com/v4/heyitsgarrett.kf2a2nb1/page.html?access_token=pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA#3/27.92/-53.79">view at mapbox.com</a></strong>
         </p>
