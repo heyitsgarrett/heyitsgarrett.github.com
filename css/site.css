@@ -120,6 +120,19 @@ ul.--list .el-decorator {
   .mt--7-m { margin-top: -7rem; }
 }
 
+.el-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(4, 1fr); */
+  grid-gap: 1em;
+}
+
+.el-galleryItem > a:hover {
+  background: #eee;
+  box-shadow: 0 0 0 5px #eee;
+  border-radius: 1px;
+}
+
 /* It's a party */
 .partymonster {
   background: url('/images/partymonster.png') 0 0 no-repeat;

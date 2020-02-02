@@ -41,7 +41,7 @@ title: Garrett Miller
             <h3 class="">Projects & Writing</h3>
 
             <ul class="--list ma0 pa0 pb4 pb5-ns">
-                {% assign sortedProjects = (site.projects | sort: 'date') | reverse %}
+                {% assign sortedProjects = site.projects | sort: 'date' | reverse %}
                 {% for proj in sortedProjects %}
                     {% if proj.dontlist != true %}
                         <li>
