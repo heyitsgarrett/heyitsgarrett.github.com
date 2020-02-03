@@ -65,8 +65,18 @@
 	</header>
 
 	{% if page.image and page.thumbnail %}
-		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns flex-l justify-stretch-l mw9 center">
-			<div class="w-100 w-30-l pr4" style="border-color: #ccc">
+		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns justify-stretch-l mw9 center">
+			
+			<div class="w-100">
+				<div 
+					class="h-100 w-100"
+					style="
+						max-height: 64rem;
+					"
+				>
+				<img src="{{page.image}}" alt="">
+			</div>
+			<div class="w-100" style="border-color: #ccc">
 				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
 				<p class="f5 silver mt3 mt4-l lh-copy">
 					{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
@@ -91,16 +101,6 @@
 						{% endif %}					
 					>></a>
 				</div>
-			</div>
-			<div class="w-100 w-70-l pt4-s pt4-m ph4-l pr3 pr4-m pr4-l">
-				<div 
-					class="h-100 w-100"
-					style="
-						max-height: 64rem;
-					"
-				>
-				<img src="{{page.image}}" alt="">
-			</div>
 			</div>
 		</section>
 	{% else %}
