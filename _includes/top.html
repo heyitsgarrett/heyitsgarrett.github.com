@@ -1,7 +1,13 @@
 <html>
+
 <head>
-<title>Garrett Miller &times; {{ page.title }}</title>
-<!--
+  <title>
+    hey it's garrett!
+    {% if page.title.size > 1 %}
+    &times; {{ page.title }}
+    {% endif %}
+  </title>
+  <!--
                                                                                                                  
                 hhhhhhh                  hhhhhhh                                lllllll lllllll                  
                 h:::::h                  h:::::h                                l:::::l l:::::l                  
@@ -22,48 +28,164 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
                                                                                                      
     
 -->
-<meta name="description" content="Software guy, designer, photographer, and occassional illustrator living a very lucky life in California.">
-<meta name="keywords" content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography,development,unicorns">
+  <meta
+    name="description"
+    content="Software guy, designer, photographer, and occassional illustrator living a very lucky life in California."
+  >
+  <meta
+    name="keywords"
+    content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography,development,unicorns"
+  >
 
-<link rel="stylesheet" type="text/css" href="/css/site.css" media="screen">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="theme-color" content="#ffffff">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/css/site.css"
+    media="screen"
+  >
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon-32x32.png"
+  >
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon-16x16.png"
+  >
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+  <link
+    rel="mask-icon"
+    href="/safari-pinned-tab.svg"
+    color="#5bbad5"
+  >
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
 
 
-<meta property="og:title" content="Garrett Miller">
-<meta property="og:description" content="Software guy, designer, photographer, and occasional illustrator living a very lucky life in California.">
+  <meta
+    property="og:title"
+    content="Garrett Miller"
+  >
+  <meta
+    property="og:description"
+    content="Software guy, designer, photographer, and occasional illustrator living a very lucky life in California."
+  >
 
-{% if page.image %}
-<meta property="og:image" content="{{site.path}}{{page.image}}">
-<meta property="og:url" content="{{site.path}}{{page.url}}">
-<meta name="twitter:card" content="summary_large_image">
+  {% if page.image %}
+  <meta
+    property="og:image"
+    content="{{site.path}}{{page.image}}"
+  >
+  <meta
+    property="og:url"
+    content="{{site.path}}{{page.url}}"
+  >
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
 
-<meta property="og:site_name" content="Garrett Miller">
-<meta name="twitter:image:alt" content="{{page.title}}">
-{% endif %}
-
-<style>
-  {% if include.pageColor contains '#' %}
-    .bg-{{include.pageColor | remove: '#'}} {
-      background-color: {{include.pageColor}};
-    }
-    .color-{{include.pageColor | remove: '#'}} {
-      color: {{include.pageColor}};
-    }
-    .b--{{include.pageColor | remove: '#'}} {
-      border-color: {{include.pageColor}};
-    }
-    .hover-{{include.pageColor | remove: '#'}}:hover {
-      color: {{include.pageColor}};
-    }
+  <meta
+    property="og:site_name"
+    content="Garrett Miller"
+  >
+  <meta
+    name="twitter:image:alt"
+    content="{{page.title}}"
+  >
   {% endif %}
-</style>
+
+  <style>
+    {
+      % if include.pageColor contains '#'%
+    }
+
+    .bg- {
+        {
+        include.pageColor | remove: '#'
+      }
+    }
+
+      {
+      background-color: {
+          {
+          include.pageColor
+        }
+      }
+
+      ;
+    }
+
+    .color- {
+        {
+        include.pageColor | remove: '#'
+      }
+    }
+
+      {
+      color: {
+          {
+          include.pageColor
+        }
+      }
+
+      ;
+    }
+
+    .b-- {
+        {
+        include.pageColor | remove: '#'
+      }
+    }
+
+      {
+      border-color: {
+          {
+          include.pageColor
+        }
+      }
+
+      ;
+    }
+
+    .hover- {
+        {
+        include.pageColor | remove: '#'
+      }
+    }
+
+    :hover {
+      color: {
+          {
+          include.pageColor
+        }
+      }
+
+      ;
+    }
+
+      {
+      % endif %
+    }
+  </style>
 
 
 </head>
