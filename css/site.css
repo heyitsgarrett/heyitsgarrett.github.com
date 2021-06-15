@@ -248,3 +248,16 @@ ul.--list .el-decorator {
     transform: scale(1.5) rotate(-4deg);
   }
 }
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px 12px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . ."
+    ". . . ."
+    ". . . ."
+    ". . . .";
+}

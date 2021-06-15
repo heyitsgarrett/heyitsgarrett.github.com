@@ -1,58 +1,49 @@
 {% if page.color %}
-	{% assign pageColor = page.color %}
+{% assign pageColor = page.color %}
 {% else %}
-	{% assign pageColor = "hotpink" %}
+{% assign pageColor = "hotpink" %}
 {% endif %}
 
 {% include top.html pageColor=pageColor %}
 
 {% if pageColor contains '#' %}
-	{% capture pageColor %}{{pageColor | remove: '#'}}{% endcapture %}
+{% capture pageColor %}{{pageColor | remove: '#'}}{% endcapture %}
 {% endif %}
 
 {% capture the_collection %}{{page.collection}}{% endcapture %}
 {% if page.collection %}
-	{% assign document = site[the_collection] | sort: 'order' %}
+{% assign document = site[the_collection] | sort: 'order' %}
 {% endif %}
 
 {% for links in document %}
-    {% if links.imageTitle == page.imageTitle %}
-      {% unless forloop.first %}
-          {% assign previousUrl = prev.url %}
-      {% endunless %}
-      {% unless forloop.last %}
-          {% assign next = document[forloop.index] %}
-          {% assign nextUrl = next.url %}
-      {% endunless %}
-    {% endif %}
-    {% assign prev = links %}
+{% if links.imageTitle == page.imageTitle %}
+{% unless forloop.first %}
+{% assign previousUrl = prev.url %}
+{% endunless %}
+{% unless forloop.last %}
+{% assign next = document[forloop.index] %}
+{% assign nextUrl = next.url %}
+{% endunless %}
+{% endif %}
+{% assign prev = links %}
 {% endfor %}
 
-<body 
-	id="layout-default" 
-	class="
+<body id="layout-default" class="
 		{% if page.class %}{{ page.class }}{% endif %}
 		w-100
 		bg-white
 		near-black
 		bg-keyline
-	"
->
-	<header
-		id="header"
-		class="
+	">
+	<header id="header" class="
 			bg-{{pageColor}}
 			near-black
 			relative
-		"
-		style="
+		" style="
 			background-blend-mode: multiply;
 			background-repeat: repeat;
-		"
-	>
-		<div
-			class="ph3 pr4-ns pl5-ns pv3 mw9 center"
-		>
+		">
+		<div class="ph3 pr4-ns pl5-ns pv3 mw9 center">
 			<div class="f3 mt2-ns">
 				<a href="/">
 					Garrett Miller
@@ -65,59 +56,41 @@
 	</header>
 
 	{% if page.image and page.thumbnail %}
-		<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns justify-stretch-l mw9 center">
-			
-			<div class="w-100">
-				<div 
-					class="h-100 w-100"
-					style="
-						max-height: 64rem;
-					"
-				>
-				<img src="{{page.image}}" alt="">
+	<section id="anchor-top" class="pl3 pl5-ns pl4-ns pv3 pv4-ns justify-stretch-l mw9 center">
+
+		<div class="w-100 mb4">
+			<img src="{{page.image}}" alt="">
+		</div>
+		<div class="w-100" style="border-color: #ccc">
+			<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
+			<p class="f5 silver mt3 mt4-l lh-copy">
+				{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
+			</p>
+			<div class="items-center mt4 mt5-l flex mb4 mb0-ns justify-center justify-start-ns">
+				<!-- PREV -->
+				<a class="ba b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}" {% if previousUrl %}
+					href="{{previousUrl}}#anchor-top" {% else %} href="/{{page.page}}#anchor-top" {% endif %}>&#60;</a>
+				<!-- NEXT -->
+				<a class="bt br bb b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}" {% if nextUrl %}
+					href="{{nextUrl}}#anchor-top" {% else %} href="/{{page.page}}#anchor-top" {% endif %}>></a>
 			</div>
-			<div class="w-100" style="border-color: #ccc">
-				<h3 id="{{page.imageTitle}}" class="f2 ma0">{{page.imageTitle}}</h3>
-				<p class="f5 silver mt3 mt4-l lh-copy">
-					{{page.date | date: "%Y"}}, {{page.category}}{% if page.imageMeta %}, {{page.imageMeta}}{% endif%}
-				</p>
-				<div class="items-center mt4 mt5-l flex mb4 mb0-ns justify-center justify-start-ns">
-					<!-- PREV -->
-					<a
-						class="ba b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}"
-						{% if previousUrl %}
-							href="{{previousUrl}}#anchor-top"
-						{% else %}
-							href="/{{page.page}}#anchor-top"
-						{% endif %}
-					><</a>
-					<!-- NEXT -->
-					<a
-						class="bt br bb b--silver f4 f3-ns pa2 bold dib no-underline hover-{{pageColor}}"
-						{% if nextUrl %}
-							href="{{nextUrl}}#anchor-top"
-						{% else %}
-							href="/{{page.page}}#anchor-top"
-						{% endif %}					
-					>></a>
-				</div>
-			</div>
-		</section>
+		</div>
+	</section>
 	{% else %}
-		{% if page.shortHeader %}
-			<section id="anchor-top" class="pl3 pl5-ns pr3 pr4-ns pv1 pv2-ns mw9 center">
-				{{content}}
-			</section>
-		{% else %}
-			<section id="anchor-top" class="pr3 pr4-ns pr5-l pl3 pl5-ns f4 lh-copy mw9 center"> 
-				<article class="f4 f3-ns pv4 pt5-ns pb0-ns measure">
-					{{ page.description }}
-				</article>
-				<article>
-					{{ content }}
-				</article>
-			</section>
-		{% endif %}
+	{% if page.shortHeader %}
+	<section id="anchor-top" class="pl3 pl5-ns pr3 pr4-ns pv1 pv2-ns mw9 center">
+		{{content}}
+	</section>
+	{% else %}
+	<section id="anchor-top" class="pr3 pr4-ns pr5-l pl3 pl5-ns f4 lh-copy mw9 center">
+		<article class="f4 f3-ns pv4 pt5-ns pb0-ns measure">
+			{{ page.description }}
+		</article>
+		<article>
+			{{ content }}
+		</article>
+	</section>
+	{% endif %}
 	{% endif %}
 
 
@@ -132,33 +105,34 @@
 			"round.png",
 			"seigaiha.png"
 		];
-		var rand = Math.floor(Math.random()*headerBackgrounds.length);
+		var rand = Math.floor(Math.random() * headerBackgrounds.length);
 		var headerEl = document.getElementById('header')
 		if (headerEl) {
 			console.log(headerEl);
 			headerEl.style.backgroundImage = 'url(/images/site/patterns/' + headerBackgrounds[rand] + ')';
 		}
 		{% if page.image and page.thumbnail %}
-		document.onkeydown = function(e) { // listen to keyboard events
+		document.onkeydown = function (e) { // listen to keyboard events
 			switch (e.keyCode) {
 				case 27: // ESC
 					window.location.href = '/{{page.page}}#anchor-top';
 					break;
 				case 37: // LEFT
 					{% if previousUrl %}
-							window.location.href = '{{previousUrl}}#anchor-top';
+					window.location.href = '{{previousUrl}}#anchor-top';
 					{% endif %}
 					break;
 				case 39: // RIGHT
 					{% if nextUrl %}
-						window.location.href = '{{nextUrl}}#anchor-top';
+					window.location.href = '{{nextUrl}}#anchor-top';
 					{% else %}
-						window.location.href = '/{{page.page}}';
+					window.location.href = '/{{page.page}}';
 					{% endif %}
-				break;
+					break;
 			}
 		}
 		{% endif %}
 	</script>
 </body>
+
 </html>

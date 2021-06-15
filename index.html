@@ -20,7 +20,7 @@ title: Garrett Miller
             </p>
 
             <p>
-                I live in San Francisco with my partner Georgia and our cat, Monster. I <a
+                I live in Oakland, California with my partner Georgia, our daughter and our cat, Monster. I <a
                     href="https://www.strava.com/athletes/185249">run</a>, <a href="/sketchbook"
                     class="hover-gold">draw</a>, and <a href="/photography" class="hover-green">take photos</a> on very
                 long walks.
@@ -33,7 +33,7 @@ title: Garrett Miller
 
 
             <p class="f6 cb black-50 mb5">
-                Last updated {{ site.time | date: '%b %-d, %Y' }} 
+                Last updated {{ site.time | date: '%b %-d, %Y' }}
             </p>
 
             <hr />
@@ -43,20 +43,20 @@ title: Garrett Miller
             <ul class="--list ma0 pa0 pb4 pb5-ns">
                 {% assign sortedProjects = site.projects | sort: 'date' | reverse %}
                 {% for proj in sortedProjects %}
-                    {% if proj.dontlist != true %}
-                        <li>
-                            <span class="el-decorator">{{ proj.date | date: '%Y'  }}</span>
-                            {% if proj.externalLink %}
-                            <a href="{{ proj.externalLink }}" target="_blank" class="--externalLink">
-                                {{ proj.title }}
-                            </a>
-                            {% else %}
-                            <a href="{{ proj.url }}">
-                                {{ proj.title }}
-                            </a>
-                            {% endif %}
-                        </li>
+                {% if proj.dontlist != true %}
+                <li>
+                    <span class="el-decorator">{{ proj.date | date: '%Y' }}</span>
+                    {% if proj.externalLink %}
+                    <a href="{{ proj.externalLink }}" target="_blank" class="--externalLink">
+                        {{ proj.title }}
+                    </a>
+                    {% else %}
+                    <a href="{{ proj.url }}">
+                        {{ proj.title }}
+                    </a>
                     {% endif %}
+                </li>
+                {% endif %}
                 {% endfor %}
             </ul>
 

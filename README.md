@@ -1,4 +1,3 @@
-Hey, it's Garrett's personal site!
-=============
+Hey!
 
-Built with Jekyll, SASS, [glitter](http://i.imgur.com/KbTpNBA.gif)
+jekyll serve --livereload

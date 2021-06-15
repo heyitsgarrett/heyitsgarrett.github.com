@@ -41,6 +41,8 @@ galleryCode: |
 ---
 {% assign pageColor =  'yellow' %}
 
+
+
 <div class="pt3 pt5-ns">
     {% assign tags =  site.sketchbook | map: 'category' | join: ','  | split: ',' | sort %}
     {% assign previousTag = "" %}
@@ -53,10 +55,10 @@ galleryCode: |
         {% if currentTag != previousTag %}
             <section class="cf mb2 mb6-ns bt bw1 b--{{pageColor}}">
                 <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
-                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                <div class="gallery mt3">
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
-                            <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
+                            <a href="/{{piece.permalink}}.html" class="" title="{{piece.title}}">
                                 <img
                                     src="{{piece.thumbnail}}"
                                     class="w-100 br3 grow"
@@ -71,11 +73,11 @@ galleryCode: |
 
         {% if forloop.last %}
             <section class="cf mb3 mb6-ns bt bw2 b--{{pageColor}}">
-                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt2 ttu">{{ previousTag }}</h3>
-                <div class="w-100 w-75-l fn fl-l mt3 js-grid-gallery">
+                <h3 class="f3 tracked w-100 w-25-l fn fl-l ma0 mt4 ttu">{{ previousTag }}</h3>
+                <div class="gallery mt3">
                     {% for piece in site.sketchbook  %}
                         {% if piece.category == previousTag and piece.image %}
-                            <a href="/{{piece.permalink}}.html" class="db child-element w-25" title="{{piece.title}}">
+                            <a href="/{{piece.permalink}}.html" class="" title="{{piece.title}}">
                                 <img
                                     src="{{piece.thumbnail}}"
                                     class="w-100 br3 grow"
@@ -91,4 +93,3 @@ galleryCode: |
 
     {% endfor %}
 </div>
-
