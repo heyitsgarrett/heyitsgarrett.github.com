@@ -18,20 +18,10 @@ shortHeader: true
                 At Mapbox, I worked with <a href="https://twitter.com/enf">Eric Fischer</a> and <a href="http://runkeeper.com/">RunKeeper</a> to collect, parse, and visualize over 1,500,000 fitness activities from around the world.
             </p>
         </div>
-        <p class="f3 mb5 pb4 bb b--{{pageColor}}">
-            <strong>> <a href="https://a.tiles.mapbox.com/v4/heyitsgarrett.kf2a2nb1/page.html?access_token=pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA#3/27.92/-53.79">view at mapbox.com</a></strong>
-        </p>
     </section>
     <section class="pb3">
-        <div class="w-100 pb5 mb5 dn db-ns bb b--{{pageColor}}">
-            <iframe width="100%"
-                height="600px"
-                frameBorder="0"
-                src="https://a.tiles.mapbox.com/v4/heyitsgarrett.kf2a2nb1.html?access_token=pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA#5/38.617/-95.713"
-            ></iframe>
-        </div>
         <div class="w-100 pb5">
-            <img src="/images/projects/million-runs/map-europe.png" />
+            <img src="/images/projects/million-runs/map-europe.png" class="br2" />
         </div>
         <div class="pb5">
             <div class="w-100 w-50-ns ml-auto-ns mr-auto-ns pa4-ns ba-ns b--{{pageColor}}">
@@ -71,25 +61,21 @@ shortHeader: true
             </div>
         </div>
         <div class="w-100 pb5 mb5">
-            <img src="/images/projects/million-runs/map-london.png" />
+            <img src="/images/projects/million-runs/map-london.png" class="br2" />
             <p class="f4 mid-gray tc pt4 i">London, United Kingdom</p>
         </div>
         <div class="w-100 pb5 mb5">
-            <img src="/images/projects/million-runs/map-nyc.png" />
+            <img src="/images/projects/million-runs/map-nyc.png" class="br2" />
             <p class="f4 mid-gray tc pt4 i">New York City, USA</p>
         </div>
         <div class="w-100 pb5 mb5">
-            <img src="/images/projects/million-runs/map-sf.png" />
+            <img src="/images/projects/million-runs/map-sf.png" class="br2" />
             <p class="f4 mid-gray tc pt4 i">San Francisco, USA</p>
         </div>
-        <div class="w-100 pb5 mb5 bb b--{{pageColor}}">
-            <img src="/images/projects/million-runs/map-sydney.png" />
+        <div class="w-100 pb5 mb5">
+            <img src="/images/projects/million-runs/map-sydney.png" class="br2" />
             <p class="f4 mid-gray tc pt4 i">Sydney, Australia</p>
         </div>
     </section>
-    <p class="f2 mb4 pb4 tc">
-        <strong>> <a href="https://a.tiles.mapbox.com/v4/heyitsgarrett.kf2a2nb1/page.html?access_token=pk.eyJ1IjoiaGV5aXRzZ2FycmV0dCIsImEiOiIwdWt5ZlpjIn0.73b7Y47rgFnSD7QCNeS-zA#3/27.92/-53.79">view at mapbox.com</a></strong>
-    </p>
-
 </div>
 

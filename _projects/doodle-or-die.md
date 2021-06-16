@@ -23,13 +23,13 @@ shortHeader: true
             <p>
                 The still attracts thousands of players a week.
             </p>
-            <p class="f3 mb5 pb4 bb b--{{pageColor}}">
+            <p class="f3 mb5 pb4">
                 <strong>> <a href="http://doodleordie.com">doodleordie.com</a></strong>
             </p>
         </div>
     </section>
     <section class="pb3">
-        <div class="flex-ns pb5 mb5 bb b--{{pageColor}}">
+        <div class="flex-ns pb5 mb5">
             <div class="w-100 w-40-ns flex justify-center align-center mb4 mb0-ns br4 pa4" style="background: black url(/images/projects/doodle-or-die/slide-background.jpg) center center;">
                 <img src="/images/projects/doodle-or-die/logo.png" class="self-center" />
             </div>
@@ -37,7 +37,7 @@ shortHeader: true
                 <img src="/images/projects/doodle-or-die/screen-game.jpg" />
             </div>
         </div>
-        <div class="w-100 pb5 mb5 bb b--{{pageColor}} tc">
+        <div class="w-100 pb5 mb5 tc">
             <img src="/images/projects/doodle-or-die/logos.jpg" />
             <p class="f4 mid-gray tc pt4 i">A few user-created renditions of the logo.</p>
         </div>

@@ -38,13 +38,31 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
   }
 }
 
+blockquote,
+.footnotes {
+  color: #333;
+  font-size: .85em;
+  line-height: 28px;
+  
+}
+
+blockquote {
+  border-left: 4px solid hotpink;
+  padding-left: 8px;
+}
+
+.footnotes {
+  margin-top: 360px;
+}
+
 /* -------------------------------------------------------------------------------------------------------------- */
 /* Layout  */
 
 body {
   background-size: 40px;
   font-family: 'New Rail Alphabet', sans-serif;
-  font-weight: 300;  
+  font-weight: 300;
+  color: #111;
 }
 
 @media screen and (min-width: 60em) {
@@ -53,8 +71,12 @@ body {
   }
 }
 
-h1,h2, .bold, strong, b, .lh-copy a {
+h1,h2, h3, .bold, strong, b, .lh-copy a {
   font-family: 'New Rail Alphabet Bold', sans-serif;
+}
+
+h3 { 
+  margin: 3em 0 12px;
 }
 
 hr {
@@ -248,7 +270,7 @@ ul.--list .el-decorator {
     transform: scale(1.5) rotate(-4deg);
   }
 }
-
+/* 
 
 .gallery {
   display: grid;
@@ -260,4 +282,26 @@ ul.--list .el-decorator {
     ". . . ."
     ". . . ."
     ". . . .";
+} */
+
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+gap: 12px 12px;
+justify-items: center;
+margin: 0;
+}
+
+.gallery--large {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* The Images */
+.gallery > img,
+.gallery > div {
+  align-self: center;
+  max-width: 100%;
+  max-height: 220px;
+  height: auto;
+  object-fit: cover;
 }

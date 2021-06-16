@@ -12,7 +12,7 @@ shortHeader: true
 {% assign pageColor = 'F7E6A4' %}
 
 <div class="pb5 f4 lh-copy">
-    <section class="pb4 bb b--{{pageColor}}">
+    <section class="pb4">
         <div class="pt4 mw8-l">
             <p>
                 A friend, <a href="https://twitter.com/SVBliss/">Sarah-Violet Bliss</a>, and her creative partner <a href="https://twitter.com/gcharlesrogers">Charles Rogers</a> wanted a logo for their new production company, <strong>Quiet and Considerate</strong>, to play at the end of their television show <a href="http://www.tbs.com/shows/search-party">Search Party</a>.
@@ -31,7 +31,7 @@ shortHeader: true
                 <img src="/images/projects/quiet-and-considerate/logo-variation-2.jpg" />
             </div>
         </div>
-        <div class="cf mb5 pb5 bb b--{{pageColor}}">
+        <div class="cf mb5 pb5 ">
             <div class="w-100 w-50-ns fl ph4-m ph5-l">
                 <img src="/images/projects/quiet-and-considerate/logo-variation-3.jpg" />
             </div>
@@ -40,7 +40,7 @@ shortHeader: true
             </div>
             <p class="f4 mid-gray tc pt4 cb i">A collection of some of the initial logo sketches.</p>
         </div>
-        <div class="mb5 pb5 bb b--{{pageColor}} ph0 ph4-m ph6-l">
+        <div class="mb5 pb5  ph0 ph4-m ph6-l">
             <img src="/images/projects/quiet-and-considerate/QuietAndConsiderate.jpg" class="br4" />
             <p class="f4 mid-gray tc pt4 i">The final logo</p>
         </div>
