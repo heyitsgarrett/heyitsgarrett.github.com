@@ -8,40 +8,6 @@ date: 1-1-2018
 color: '#BFE3F2'
 image: /images/projects/doodle-or-die/screen-game.jpg
 shortHeader: true
-galleryCode: |
-    <script type="text/javascript">
-    var galleries = document.querySelectorAll('.js-grid-gallery');
-    var macyInstances = [];
-    var macyOptions = {
-        trueOrder: true,
-        waitForImages: false,
-        debug: false,
-        margin: 16,
-        mobileFirst: true,
-        columns: 1,
-        breakAt: {
-        480: 2,
-        960: {
-            margin: 32,
-            columns: 2
-        },
-        1120: {
-            margin: 32,
-            columns: 3
-        },
-        1920: {
-            columns: 4
-        }
-        }
-    };
-
-    for (var i = 0; i < galleries.length; i++) {
-        var newId = 'galleryinstance-' + i;
-        galleries[i].id = newId;
-        macyOptions.container = '#' + newId;
-        macyInstances.push(Macy(macyOptions));
-    }
-    </script>
 ---
 {% assign pageColor =  'BFE3F2' %}
 
