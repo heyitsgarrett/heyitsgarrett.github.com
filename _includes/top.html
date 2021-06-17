@@ -30,11 +30,11 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
 -->
   <meta
     name="description"
-    content="Software guy, designer, photographer, and occassional illustrator living a very lucky life in California."
+    content="Software guy and occassional illustrator living a very lucky life in California."
   >
   <meta
     name="keywords"
-    content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography,development,unicorns"
+    content="garrett miller,garrett,garret miller, garret, doodle, art, drawing, photography, web development 2.0, web development 3.0, web development 4.0, unicorns"
   >
 
   <link
@@ -86,7 +86,7 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
   >
   <meta
     property="og:description"
-    content="Software guy, designer, photographer, and occasional illustrator living a very lucky life in California."
+    content="Software guy and occasional illustrator living a very lucky life in California."
   >
 
   {% if page.image %}
@@ -114,77 +114,20 @@ o:::::::::::::::oh:::::h     h:::::h      h:::::h     h:::::h e::::::::eeeeeeee 
   {% endif %}
 
   <style>
-    {
-      % if include.pageColor contains '#'%
+  {% if include.pageColor contains '#' %}
+    .bg-{{include.pageColor | remove: '#'}} {
+      background-color: {{include.pageColor}};
     }
-
-    .bg- {
-        {
-        include.pageColor | remove: '#'
-      }
+    .color-{{include.pageColor | remove: '#'}} {
+      color: {{include.pageColor}};
     }
-
-      {
-      background-color: {
-          {
-          include.pageColor
-        }
-      }
-
-      ;
+    .b--{{include.pageColor | remove: '#'}} {
+      border-color: {{include.pageColor}};
     }
-
-    .color- {
-        {
-        include.pageColor | remove: '#'
-      }
+    .hover-{{include.pageColor | remove: '#'}}:hover {
+      color: {{include.pageColor}};
     }
-
-      {
-      color: {
-          {
-          include.pageColor
-        }
-      }
-
-      ;
-    }
-
-    .b-- {
-        {
-        include.pageColor | remove: '#'
-      }
-    }
-
-      {
-      border-color: {
-          {
-          include.pageColor
-        }
-      }
-
-      ;
-    }
-
-    .hover- {
-        {
-        include.pageColor | remove: '#'
-      }
-    }
-
-    :hover {
-      color: {
-          {
-          include.pageColor
-        }
-      }
-
-      ;
-    }
-
-      {
-      % endif %
-    }
+  {% endif %}
   </style>
 
 
