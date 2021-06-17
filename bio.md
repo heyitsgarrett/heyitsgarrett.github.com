@@ -1,7 +1,12 @@
 ---
 layout: portfolio
-shortHeader: true
 color: '#BFE3F2'
+title: Everything I've ever done
+shortHeader: true
+date: 1-1-2005
+color: light-green
+image: /images/projects/envelope-collective/EnvelopeCollective-Cover.jpg
+shortHeader: true
 ---
 
 {% assign pageColor =  'BFE3F2' %}
@@ -9,16 +14,14 @@ color: '#BFE3F2'
 <div class="cf">
     <div class="f4 lh-copy mb4 db-s flex-m flex-l flex-wrap">
         <div class="w-100 w-50-l">
-            <h1>Everything I've ever done</h1>
-
 
             <h3>Analog years</h3>
 
 
             <div class="gallery">
-                <img class="br2" src="/images/bio/farm.jpg">
-                <img class="br2 hidden-m" src="/images/bio/farm2.jpg">
-                <img class="br2 hidden-s" src="/images/bio/farm4.jpg">
+                <img class="br2" src="/images/bio/farm.jpg" alt="A pleasant farm road in the daytime in Maryland" />
+                <img class="br2 hidden-m" src="/images/bio/farm2.jpg" alt="A barn in the autumn with several sheep milling about" />
+                <img class="br2 hidden-s" src="/images/bio/farm4.jpg" alt="A field of corn during sunset in Maryland" />
             </div>
 
 
