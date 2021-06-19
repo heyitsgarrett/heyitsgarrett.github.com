@@ -175,7 +175,7 @@ shortHeader: true
             </div>
 
             <p>I joined <a href="https://www.slack.com/" class="highlight" style="background-color:#DAAFFF">Slack</a> as an engineer,
-                working initially with the newly-created Platform team to
+                working with the newly-created Platform team to
                 <a href="https://twitter.com/heyitsgarrett/status/677552114399207424">build and launch</a> the <a
                    href="https://www.slack.com/apps">App
                     Directory</a>. I eventually helped create and grow <a
