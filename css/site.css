@@ -76,7 +76,7 @@ h1,h2, h3, .bold, strong, b, .lh-copy a {
 }
 
 h3 { 
-  margin: 4em 0 16px;
+  margin: 2em 0 16px;
 }
 
 hr {
@@ -296,9 +296,13 @@ ul.--list .el-decorator {
 .gallery {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-gap: 12px 12px;
+gap: 20px 20px;
 justify-items: center;
-margin: 0;
+margin: 40px 0 20px;
+}
+
+.gallery-single {
+  margin: 40px 0 16px;
 }
 
 .gallery--large {
@@ -316,10 +320,11 @@ margin: 0;
 }
 
 .highlight{
-  padding: 0 4px;
+  text-decoration-style: wavy;
+  text-decoration-skip: none;
 }
 
 .highlight:hover {
-  color: #111;
-  text-decoration-color: #111;
+  color: #111 !important;
+  text-decoration-color: #111 !important;
 }

@@ -15,9 +15,6 @@ shortHeader: true
     <div class="f4 lh-copy mb4 db-s flex-m flex-l flex-wrap">
         <div class="w-100 w-50-l">
 
-            <h3>Analog years</h3>
-
-
             <div class="gallery">
                 <img class="br2" src="/images/bio/farm.jpg" alt="A pleasant farm road in the daytime in Maryland" />
                 <img class="br2 hidden-m" src="/images/bio/farm2.jpg" alt="A barn in the autumn with several sheep milling about" />
@@ -25,9 +22,8 @@ shortHeader: true
             </div>
 
 
-            <p>I grew up in rural Maryland, helping raise animals and making cash on the weekends tending to farms nearby.
-                The plan was to keep doing this until college, but then I discovered the web.</p>
-
+            <p>
+            I grew up in rural Maryland during the waning analog years, helping raise animals and making cash on the weekends tending to farms nearby. The plan was to keep doing this until college, but then I discovered the web.</p>
 
             <h3>2000</h3>
 
@@ -37,17 +33,16 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="Virtual Sprockets homepage, 2002" src="/images/bio/virtualsprockets.jpg" class="br2" />
+            <img alt="Virtual Sprockets homepage, 2002" src="/images/bio/virtualsprockets.jpg" class="br2 gallery-single" />
 
 
             <p>I got pretty good with Photoshop and started working after school for a web development company, <a
-                   href="http://www.virtualsprockets.com/"  class="highlight" style="background-color:#D5D8FF">VirtualSprockets</a>, where I eventually learned to code. We
+                   href="http://www.virtualsprockets.com/"  class="highlight" style="color:#5652ba; text-decoration-color: #5652ba">VirtualSprockets </a>, where I eventually learned to code. We
                 built mailing list
                 software and early online web store infrastructure for non-profits like the <a href="https://aclu.org/">ACLU</a>
                 and <a href="https://defenders.org">Defenders of Wildlife</a>. In 2003, the company was acquired by <a
                    href="https://www.crunchbase.com/organization/kintera">Kintera</a>, which was bought five years later by <a
-                   href="https://www.crunchbase.com/organization/blackbaud">Blackbaud</a>. There's just one fish left in
-                the end, I suppose.</p>
+                   href="https://www.crunchbase.com/organization/blackbaud">Blackbaud</a>.</p>
 
 
             <h3>2005</h3>
@@ -58,10 +53,9 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="The Envelope Collective" src="/images/projects/envelope-collective/EnvelopeCollective-Cover.jpg" class="br2">
+            <img alt="The Envelope Collective" src="/images/projects/envelope-collective/EnvelopeCollective-Cover.jpg" class="br2 gallery-single">
 
-            <p>I created <a href="/projects/envelope-collective" class="highlight" style="background-color:#f59590">The Envelope
-                    Collective</a> with <a href="http://mrmrs.cc/">Adam Morse</a>
+            <p>I created <a href="/projects/envelope-collective" class="highlight" style="color:#ad170c; text-decoration-color: #ad170c">The Envelope Collective </a> with <a href="http://mrmrs.cc/">Adam Morse</a>
                 while we were attending Oberlin College in Ohio. We rented a post office box and invited people from the
                 internet to send us art in the mail, with the promise to scan and share every piece we received. Over two years, we
                 received 1,500 submissions from 30 countries and shared them all online. It was even the Yahoo site of the day,
@@ -87,7 +81,7 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="Virginia Square metro" src="/images/bio/virginia.jpg" class="br2" />
+            <img alt="Virginia Square metro" src="/images/bio/virginia.jpg" class="br2 gallery-single" />
 
             <p>I graduated and got a job working for a defense contractor in Washington, DC. I had a security clearance and did classified
                 work for various government agencies.</p>
@@ -101,7 +95,7 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="President Obama visits Opower in 2010" src="/images/bio/obama-opower.jpg" class="br2" />
+            <img alt="President Obama visits Opower in 2010" src="/images/bio/obama-opower.jpg" class="br2 gallery-single" />
 
             <p>Eventually seeking a more mission-oriented project, I joined a tiny company called Positive Energy as its first
                 designer and frontend engineer. We sent <a
@@ -110,9 +104,9 @@ shortHeader: true
                 nearby as part of an effort to
                 reduce overall energy consumption <sup><a class="footnote" href="#fn3-25665" id="fnr3-25665"
                        title="see footnote">1</a></sup>. The plan worked -- the company got bigger, was mercifully renamed to <a
-                   href="https://opower.com/" class="highlight" style="background-color:#A3D1FF">Opower</a>, received a <a
+                   href="https://opower.com/" class="highlight" style="color:#3978d9; text-decoration-color: #3978d9">Opower </a>, received a <a
                    href="https://www.youtube.com/watch?v=k6bgVKSnMs0">visit from the
-                    President</a>, <a href="https://www.vox.com/2014/4/4/11625292/opower-shares-soar-in-ipo">went public</a>, and then went less public into the waiting arms of <a
+                    President</a>, <a href="https://www.vox.com/2014/4/4/11625292/opower-shares-soar-in-ipo">went public</a>, and then went less public into the arms of <a
                    href="https://www.oracle.com/corporate/pressrelease/oracle-buys-opower-050216.html">Oracle</a>.</p>
 
 
@@ -124,20 +118,19 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="Doodle or Die website screenshot" src="/images/projects/doodle-or-die/screen-explore.jpg" class="br2" />
+            <img alt="Doodle or Die website screenshot" src="/images/projects/doodle-or-die/screen-explore.jpg" class="br2 gallery-single" />
 
 
             <p>Moonlighting after-hours at Opower, I worked on a game called <a href="/projects/doodle-or-die" class="highlight"
-                   style="background-color:#F6FF93">Doodle or Die</a> with a few
+                   style="color:#3f77f8; text-decoration-color: #3f77f8">Doodle or Die </a> with a few
                 other folks
                 <sup><a class="footnote" href="#fn4-25665" id="fnr4-25665" title="see footnote">2</a></sup> . The concept is
                 probably familiar -- it's like the game of telephone, but with a drawing round every other turn. At its peak, we had over
                 3 million players creating millions of drawings a month. It was so much fun to work on this game.</p>
 
 
-            <p>I also had a few smaller creative projects, <a href="/projects/windoodles">Windoodles</a>, <a
-                   href="/projects/loudgif">LOUDGIF</a>, and <a href="/projects/imaginawesome">Imaginawesome</a>. All were cute and
-                whimsical, back when the internet was still the right size for those kinds of projects.</p>
+            <p>I also had a few smaller creative projects, notably <a href="/projects/windoodles">Windoodles</a> and <a href="/projects/imaginawesome">Imaginawesome</a>. All were cute and
+                whimsical, back when the internet was still the right size for those kinds of things.</p>
 
 
             <h3>2013</h3>
@@ -148,9 +141,9 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <img alt="The Mapbox DC office, 2014" src="/images/bio/mapbox.jpg" class="br2">
+            <img alt="The Mapbox DC office, 2014" src="/images/bio/mapbox.jpg" class="br2 gallery-single">
 
-            <p>Seeking smaller company vibes again, I connected with <a href="https://mapbox.com" class="highlight" style="background-color: #FFBCD8">Mapbox</a> to focus on design and
+            <p>Seeking early startup vibes again, I joined <a href="https://mapbox.com" class="highlight" style="color: hotpink; text-decoration-color: hotpink">Mapbox </a> to focus on design and
                 engineering, eventually creating and leading the Labs team. I built <a
                    href="https://blog.mapbox.com/download-the-completely-redesigned-meattext-5f0189400f5b">mobile apps</a>, <a
                    href="projects/million-runs">made map visualizations</a>,
@@ -174,7 +167,7 @@ shortHeader: true
                 <img alt="The Slack Kit project logo" src="/images/bio/slack-kit-logo.png" class="br2 hidden-s">
             </div>
 
-            <p>I joined <a href="https://www.slack.com/" class="highlight" style="background-color:#DAAFFF">Slack</a> as an engineer,
+            <p>I joined <a href="https://www.slack.com/" class="highlight" style="color:#6e13a6; text-decoration-color: #6e13a6">Slack </a> as an engineer,
                 working with the newly-created Platform team to
                 <a href="https://twitter.com/heyitsgarrett/status/677552114399207424">build and launch</a> the <a
                    href="https://www.slack.com/apps">App
@@ -184,10 +177,9 @@ shortHeader: true
                 also shipped <a href="https://twitter.com/heyitsgarrett/status/741390884185350144">bugs</a>, <a
                    href="https://twitter.com/SlackHQ/status/1172165133956603904">dark mode</a>, a <a
                    href="https://twitter.com/heyitsgarrett/status/1085690889194823681">company rebrand</a>, and a lot of other code that
-                may be holding a few rectangles together somewhere deep in the application.</p>
+                may be holding a few rectangles together somewhere down deep in the application.</p>
 
-            <p>Over time, Slack's Accessibility team was combined with Slack Kit into the Product Systems team, which I lead
-                during my final two years with the company.</p>
+            <p>Over time, Slack's Accessibility team was combined with Slack Kit into the Product Systems team, which I lead during my final two years with the company.</p>
 
 
             <h3>2021</h3>
@@ -199,7 +191,7 @@ shortHeader: true
             -->
 
             <p>I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It's a company named <a
-                   href="https://www.wonderful.tools/" class="highlight" style="background-color:#111; color: #fff">Wonderful Tools</a>, and a product
+                   href="https://www.wonderful.tools/" class="highlight" style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</a>, and a product
                 that doesn't exist yet. I'll share more about what
                 we're building soon. I think it
                 could be pretty cool :)</p>

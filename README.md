@@ -1,3 +1,3 @@
-Hey!
+# Hey!
 
-jekyll serve --livereload
+`jekyll serve --livereload`
