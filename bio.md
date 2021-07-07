@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 color: '#BFE3F2'
-title: Everything I've ever done
+title: What I've been up to for the last 20 years
 shortHeader: true
 date: 1-1-2005
 color: light-green
@@ -23,7 +23,7 @@ shortHeader: true
 
 
             <p>
-            I grew up in rural Maryland during the waning analog years, helping raise animals and making cash on the weekends tending to farms nearby. The plan was to keep doing this until college, but then I discovered the web.</p>
+            I grew up in rural Maryland during the waning analog years, helping raise animals and making cash on the weekends tending to farms nearby. The plan was to keep doing this until college, but I discovered the web.</p>
 
             <h3>2000</h3>
 
@@ -42,7 +42,7 @@ shortHeader: true
                 software and early online web store infrastructure for non-profits like the <a href="https://aclu.org/">ACLU</a>
                 and <a href="https://defenders.org">Defenders of Wildlife</a>. In 2003, the company was acquired by <a
                    href="https://www.crunchbase.com/organization/kintera">Kintera</a>, which was bought five years later by <a
-                   href="https://www.crunchbase.com/organization/blackbaud">Blackbaud</a>.</p>
+                   href="https://www.crunchbase.com/organization/blackbaud">Blackbaud</a>, which will probably get bought by someone else down the road.</p>
 
 
             <h3>2005</h3>
@@ -167,7 +167,7 @@ shortHeader: true
                 <img alt="The Slack Kit project logo" src="/images/bio/slack-kit-logo.png" class="br2 hidden-s">
             </div>
 
-            <p>I joined <a href="https://www.slack.com/" class="highlight" style="color:#6e13a6; text-decoration-color: #6e13a6">Slack </a> as an engineer,
+            <p>I began working at <a href="https://www.slack.com/" class="highlight" style="color:#6e13a6; text-decoration-color: #6e13a6">Slack </a> as an engineer,
                 working with the newly-created Platform team to
                 <a href="https://twitter.com/heyitsgarrett/status/677552114399207424">build and launch</a> the <a
                    href="https://www.slack.com/apps">App
@@ -224,7 +224,7 @@ shortHeader: true
 
 
     <div class="mt6 mb4">
-        <div class="h3 w3 partymonster center db" title="Whoa there, please don't pet the Monster">
+        <div class="h3 w3 partymonster db" title="Whoa there, please don't pet the Monster">
             <!-- Party monster! -->
         </div>
     </div>
