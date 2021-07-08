@@ -25,13 +25,13 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 @media screen and (min-width: 30em) {
   .bg-keyline{
-    background: linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background: linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
     background-position: 2rem 0;
     background-repeat: repeat-y;
     background-size: 1px;
   }
   .bg-keyline-black {
-    background: linear-gradient(90deg, #111 1px, transparent 1px);
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 1px, transparent 1px);
     background-position: 2rem 0;
     background-repeat: repeat-y;
     background-size: 1px;
@@ -193,9 +193,13 @@ ul.--list .el-decorator {
 @media screen and (min-width: 60em) {
   /* Splash image foolery */
   .el-splash-image {
-    margin-top: -7em;
+    margin-top: -6em;
     margin-left: 2em;
   }
+}
+
+.el-splash-image img {
+  box-shadow: 6px 6px 0px rgba(0,0,0,.8);
 }
 
 /* Back button */
@@ -210,7 +214,7 @@ ul.--list .el-decorator {
     content: '';
     width: calc(2em + 1px);
 
-    background: linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background: linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
     background-position: 2rem 0;
     background-repeat: repeat-y;
     background-size: 1px;
