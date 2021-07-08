@@ -144,7 +144,7 @@ shortHeader: true
                     class="highlight" style="color:#3f77f8; text-decoration-color: #3f77f8">Doodle or Die </a> with a
                 few
                 other folks
-                <sup><a class="footnote" href="#fn4-25665" id="fnr4-25665" title="see footnote">2</a></sup> . The
+                <sup><a class="footnote" href="#fn4-25665" id="fnr4-25665" title="see footnote">2</a></sup>. The
                 concept is
                 probably familiar -- it's like the game of telephone, but with a drawing round every other turn. At its
                 peak, we had over
@@ -202,19 +202,19 @@ shortHeader: true
                     href="https://www.slack.com/apps">App
                     Directory</a>. I eventually helped create and grow <a
                     href="https://slack.engineering/the-gradual-design-system-how-we-built-slack-kit/">Slack Kit</a>,
-                Slack's interface
-                design system. It's the library of buttons and knobs that live between Slack's code and users' button
-                presses. I
-                also shipped <a href="https://twitter.com/heyitsgarrett/status/741390884185350144">bugs</a>, <a
-                    href="https://twitter.com/SlackHQ/status/1172165133956603904">dark mode</a>, a <a
+                Slack's interface design system <sup><a class="footnote" href="#fn4-kit" id="fnr4-kit"
+                        title="see footnote">3</a></sup>. I also shipped <a
+                    href="https://twitter.com/heyitsgarrett/status/741390884185350144">bugs</a>,
+                <a href="https://twitter.com/SlackHQ/status/1172165133956603904">dark mode</a>, a <a
                     href="https://twitter.com/heyitsgarrett/status/1085690889194823681">company rebrand</a>, and a lot
                 of other code that
                 may be holding a few rectangles together somewhere down deep in the application.
             </p>
 
-            <p>I eventually began running the Slack Kit team, overseeing engineering and product direction. Slack's
-                Accessibility team was eventually combined with Slack Kit into the Product Systems team, which I
-                lead for my final two years with the company.</p>
+            <p>After it received organizatial support, I led the Slack Kit team, overseeing engineering and product
+                direction. It was combined with Slack's
+                Accessibility effort into the Product Systems team, which I
+                led for my final two years with the company.</p>
 
 
             <h3>2021</h3>
@@ -257,6 +257,14 @@ shortHeader: true
                             to redesign the experience and build out new features. Wyn Bennett built the mobile version
                             of the game.
                             <a class="reversefootnote" href="#fnr4-25665" title="return to article">&#8617;&#xFE0E;</a>
+                        </p>
+                    </li>
+
+                    <li id="fn4-kit">
+                        <p>Design systems are the library of buttons and knobs that live between Slack's code and users'
+                            button presses, along with a ongoing process of governance for understanding and 
+                            explaining how all the visual interface elements should work together.
+                            <a class="reversefootnote" href="#fnr4-kit" title="return to article">&#8617;&#xFE0E;</a>
                         </p>
                     </li>
                 </ol>
