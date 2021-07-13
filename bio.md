@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 color: '#BFE3F2'
-title: What I've been doing for the last 20 years
+title: What I've been up to
 shortHeader: true
 date: 1-1-2005
 color: light-green
