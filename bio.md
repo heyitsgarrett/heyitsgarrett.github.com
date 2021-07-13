@@ -211,7 +211,7 @@ shortHeader: true
                 may be holding a few rectangles together somewhere down deep in the application.
             </p>
 
-            <p>After it received organizatial support, I led the Slack Kit team, overseeing engineering and product
+            <p>After it received organizational support, I led the Slack Kit team, overseeing engineering and product
                 direction. It was combined with Slack's
                 Accessibility effort into the Product Systems team, which I
                 led for my final two years with the company.</p>
