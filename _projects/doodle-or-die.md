@@ -62,9 +62,5 @@ shortHeader: true
             <img src="/images/projects/doodle-or-die/screen-chain.jpg" />
         </div>
     </section>
-    <p class="f2 mb4 pb4 tc">
-        <strong><a href="http://doodleordie.com">doodleordie.com</a></strong>
-    </p>
-
 </div>
 
