@@ -225,11 +225,27 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <p>I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It's a
+            <p>I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It was a
                 company named <a href="https://www.wonderful.tools/" class="highlight"
-                    style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</a>, and a product
-                that doesn't exist yet. I'll share more about what we're building soon. I think it could be pretty cool
-                :)
+                    style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</a>, working on a product
+                that had an ambitious scope. We couldn't align business goals with the product's potential, so we put it on hold.
+            </p>
+
+
+            <h3>2022</h3>
+
+            <!-- 
+            ////////////////////////////////////////////////////////////////
+            FIGMA
+            ////////////////////////////////////////////////////////////////
+            -->
+
+            <img alt="The Figma Office, SF California, 2023" src="/images/bio/figma.jpg" class="br2 gallery-single">
+
+            <p>
+                In 2022, Figma began to invest more seriously in its prototyping capabilities. I joined the team to lead the product
+                effort, working with a team of engineers and designers to bring advaned prototyping capabilities and higher fidelity 
+                functionality to the product.
             </p>
 
 
