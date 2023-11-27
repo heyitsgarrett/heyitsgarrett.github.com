@@ -227,7 +227,7 @@ shortHeader: true
 
             <p>
                 I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It was a
-                company named <span style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</span>, working on a product
+                company named <strong style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</strong>, working on a product
                 that had an ambitious scope. We couldn't align business goals with the product's potential, so we put it on hold.
             </p>
 
@@ -243,8 +243,8 @@ shortHeader: true
             <img alt="The Figma Office, SF California, 2023" src="/images/bio/figma.jpg" class="br2 gallery-single">
 
             <p>
-                In 2022, Figma began to invest more seriously in its prototyping capabilities. I joined the team to lead the product
-                effort, working with a team of engineers and designers to bring advaned prototyping capabilities and higher fidelity 
+                In 2022, <a href="https://figma.com">Figma</a> began to invest more seriously in its prototyping capabilities. I joined the team to lead the product
+                effort, working with a team of engineers and designers to bring <a href="https://www.youtube.com/watch?v=3OeeONOueF0">advanced prototyping</a> and higher fidelity 
                 functionality to the product.
             </p>
 
