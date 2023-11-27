@@ -225,9 +225,9 @@ shortHeader: true
             ////////////////////////////////////////////////////////////////
             -->
 
-            <p>I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It was a
-                company named <a href="https://www.wonderful.tools/" class="highlight"
-                    style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</a>, working on a product
+            <p>
+                I left Slack to build something new with <a href="http://bruceape.com/">Bruce Sullivan</a>. It was a
+                company named <span style="color:#E7566C; text-decoration-color: #f59590;">Wonderful Tools</span>, working on a product
                 that had an ambitious scope. We couldn't align business goals with the product's potential, so we put it on hold.
             </p>
 
