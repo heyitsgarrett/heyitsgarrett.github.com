@@ -19164,7 +19164,7 @@
       "ddd": 0,
       "ind": 30,
       "ty": 4,
-      "nm": "Shape Layer 4",
+      "nm": "SHADOW",
       "parent": 28,
       "sr": 1,
       "ks": {
@@ -19963,7 +19963,7 @@
       "ddd": 0,
       "ind": 31,
       "ty": 4,
-      "nm": "Shape Layer 3",
+      "nm": "SHADOW",
       "parent": 28,
       "sr": 1,
       "ks": {
