@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmojiNow - Zero-Click Emoji Browser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --focus-color: #007acc;
+            --success-color: #00aa44;
+            --hover-color: #f5f5f5;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --border-color: #333333;
+                --hover-color: #2a2a2a;
+                --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: all 0.2s ease;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--focus-color);
+            box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+        }
+
+        .category-select {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: var(--text-color);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--focus-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .emoji-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            font-size: 40px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            background: transparent;
+            border: 2px solid transparent;
+        }
+
+        .emoji-item:hover {
+            background: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .emoji-item.focused {
+            border-color: var(--focus-color);
+            background: var(--hover-color);
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.2);
+            z-index: 10;
+        }
+
+        .emoji-item.copied {
+            background: var(--success-color);
+            transform: scale(1.3);
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 16px;
+            background: var(--success-color);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .status-bar.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .keyboard-shortcuts {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            max-width: 400px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .keyboard-shortcuts.show {
+            display: block;
+        }
+
+        .shortcuts-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .shortcut-key {
+            background: var(--hover-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .emoji-grid {
+                grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+            }
+
+            .emoji-item {
+                width: 48px;
+                height: 48px;
+                font-size: 32px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <input type="text" class="search-input" placeholder="Loading emojis..." id="searchInput" disabled>
+        <select class="category-select" id="categorySelect" disabled>
+            <option value="all">Loading...</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme (Ctrl+L)">🌙</button>
+    </div>
+
+    <div class="main-content">
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <div>Loading comprehensive emoji dataset...</div>
+        </div>
+        <div class="emoji-grid" id="emojiGrid" style="display: none;"></div>
+    </div>
+
+    <div class="status-bar" id="statusBar"></div>
+
+    <div class="keyboard-shortcuts" id="keyboardShortcuts">
+        <div class="shortcuts-title">Keyboard Shortcuts</div>
+        <div class="shortcut-item">
+            <span>Focus search</span>
+            <span class="shortcut-key">Ctrl+K</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Copy emoji</span>
+            <span class="shortcut-key">Enter</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Navigate</span>
+            <span class="shortcut-key">Arrow Keys</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Toggle theme</span>
+            <span class="shortcut-key">Ctrl+L</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Show shortcuts</span>
+            <span class="shortcut-key">?</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Close/Escape</span>
+            <span class="shortcut-key">Esc</span>
+        </div>
+    </div>
+
+    <script>
+        // Complete emoji dataset - will be loaded dynamically
+        let emojiData = {};
+        let allEmojis = [];
+        let isLoading = true;
+
+        // Group name mappings for Emojibase data
+        const groupNames = {
+            0: { key: 'smileys', name: 'Smileys & Emotion' },
+            1: { key: 'people', name: 'People & Body' },
+            2: { key: 'animals', name: 'Animals & Nature' },
+            3: { key: 'food', name: 'Food & Drink' },
+            4: { key: 'travel', name: 'Travel & Places' },
+            5: { key: 'activities', name: 'Activities' },
+            6: { key: 'objects', name: 'Objects' },
+            7: { key: 'symbols', name: 'Symbols' },
+            8: { key: 'flags', name: 'Flags' }
+        };
+
+        // Load complete emoji dataset from Emojibase CDN
+        async function loadEmojiData() {
+            try {
+                const response = await fetch('emoji.2024.json');
+                const rawData = await response.json();
+
+                // Process and organize the data
+                processEmojiData(rawData);
+                isLoading = false;
+
+                // Initialize app after data is loaded
+                if (window.emojiApp) {
+                    window.emojiApp.onDataLoaded();
+                }
+            } catch (error) {
+                console.warn('Failed to load emoji data, using fallback');
+                loadFallbackData();
+                isLoading = false;
+
+                if (window.emojiApp) {
+                    window.emojiApp.onDataLoaded();
+                }
+            }
+        }
+
+        function processEmojiData(rawData) {
+            // Initialize categories
+            Object.values(groupNames).forEach(group => {
+                emojiData[group.key] = {
+                    name: group.name,
+                    emojis: []
+                };
+            });
+
+            // Process each emoji
+            rawData.forEach(emojiObj => {
+                // Skip non-standard emojis or components
+                if (emojiObj.type !== 1 || !emojiObj.emoji) return;
+
+                const group = groupNames[emojiObj.group];
+                if (!group) return;
+
+                const processedEmoji = {
+                    emoji: emojiObj.emoji,
+                    name: emojiObj.label || emojiObj.name || 'unknown',
+                    keywords: emojiObj.tags || [],
+                    hexcode: emojiObj.hexcode,
+                    version: emojiObj.version
+                };
+
+                emojiData[group.key].emojis.push(processedEmoji);
+                allEmojis.push(processedEmoji);
+            });
+
+            console.log(`Loaded ${allEmojis.length} emojis across ${Object.keys(emojiData).length} categories`);
+        }
+
+        function loadFallbackData() {
+            // Minimal fallback data if CDN fails
+            emojiData = {
+                "smileys": {
+                    name: "Smileys & Emotion",
+                    emojis: [
+                        { emoji: "😀", name: "grinning face", keywords: ["happy", "smile", "grin"] },
+                        { emoji: "😃", name: "grinning face with big eyes", keywords: ["happy", "smile", "joy"] },
+                        { emoji: "😄", name: "grinning face with smiling eyes", keywords: ["happy", "smile", "laugh"] },
+                        { emoji: "😁", name: "beaming face with smiling eyes", keywords: ["happy", "smile", "grin"] },
+                        { emoji: "😆", name: "grinning squinting face", keywords: ["happy", "laugh", "smile"] },
+                        { emoji: "😅", name: "grinning face with sweat", keywords: ["happy", "laugh", "sweat"] },
+                        { emoji: "🤣", name: "rolling on the floor laughing", keywords: ["laugh", "rofl", "funny"] },
+                        { emoji: "😂", name: "face with tears of joy", keywords: ["laugh", "cry", "funny"] },
+                        { emoji: "🙂", name: "slightly smiling face", keywords: ["happy", "smile"] },
+                        { emoji: "😉", name: "winking face", keywords: ["wink", "flirt"] },
+                        { emoji: "😊", name: "smiling face with smiling eyes", keywords: ["happy", "smile", "blush"] },
+                        { emoji: "😍", name: "smiling face with heart-eyes", keywords: ["love", "heart", "crush"] },
+                        { emoji: "😘", name: "face blowing a kiss", keywords: ["kiss", "love"] }
+                    ]
+                },
+                "symbols": {
+                    name: "Symbols",
+                    emojis: [
+                        { emoji: "❤️", name: "red heart", keywords: ["love", "heart", "red"] },
+                        { emoji: "🔥", name: "fire", keywords: ["fire", "hot", "flame"] },
+                        { emoji: "⭐", name: "star", keywords: ["star", "favorite"] },
+                        { emoji: "✨", name: "sparkles", keywords: ["sparkles", "magic"] },
+                        { emoji: "👍", name: "thumbs up", keywords: ["thumbs", "up", "like", "good"] },
+                        { emoji: "👎", name: "thumbs down", keywords: ["thumbs", "down", "dislike", "bad"] }
+                    ]
+                }
+            };
+
+            // Populate allEmojis array
+            allEmojis = [];
+            Object.values(emojiData).forEach(category => {
+                allEmojis.push(...category.emojis);
+            });
+        }
+
+        // Start loading data immediately
+        loadEmojiData();
+
+        class EmojiApp {
+            constructor() {
+                this.currentEmojis = [];
+                this.focusedIndex = 0;
+                this.searchInput = document.getElementById('searchInput');
+                this.categorySelect = document.getElementById('categorySelect');
+                this.emojiGrid = document.getElementById('emojiGrid');
+                this.statusBar = document.getElementById('statusBar');
+                this.keyboardShortcuts = document.getElementById('keyboardShortcuts');
+                this.themeToggle = document.getElementById('themeToggle');
+                this.loadingIndicator = document.getElementById('loadingIndicator');
+                this.isSearchFocused = false;
+                this.isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateTheme();
+
+                // If data is already loaded, populate immediately
+                if (!isLoading) {
+                    this.onDataLoaded();
+                }
+            }
+
+            onDataLoaded() {
+                this.loadingIndicator.style.display = 'none';
+                this.emojiGrid.style.display = 'grid';
+
+                // Enable controls
+                this.searchInput.disabled = false;
+                this.searchInput.placeholder = 'Search emojis... (Ctrl+K)';
+                this.categorySelect.disabled = false;
+
+                this.populateCategories();
+                this.renderEmojis();
+                this.handleURLHash();
+            }
+
+            populateCategories() {
+                // Clear loading option and add "All Categories"
+                this.categorySelect.innerHTML = '<option value="all">All Categories</option>';
+
+                Object.keys(emojiData).forEach(categoryKey => {
+                    const option = document.createElement('option');
+                    option.value = categoryKey;
+                    option.textContent = emojiData[categoryKey].name;
+                    this.categorySelect.appendChild(option);
+                });
+            }
+
+            renderEmojis(category = 'all', searchTerm = '') {
+                this.emojiGrid.innerHTML = '';
+                this.currentEmojis = [];
+
+                let emojisToShow = [];
+
+                if (category === 'all') {
+                    Object.values(emojiData).forEach(cat => {
+                        emojisToShow.push(...cat.emojis);
+                    });
+                } else {
+                    emojisToShow = emojiData[category]?.emojis || [];
+                }
+
+                if (searchTerm) {
+                    emojisToShow = this.searchEmojis(emojisToShow, searchTerm);
+                }
+
+                emojisToShow.forEach((emojiObj, index) => {
+                    const emojiEl = document.createElement('div');
+                    emojiEl.className = 'emoji-item';
+                    emojiEl.textContent = emojiObj.emoji;
+                    emojiEl.title = emojiObj.name;
+                    emojiEl.setAttribute('data-index', index);
+                    emojiEl.setAttribute('role', 'button');
+                    emojiEl.setAttribute('tabindex', '-1');
+                    emojiEl.setAttribute('aria-label', emojiObj.name);
+
+                    emojiEl.addEventListener('click', () => {
+                        this.focusedIndex = index;
+                        this.updateFocus();
+                        this.copyEmoji(emojiObj);
+                    });
+
+                    this.emojiGrid.appendChild(emojiEl);
+                });
+
+                this.currentEmojis = emojisToShow;
+                this.focusedIndex = 0;
+                this.updateFocus();
+            }
+
+            searchEmojis(emojis, searchTerm) {
+                const term = searchTerm.toLowerCase();
+                return emojis.filter(emojiObj => {
+                    return emojiObj.name.toLowerCase().includes(term) ||
+                        emojiObj.keywords.some(keyword => keyword.toLowerCase().includes(term));
+                });
+            }
+
+            updateFocus() {
+                document.querySelectorAll('.emoji-item').forEach((el, index) => {
+                    if (index === this.focusedIndex) {
+                        el.classList.add('focused');
+                        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        el.classList.remove('focused');
+                    }
+                });
+            }
+
+            copyEmoji(emojiObj) {
+                navigator.clipboard.writeText(emojiObj.emoji).then(() => {
+                    this.showStatus(`Copied ${emojiObj.emoji}`);
+                    this.flashCopyFeedback();
+                }).catch(() => {
+                    this.showStatus('Copy failed');
+                });
+            }
+
+            flashCopyFeedback() {
+                const focusedEl = document.querySelector('.emoji-item.focused');
+                if (focusedEl) {
+                    focusedEl.classList.add('copied');
+                    setTimeout(() => focusedEl.classList.remove('copied'), 300);
+                }
+            }
+
+            showStatus(message) {
+                this.statusBar.textContent = message;
+                this.statusBar.classList.add('show');
+                setTimeout(() => {
+                    this.statusBar.classList.remove('show');
+                }, 2000);
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                this.searchInput.addEventListener('input', (e) => {
+                    this.debounce(() => {
+                        this.renderEmojis(this.categorySelect.value, e.target.value);
+                    }, 150)();
+                });
+
+                this.searchInput.addEventListener('focus', () => {
+                    this.isSearchFocused = true;
+                });
+
+                this.searchInput.addEventListener('blur', () => {
+                    this.isSearchFocused = false;
+                });
+
+                // Category change
+                this.categorySelect.addEventListener('change', (e) => {
+                    this.renderEmojis(e.target.value, this.searchInput.value);
+                });
+
+                // Theme toggle
+                this.themeToggle.addEventListener('click', () => {
+                    this.toggleTheme();
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    this.handleKeydown(e);
+                });
+
+                // Handle system theme changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    this.isDarkTheme = e.matches;
+                    this.updateTheme();
+                });
+
+                // Handle hash changes for direct emoji access
+                window.addEventListener('hashchange', () => {
+                    this.handleURLHash();
+                });
+            }
+
+            handleKeydown(e) {
+                // Global shortcuts
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    this.searchInput.focus();
+                    return;
+                }
+
+                if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+                    e.preventDefault();
+                    this.toggleTheme();
+                    return;
+                }
+
+                if (e.key === '?') {
+                    e.preventDefault();
+                    this.toggleShortcuts();
+                    return;
+                }
+
+                if (e.key === 'Escape') {
+                    if (this.keyboardShortcuts.classList.contains('show')) {
+                        this.keyboardShortcuts.classList.remove('show');
+                    } else if (this.searchInput.value) {
+                        this.searchInput.value = '';
+                        this.renderEmojis();
+                    } else {
+                        this.searchInput.blur();
+                    }
+                    return;
+                }
+
+                // Number keys for categories (1-9)
+                if (!this.isSearchFocused && e.key >= '1' && e.key <= '9') {
+                    const categoryIndex = parseInt(e.key) - 1;
+                    const categories = Object.keys(emojiData);
+                    if (categoryIndex < categories.length) {
+                        this.categorySelect.value = categories[categoryIndex];
+                        this.renderEmojis(categories[categoryIndex]);
+                    }
+                    return;
+                }
+
+                // Navigation when not in search
+                if (!this.isSearchFocused && this.currentEmojis.length > 0) {
+                    const gridWidth = Math.floor(this.emojiGrid.offsetWidth / 72); // Approximate emoji width + gap
+
+                    switch (e.key) {
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.focusedIndex = Math.min(this.focusedIndex + 1, this.currentEmojis.length - 1);
+                            this.updateFocus();
+                            break;
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.focusedIndex = Math.max(this.focusedIndex - 1, 0);
+                            this.updateFocus();
+                            break;
+                        case 'ArrowDown':
+                            e.preventDefault();
+                            this.focusedIndex = Math.min(this.focusedIndex + gridWidth, this.currentEmojis.length - 1);
+                            this.updateFocus();
+                            break;
+                        case 'ArrowUp':
+                            e.preventDefault();
+                            this.focusedIndex = Math.max(this.focusedIndex - gridWidth, 0);
+                            this.updateFocus();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.focusedIndex = 0;
+                            this.updateFocus();
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.focusedIndex = this.currentEmojis.length - 1;
+                            this.updateFocus();
+                            break;
+                        case 'Enter':
+                            e.preventDefault();
+                            if (this.currentEmojis[this.focusedIndex]) {
+                                this.copyEmoji(this.currentEmojis[this.focusedIndex]);
+                            }
+                            break;
+                    }
+                }
+
+                // Enter in search
+                if (this.isSearchFocused && e.key === 'Enter' && this.currentEmojis.length > 0) {
+                    e.preventDefault();
+                    this.copyEmoji(this.currentEmojis[0]);
+                    this.searchInput.blur();
+                }
+            }
+
+            toggleTheme() {
+                this.isDarkTheme = !this.isDarkTheme;
+                this.updateTheme();
+            }
+
+            updateTheme() {
+                if (this.isDarkTheme) {
+                    document.documentElement.style.setProperty('--bg-color', '#1a1a1a');
+                    document.documentElement.style.setProperty('--text-color', '#e0e0e0');
+                    document.documentElement.style.setProperty('--border-color', '#333333');
+                    document.documentElement.style.setProperty('--hover-color', '#2a2a2a');
+                    document.documentElement.style.setProperty('--shadow', '0 2px 8px rgba(0,0,0,0.3)');
+                    this.themeToggle.textContent = '☀️';
+                } else {
+                    document.documentElement.style.setProperty('--bg-color', '#ffffff');
+                    document.documentElement.style.setProperty('--text-color', '#333333');
+                    document.documentElement.style.setProperty('--border-color', '#e0e0e0');
+                    document.documentElement.style.setProperty('--hover-color', '#f5f5f5');
+                    document.documentElement.style.setProperty('--shadow', '0 2px 8px rgba(0,0,0,0.1)');
+                    this.themeToggle.textContent = '🌙';
+                }
+            }
+
+            toggleShortcuts() {
+                this.keyboardShortcuts.classList.toggle('show');
+            }
+
+            handleURLHash() {
+                const hash = window.location.hash.slice(1);
+                if (hash) {
+                    // Search for emoji by name or keyword
+                    let found = false;
+                    Object.values(emojiData).forEach(category => {
+                        category.emojis.forEach((emojiObj, index) => {
+                            if (!found && (
+                                emojiObj.name.toLowerCase().includes(hash.toLowerCase()) ||
+                                emojiObj.keywords.some(keyword => keyword.toLowerCase() === hash.toLowerCase())
+                            )) {
+                                this.searchInput.value = hash;
+                                this.renderEmojis('all', hash);
+                                this.copyEmoji(emojiObj);
+                                found = true;
+                            }
+                        });
+                    });
+                }
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.emojiApp = new EmojiApp();
+        });
+    </script>
+</body>
+
+</html>
