@@ -104,11 +104,14 @@ const LoopTrain = {
         this.updateURLSeed(urlSeed);
         console.log(`🎲 Initial seed: ${urlSeed}`);
 
+        // Get responsive dimensions
+        const dimensions = this.getResponsiveDimensions();
+
         // Create PIXI application with new v8+ syntax
         this.app = new PIXI.Application();
         await this.app.init({
-            width: CONFIG.WINDOW.WIDTH,
-            height: CONFIG.WINDOW.HEIGHT,
+            width: dimensions.width,
+            height: dimensions.height,
             backgroundColor: CONFIG.COLORS.BACKGROUND,
             canvas: document.getElementById('gameCanvas'),
             antialias: true,
@@ -128,6 +131,7 @@ const LoopTrain = {
         // Initialize renderer
         if (typeof GameRenderer !== 'undefined') {
             this.renderer = new GameRenderer(this.app);
+            this.renderer.game = this; // Connect renderer to game instance
             console.log('🎨 Renderer initialized');
         } else {
             console.error('❌ GameRenderer not found!');
@@ -162,10 +166,69 @@ const LoopTrain = {
 
         // Set up UI event handlers
         this.setupUI();
+        
+        // Set up resize handler
+        this.setupResizeHandler();
 
         console.log('✅ LoopTrain initialization complete!');
-        console.log('📐 Canvas dimensions:', CONFIG.WINDOW.WIDTH, 'x', CONFIG.WINDOW.HEIGHT);
-        console.log('🎯 Track radius:', CONFIG.WORLD.TRACK_RADIUS);
+        console.log('📐 Canvas dimensions:', this.app.screen.width, 'x', this.app.screen.height);
+        console.log('🎯 Track radius:', this.getTrackRadius());
+    },
+    
+    getResponsiveDimensions() {
+        const container = document.getElementById('gameContainer');
+        const rect = container.getBoundingClientRect();
+        
+        // Account for border and padding, use inner dimensions
+        const borderWidth = 4; // 2px border on each side
+        const size = Math.min(rect.width - borderWidth, rect.height - borderWidth);
+        
+        return {
+            width: Math.max(400, size), // Minimum 400px
+            height: Math.max(400, size)
+        };
+    },
+    
+    getTrackRadius() {
+        // Calculate track radius based on current canvas size
+        return Math.min(this.app.screen.width, this.app.screen.height) * 0.35;
+    },
+    
+    getCenterX() {
+        return this.app.screen.width / 2;
+    },
+    
+    getCenterY() {
+        return this.app.screen.height / 2;
+    },
+    
+    setupResizeHandler() {
+        let resizeTimeout;
+        
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                console.log('📐 Window resized, updating game dimensions');
+                this.updateGameDimensions();
+            }, 100); // Debounce resize events
+        };
+        
+        window.addEventListener('resize', handleResize);
+        console.log('📐 Resize handler set up');
+    },
+    
+    updateGameDimensions() {
+        const dimensions = this.getResponsiveDimensions();
+        
+        // Resize the renderer
+        this.app.renderer.resize(dimensions.width, dimensions.height);
+        
+        // Update all visual elements
+        if (this.renderer) {
+            this.renderer.updateDimensions();
+        }
+        
+        console.log('📐 Game dimensions updated:', dimensions.width, 'x', dimensions.height);
     },
 
     // Set up UI event handlers
@@ -349,8 +412,8 @@ const LoopTrain = {
     },
 
     getBeadPosition(bead) {
-        const x = CONFIG.WORLD.CENTER_X + Math.cos(bead.angle - Math.PI / 2) * CONFIG.WORLD.TRACK_RADIUS;
-        const y = CONFIG.WORLD.CENTER_Y + Math.sin(bead.angle - Math.PI / 2) * CONFIG.WORLD.TRACK_RADIUS;
+        const x = this.getCenterX() + Math.cos(bead.angle - Math.PI / 2) * this.getTrackRadius();
+        const y = this.getCenterY() + Math.sin(bead.angle - Math.PI / 2) * this.getTrackRadius();
         return { x, y };
     },
 
@@ -541,8 +604,8 @@ const LoopTrain = {
                 
                 // Create miss flash at target zone position
                 const zoneAngle = this.gameState.currentTargetZone.angle;
-                const x = CONFIG.WORLD.CENTER_X + Math.cos(zoneAngle - Math.PI / 2) * CONFIG.WORLD.TRACK_RADIUS;
-                const y = CONFIG.WORLD.CENTER_Y + Math.sin(zoneAngle - Math.PI / 2) * CONFIG.WORLD.TRACK_RADIUS;
+                const x = this.getCenterX() + Math.cos(zoneAngle - Math.PI / 2) * this.getTrackRadius();
+                const y = this.getCenterY() + Math.sin(zoneAngle - Math.PI / 2) * this.getTrackRadius();
                 this.gameState.missFlashes.push(this.createMissFlash(x, y));
                 
                 // Check if health is now 0
@@ -833,18 +896,21 @@ const LoopTrain = {
         document.getElementById('startScreen').style.display = 'flex';
         document.getElementById('gameScreen').style.display = 'none';
         document.getElementById('gameOverScreen').style.display = 'none';
+        document.getElementById('touchHitbox').classList.remove('playing');
     },
 
     showGameScreen() {
         document.getElementById('startScreen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
         document.getElementById('gameOverScreen').style.display = 'none';
+        document.getElementById('touchHitbox').classList.add('playing');
     },
 
     showGameOver() {
         document.getElementById('startScreen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'none';
         document.getElementById('gameOverScreen').style.display = 'flex';
+        document.getElementById('touchHitbox').classList.remove('playing');
 
         document.getElementById('finalScoreDisplay').textContent = `Final Score: ${this.gameState.finalScore}`;
     },

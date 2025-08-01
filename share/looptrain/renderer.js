@@ -5,6 +5,7 @@ class GameRenderer {
     constructor(app) {
         this.app = app;
         this.stage = app.stage;
+        this.game = null; // Will be set by game.js
         
         // Create containers for different layers
         this.trackContainer = new PIXI.Container();
@@ -32,13 +33,12 @@ class GameRenderer {
         // Create high score text
         this.highScoreText = new PIXI.Text('', {
             fontFamily: 'monospace',
-            fontSize: 16,
+            fontSize: this.getScaledFontSize(16),
             fill: CONFIG.COLORS.UI_TEXT,
             align: 'right'
         });
         this.highScoreText.anchor.set(1, 0); // Anchor to top-right
-        this.highScoreText.x = CONFIG.WINDOW.WIDTH - 40;
-        this.highScoreText.y = 30;
+        this.updateHighScorePosition();
         this.uiContainer.addChild(this.highScoreText);
         
         this.setupTrack();
@@ -68,9 +68,7 @@ class GameRenderer {
     setupTrack() {
         // Create track circle
         this.trackGraphics = new PIXI.Graphics();
-        this.trackGraphics
-            .circle(CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y, CONFIG.WORLD.TRACK_RADIUS)
-            .stroke({ width: CONFIG.VISUAL.TRACK_LINE_WIDTH, color: CONFIG.COLORS.TRACK });
+        this.drawTrack();
         this.trackContainer.addChild(this.trackGraphics);
         
         // Create target zone circles (will be updated dynamically)
@@ -83,33 +81,157 @@ class GameRenderer {
         this.missFlashProgress = 0;
         
         console.log('🛤️ Track created');
-        console.log('📐 Track center:', CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y);
-        console.log('📐 Track radius:', CONFIG.WORLD.TRACK_RADIUS);
+    }
+    
+    drawTrack() {
+        const centerX = this.getCenterX();
+        const centerY = this.getCenterY();
+        const radius = this.getTrackRadius();
+        
+        this.trackGraphics.clear();
+        this.trackGraphics
+            .circle(centerX, centerY, radius)
+            .stroke({ width: this.getTrackLineWidth(), color: CONFIG.COLORS.TRACK });
+    }
+    
+    getCenterX() {
+        return this.app.screen.width / 2;
+    }
+    
+    getCenterY() {
+        return this.app.screen.height / 2;
+    }
+    
+    getTrackRadius() {
+        return Math.min(this.app.screen.width, this.app.screen.height) * 0.35;
+    }
+    
+    getTargetZoneRadius() {
+        // Target zone should be 125% the size of target bead (25% larger radius)
+        const targetBeadSize = this.getScaledBeadSize(CONFIG.VISUAL.BEAD_SIZES.TARGET);
+        return targetBeadSize * 1.25;
+    }
+    
+    getTargetZoneLineWidth() {
+        // Scale line width based on canvas size
+        const baseLineWidth = 4;
+        const baseCanvasSize = 400;
+        const currentCanvasSize = Math.min(this.app.screen.width, this.app.screen.height);
+        return Math.max(2, (baseLineWidth * currentCanvasSize) / baseCanvasSize);
+    }
+    
+    getPreviewZoneLineWidth() {
+        // Thinner line width for preview zones
+        return Math.max(1, this.getTargetZoneLineWidth() * 0.6);
+    }
+    
+    getTrackLineWidth() {
+        // Scale track line width based on canvas size
+        const baseLineWidth = 3;
+        const baseCanvasSize = 400;
+        const currentCanvasSize = Math.min(this.app.screen.width, this.app.screen.height);
+        return Math.max(1, (baseLineWidth * currentCanvasSize) / baseCanvasSize);
+    }
+    
+    getScaledBeadSize(baseSize) {
+        // Scale bead sizes based on canvas size
+        const baseCanvasSize = 400;
+        const currentCanvasSize = Math.min(this.app.screen.width, this.app.screen.height);
+        return (baseSize * currentCanvasSize) / baseCanvasSize;
+    }
+    
+    getScaledFontSize(baseFontSize) {
+        // Scale font sizes based on canvas size
+        const baseCanvasSize = 400;
+        const currentCanvasSize = Math.min(this.app.screen.width, this.app.screen.height);
+        return Math.max(10, (baseFontSize * currentCanvasSize) / baseCanvasSize);
+    }
+    
+    drawDashedCircle(graphics, centerX, centerY, radius, style) {
+        // Draw a dashed circle by drawing multiple small arcs
+        graphics.clear();
+        
+        const circumference = 2 * Math.PI * radius;
+        const scaledDashLength = (style.dashLength / circumference) * 2 * Math.PI;
+        const scaledGapLength = (style.gapLength / circumference) * 2 * Math.PI;
+        const segmentLength = scaledDashLength + scaledGapLength;
+        
+        let currentAngle = 0;
+        
+        while (currentAngle < 2 * Math.PI) {
+            const endAngle = Math.min(currentAngle + scaledDashLength, 2 * Math.PI);
+            
+            // Draw dash segment
+            graphics.arc(centerX, centerY, radius, currentAngle, endAngle)
+                   .stroke({ 
+                       width: style.width, 
+                       color: style.color, 
+                       alpha: style.alpha 
+                   });
+            
+            currentAngle += segmentLength;
+        }
+    }
+    
+    updateHighScorePosition() {
+        this.highScoreText.x = this.app.screen.width - 40;
+        this.highScoreText.y = 30;
+    }
+    
+    updateDimensions() {
+        // Redraw track
+        this.drawTrack();
+        
+        // Update UI positions and sizes
+        this.updateHighScorePosition();
+        this.updateHealthDisplay();
+        
+        // Update font sizes
+        this.highScoreText.style.fontSize = this.getScaledFontSize(16);
+        
+        // Redraw flash overlay
+        if (this.flashOverlay) {
+            this.flashOverlay.clear();
+            this.flashOverlay.rect(0, 0, this.app.screen.width, this.app.screen.height).fill(0xff0000);
+        }
+        
+        console.log('📦 Renderer dimensions updated');
+    }
+    
+    updateHealthDisplay() {
+        const startX = 40;
+        const startY = 30;
+        const spacing = 35;
+        
+        for (let i = 0; i < this.healthPills.length; i++) {
+            this.healthPills[i].x = startX + i * spacing;
+            this.healthPills[i].y = startY;
+        }
     }
     
     renderTestShape() {
         // Add a simple test circle to verify rendering is working - using old API
         const testGraphics = new PIXI.Graphics();
         testGraphics.beginFill(0xff0000); // Red circle
-        testGraphics.drawCircle(CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y, 20);
+        testGraphics.drawCircle(this.getCenterX(), this.getCenterY(), 20);
         testGraphics.endFill();
         this.uiContainer.addChild(testGraphics);
-        console.log('🔴 Test red circle added at center:', CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y);
+        console.log('🔴 Test red circle added at center:', this.getCenterX(), this.getCenterY());
         
         // Add a test bead at a known position
         const testBead = new PIXI.Graphics();
         testBead.beginFill(0x00ff00); // Green circle
         testBead.drawCircle(0, 0, 15);
         testBead.endFill();
-        testBead.x = CONFIG.WORLD.CENTER_X + 100; // Offset from center
-        testBead.y = CONFIG.WORLD.CENTER_Y;
+        testBead.x = this.getCenterX() + 100; // Offset from center
+        testBead.y = this.getCenterY();
         this.beadContainer.addChild(testBead);
         console.log('🟢 Test green bead added at:', testBead.x, testBead.y);
     }
     
     getBeadPosition(bead) {
-        const x = CONFIG.WORLD.CENTER_X + Math.cos(bead.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
-        const y = CONFIG.WORLD.CENTER_Y + Math.sin(bead.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
+        const x = this.getCenterX() + Math.cos(bead.angle - Math.PI/2) * this.getTrackRadius();
+        const y = this.getCenterY() + Math.sin(bead.angle - Math.PI/2) * this.getTrackRadius();
         return { x, y };
     }
     
@@ -120,7 +242,7 @@ class GameRenderer {
         if (bead.type === BEAD_TYPES.TARGET) {
             // Calculate size with growth animation
             const baseSize = CONFIG.VISUAL.BEAD_SIZES.TARGET;
-            const targetSize = CONFIG.TARGET.RADIUS * 0.8; // Grow towards target zone size
+            const targetSize = this.getTargetZoneRadius() * 0.8; // Grow towards target zone size
             const currentSize = baseSize + (targetSize - baseSize) * bead.growthFactor;
             
             // Flash white when hit, otherwise normal pink color
@@ -133,12 +255,12 @@ class GameRenderer {
         } else if (bead.type === BEAD_TYPES.POINT_1) {
             // Normal white for point beads
             graphics.beginFill(CONFIG.COLORS.POINT_1);
-            graphics.drawCircle(0, 0, CONFIG.VISUAL.BEAD_SIZES.POINT_1);
+            graphics.drawCircle(0, 0, this.getScaledBeadSize(CONFIG.VISUAL.BEAD_SIZES.POINT_1));
             graphics.endFill();
             
         } else if (bead.type === BEAD_TYPES.POINT_10) {
             // Draw triangle
-            const size = CONFIG.VISUAL.BEAD_SIZES.POINT_10;
+            const size = this.getScaledBeadSize(CONFIG.VISUAL.BEAD_SIZES.POINT_10);
             graphics.beginFill(CONFIG.COLORS.POINT_1);
             graphics.moveTo(0, -size);
             graphics.lineTo(size * 0.87, size * 0.5);
@@ -148,7 +270,7 @@ class GameRenderer {
             
         } else if (bead.type === BEAD_TYPES.POINT_50) {
             // Draw diamond
-            const size = CONFIG.VISUAL.BEAD_SIZES.POINT_50;
+            const size = this.getScaledBeadSize(CONFIG.VISUAL.BEAD_SIZES.POINT_50);
             graphics.beginFill(CONFIG.COLORS.POINT_1);
             graphics.moveTo(0, -size);
             graphics.lineTo(size * 0.75, 0);
@@ -159,7 +281,7 @@ class GameRenderer {
             
         } else if (bead.type === BEAD_TYPES.POINT_100) {
             // Draw star
-            const size = CONFIG.VISUAL.BEAD_SIZES.POINT_100;
+            const size = this.getScaledBeadSize(CONFIG.VISUAL.BEAD_SIZES.POINT_100);
             graphics.beginFill(CONFIG.COLORS.POINT_1);
             
             // Create star points
@@ -250,8 +372,8 @@ class GameRenderer {
         
         // Draw current target zone (full opacity)
         if (gameState.currentTargetZone.spawned) {
-            const targetX = CONFIG.WORLD.CENTER_X + Math.cos(gameState.currentTargetZone.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
-            const targetY = CONFIG.WORLD.CENTER_Y + Math.sin(gameState.currentTargetZone.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
+            const targetX = this.getCenterX() + Math.cos(gameState.currentTargetZone.angle - Math.PI/2) * this.getTrackRadius();
+            const targetY = this.getCenterY() + Math.sin(gameState.currentTargetZone.angle - Math.PI/2) * this.getTrackRadius();
             
             // Check if any target bead is in the zone
             let targetInZone = false;
@@ -268,19 +390,19 @@ class GameRenderer {
                 }
             }
             
-            // Primary zone is 50% larger, stroke white when target is in bounds
-            const primaryRadius = CONFIG.TARGET.RADIUS * 1.5;
+            // Primary zone uses the calculated target zone radius
+            const primaryRadius = this.getTargetZoneRadius();
             const strokeColor = targetInZone ? 0xffffff : CONFIG.COLORS.TRACK;
             
             this.targetZoneGraphics
                 .circle(targetX, targetY, primaryRadius)
-                .stroke({ width: CONFIG.VISUAL.TARGET_LINE_WIDTH, color: strokeColor, alpha: 1.0 });
+                .stroke({ width: this.getTargetZoneLineWidth(), color: strokeColor, alpha: 1.0 });
             
             // Draw +1 text if this zone has health bonus
             if (gameState.currentTargetZone.hasHealthBonus) {
                 const bonusText = new PIXI.Text('+1', {
                     fontFamily: 'monospace',
-                    fontSize: 14,
+                    fontSize: this.getScaledFontSize(14),
                     fill: CONFIG.COLORS.TARGET_BEAD,
                     align: 'center'
                 });
@@ -293,23 +415,35 @@ class GameRenderer {
         
         // Draw next target zone (50% opacity)
         if (gameState.nextTargetZone && gameState.nextTargetZone.spawned) {
-            const nextX = CONFIG.WORLD.CENTER_X + Math.cos(gameState.nextTargetZone.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
-            const nextY = CONFIG.WORLD.CENTER_Y + Math.sin(gameState.nextTargetZone.angle - Math.PI/2) * CONFIG.WORLD.TRACK_RADIUS;
-            this.nextTargetZoneGraphics
-                .circle(nextX, nextY, CONFIG.TARGET.RADIUS)
-                .stroke({ width: CONFIG.VISUAL.TARGET_LINE_WIDTH, color: CONFIG.COLORS.TRACK, alpha: 0.5 });
+            const nextX = this.getCenterX() + Math.cos(gameState.nextTargetZone.angle - Math.PI/2) * this.getTrackRadius();
+            const nextY = this.getCenterY() + Math.sin(gameState.nextTargetZone.angle - Math.PI/2) * this.getTrackRadius();
+            
+            // Draw dashed circle for preview zone
+            this.drawDashedCircle(
+                this.nextTargetZoneGraphics,
+                nextX, 
+                nextY, 
+                this.getTargetZoneRadius(),
+                {
+                    width: this.getPreviewZoneLineWidth(),
+                    color: CONFIG.COLORS.TRACK,
+                    alpha: 0.5,
+                    dashLength: 8,
+                    gapLength: 4
+                }
+            );
             
             // Draw +1 text if next zone has health bonus (also at 50% opacity)
             if (gameState.nextTargetZone.hasHealthBonus) {
                 const bonusText = new PIXI.Text('+1', {
                     fontFamily: 'monospace',
-                    fontSize: 14,
+                    fontSize: this.getScaledFontSize(14),
                     fill: CONFIG.COLORS.TARGET_BEAD,
                     align: 'center'
                 });
                 bonusText.anchor.set(0.5);
                 bonusText.x = nextX;
-                bonusText.y = nextY - CONFIG.TARGET.RADIUS - 20; // Position above the zone
+                bonusText.y = nextY - this.getTargetZoneRadius() - 20; // Position above the zone
                 bonusText.alpha = 0.5; // Match zone opacity
                 this.bonusTextContainer.addChild(bonusText);
             }
@@ -466,8 +600,8 @@ class GameRenderer {
             const blendedColor = (r << 16) | (g << 8) | b;
             
             this.trackGraphics
-                .circle(CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y, CONFIG.WORLD.TRACK_RADIUS)
-                .stroke({ width: CONFIG.VISUAL.TRACK_LINE_WIDTH, color: blendedColor });
+                .circle(this.getCenterX(), this.getCenterY(), this.getTrackRadius())
+                .stroke({ width: this.getTrackLineWidth(), color: blendedColor });
             
             // Decay the flash effect
             this.missFlashProgress = Math.max(0, this.missFlashProgress - 0.04); // ~25 frames to fade
@@ -475,8 +609,8 @@ class GameRenderer {
             // Ensure track is back to normal after flash
             this.trackGraphics.clear();
             this.trackGraphics
-                .circle(CONFIG.WORLD.CENTER_X, CONFIG.WORLD.CENTER_Y, CONFIG.WORLD.TRACK_RADIUS)
-                .stroke({ width: CONFIG.VISUAL.TRACK_LINE_WIDTH, color: CONFIG.COLORS.TRACK });
+                .circle(this.getCenterX(), this.getCenterY(), this.getTrackRadius())
+                .stroke({ width: this.getTrackLineWidth(), color: CONFIG.COLORS.TRACK });
         }
     }
     

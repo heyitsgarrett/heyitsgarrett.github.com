@@ -5,6 +5,7 @@ class InputHandler {
     constructor(game) {
         this.game = game;
         this.canvas = game.app.canvas;
+        this.touchHitbox = document.getElementById('touchHitbox');
         
         this.setupEventListeners();
         console.log('🎯 InputHandler initialized');
@@ -19,6 +20,10 @@ class InputHandler {
         this.canvas.addEventListener('touchstart', (e) => this.handleTouchStart(e));
         this.canvas.addEventListener('touchend', (e) => this.handleTouchEnd(e));
         
+        // Touch hitbox events for mobile firing
+        this.touchHitbox.addEventListener('touchstart', (e) => this.handleHitboxTouch(e));
+        this.touchHitbox.addEventListener('mousedown', (e) => this.handleHitboxMouse(e));
+        
         // Keyboard events
         document.addEventListener('keydown', (e) => this.handleKeyDown(e));
         
@@ -27,6 +32,7 @@ class InputHandler {
         
         // Prevent touch scrolling on the canvas
         this.canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        this.touchHitbox.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
         
         console.log('🎯 Event listeners set up for mouse, touch, and keyboard');
     }
@@ -116,6 +122,21 @@ class InputHandler {
         } else if (this.game.gameState.currentState === GAME_STATES.GAME_OVER) {
             // Game over screen - check if tapping in restart area
             this.handleGameOverScreenTap();
+        }
+    }
+    
+    handleHitboxTouch(event) {
+        event.preventDefault();
+        if (this.game.gameState.currentState === GAME_STATES.PLAYING) {
+            console.log('📱 Touch on hitbox - firing!');
+            this.game.handleTap();
+        }
+    }
+    
+    handleHitboxMouse(event) {
+        if (event.button === 0 && this.game.gameState.currentState === GAME_STATES.PLAYING) {
+            console.log('🖱️ Mouse click on hitbox - firing!');
+            this.game.handleTap();
         }
     }
     

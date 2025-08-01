@@ -15,6 +15,8 @@
             min-height: 100vh;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
         }
         
         #gameContainer {
@@ -22,10 +24,21 @@
             border: 2px solid #ff6b47;
             border-radius: 8px;
             background-color: #1a2332;
-            width: 90vh;
-            height: 90vh;
-            max-width: 90vw;
-            max-height: 90vw;
+            width: min(85vh, 85vw);
+            height: min(85vh, 85vw);
+            aspect-ratio: 1;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+        
+        #touchHitbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            display: none;
         }
         
         #gameCanvas {
@@ -39,6 +52,7 @@
             -webkit-transform: translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            object-fit: contain;
         }
         
         .ui-overlay {
@@ -114,14 +128,25 @@
             display: none;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 768px), (max-height: 768px) {
             body {
-                padding: 10px;
+                align-items: flex-start;
+                padding: 20px 10px 0 10px;
             }
             
             #gameContainer {
-                max-width: 100vw;
-                max-height: 100vh;
+                width: calc(100vw - 20px);
+                height: calc(100vw - 20px);
+                max-width: calc(100vw - 20px);
+                max-height: calc(100vh - 40px);
+                border: none;
+                border-radius: 0;
+                margin: 0 10px;
+                box-sizing: border-box;
+            }
+            
+            #touchHitbox.playing {
+                display: block;
             }
             
             .title {
@@ -131,10 +156,16 @@
             .instructions {
                 font-size: 18px;
             }
+            
+            .ui-button {
+                font-size: 24px;
+                padding: 20px 40px;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="touchHitbox"></div>
     <div id="gameContainer">
         <canvas id="gameCanvas"></canvas>
         
