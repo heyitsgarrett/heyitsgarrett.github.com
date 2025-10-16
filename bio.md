@@ -249,6 +249,22 @@ shortHeader: true
             </p>
 
 
+            <h3>2025</h3>
+
+            <!-- 
+            ////////////////////////////////////////////////////////////////
+            BRAINFRUIT STUDIO
+            ////////////////////////////////////////////////////////////////
+            -->
+
+            <img alt="Brainfruit Studio" src="/images/bio/brainfruit.jpg" class="br2 gallery-single">
+
+            <p>
+                I co-founded <a href="https://brainfruit.studio" class="highlight"
+                    style="color:#ff6b9d; text-decoration-color: #ff6b9d">Brainfruit Studio </a> with <a href="http://robdubbin.com/">Rob Dubbin</a>, an indie game studio making small games that punch above their weight. Our six-player city-council sim has toured the world, and now we're developing new games in a variety of formats for sale and whimsy. We're working with a host of talented collaborators and building a playful community around our work. Follow our progress on the <a href="https://brainfruit.studio/blog">blog</a>, sign up for the <a href="https://brainfruit.studio/newsletter">newsletter</a>, or join the Brainfruit Smoothie Bar on <a href="https://discord.gg/brainfruit">Discord</a>.
+            </p>
+
+
             <div class="footnotes">
 
 
